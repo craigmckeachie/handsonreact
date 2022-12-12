@@ -21,7 +21,6 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
-  
 
   presets: [
     [
@@ -61,15 +60,10 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: '01-01-WhyReact',
+            activeBasePath: 'docs',
+            label: 'Course',
             position: 'left',
-            label: 'Tutorial',
-          },
-          {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
           },
         ],
       },
@@ -77,46 +71,61 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Labs',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Labs (JavaScript)',
+                to: 'docs/labs/react-tutorial-javascript',
+              },
+              {
+                label: 'Labs (TypeScript)',
+                to: 'docs/labs/react-tutorial-typescript',
               },
             ],
           },
+          // {
+          //   title: 'Community',
+          //   items: [
+          //     {
+          //       label: 'Twitter',
+          //       href: 'https://twitter.com/cmckeachie',
+          //     },
+          //     {
+          //       label: 'YouTube',
+          //       href: 'https://www.youtube.com/channel/UCxJG7GwhiI3lI7pn_HuBLgw?sub_confirmation=1',
+          //     },
+          //   ],
+          // },
           {
-            title: 'Community',
+            title: 'Links',
             items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/craigmckeachie/handsonreact',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `<br/><br/> 
+        <section style="font-size: 85%"">
+            <div className="container">
+              <div className="row">
+                <p>
+                   The content on this site is available for private, non-commercial use under
+                  <a href="http://www.gnu.org/licenses/gpl-3.0-standalone.html">
+                    GPL version 3
+                  </a>.
+                  <br/> 
+                  If you would like to use this material to conduct your
+                  own training or workshop, please contact us at
+                  <a href="https://www.funnyant.com/contact">funnyant.com</a>.
+                  <br/>
+                  Copyright © ${new Date().getFullYear()} Funny Ant, LLC. All rights reserved.
+                </p>
+              </div>
+            </div>
+          </section>
+       `,
       },
       prism: {
         theme: lightCodeTheme,
