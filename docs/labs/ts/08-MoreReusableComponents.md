@@ -66,7 +66,11 @@ title: 'Lab 8: More Reusable Components'
    import { Project } from './Project';
    + import ProjectCard from './ProjectCard';
 
-   function ProjectList ({ projects }) {
+   interface ProjectListProps {
+     projects: Project[];
+   }
+
+   function ProjectList ({ projects }: ProjectListProps) {
        const items = projects.map(project => (
          <div key={project.id} className="cols-sm">
    -      <div className="card">
