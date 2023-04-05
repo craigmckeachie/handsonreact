@@ -12,7 +12,7 @@ title: 'Lab 13: More Component Communication'
 ### In a child component, accept a function as a prop and invoke it
 
 1. **Open** the **file** `src\projects\ProjectForm.tsx`.
-2. In the `ProjectFormProps` interface, **add** an `onCancel` **event handler** that takes no parameters and returns `void`.
+2. Add the `ProjectFormProps` interface, **with** an `onCancel` **event handler** that takes no parameters and returns `void`.
 3. Update the `cancel` button and add a `click` event to invoke the function passed into the `onCancel` `prop`.
 
    #### `src\projects\ProjectForm.tsx`
