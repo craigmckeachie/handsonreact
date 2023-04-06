@@ -23,7 +23,7 @@ There are two versions:
 
 1. Install the package
    ```
-   npm install react-router-dom@6
+   npm install react-router-dom@6.3
    ```
 2. Add the script tag
 

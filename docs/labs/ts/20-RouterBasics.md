@@ -1,5 +1,5 @@
 ---
-title: "Lab 20: Router Basics"
+title: 'Lab 20: Router Basics'
 ---
 
 ## Objectives
@@ -19,7 +19,7 @@ title: "Lab 20: Router Basics"
    #### `src\home\HomePage.tsx`
 
    ```jsx
-   import React from "react";
+   import React from 'react';
 
    function HomePage() {
      return <h2>Home</h2>;
@@ -36,11 +36,11 @@ title: "Lab 20: Router Basics"
 1. **Run** _one_ of the following commands to install `React Router`:
    #### npm
    ```shell
-   npm install react-router-dom
+   npm install react-router-dom@6.3
    ```
    #### Yarn
    ```shell
-   yarn add react-router-dom
+   yarn add react-router-dom@6.3
    ```
 1. **Configure** the **routes**.
 
