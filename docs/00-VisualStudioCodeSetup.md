@@ -24,8 +24,8 @@ slug: /visual-studio-code-setup
 
 1. On the bottom left of VS Code > click the `Gear Icon`
 2. Choose `Command Palette..`
-3. Type `open settings`
-4. Choose `Open Settings.JSON`
+3. Type `open user settings`
+4. Choose `Open User Settings.JSON`
 5. Paste the settings below into the file.
 
 If you have existing `USER SETTINGS` you will want to **add** the following settings below your current settings. Otherwise, you can replace the contents of the file with the JSON below.
