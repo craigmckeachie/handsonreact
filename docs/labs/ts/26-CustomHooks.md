@@ -181,6 +181,7 @@ function ProjectsPage() {
                </p>
              </section>
            </div>
+         </div>
     </>
   );
 }
