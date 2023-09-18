@@ -5,7 +5,53 @@ sidebar_label: Project Setup
 slug: /project-setup
 ---
 
-## Create New ES6 Project
+## Choices
+
+There are many choices for setting up a new React project and the landscape is constantly evolving.
+
+Here is a list of popular choices for setting up a new project and some thoughts about each.
+
+- Use [WebPack](https://webpack.js.org/)
+  - Create a custom build process using a Webpack configuration file and plugins
+  - requires significant internal developer resources and can be difficult for team members who did not create the custom build to maintain
+- Use [Create React App](https://create-react-app.dev/)
+  - Internally uses WebPack
+  - Customization requires either:
+    - Ejecting the WebPack configuration and maintaining it yourself
+      - generally, a bad choice because you are not getting improvements and bug fixes without significant effort
+      - was necessary before CRACO existed
+    - Use [CRACO - Create React App Configuration Override](https://craco.js.org/) to override just the customizations needed
+      - good solution because it avoids having to reinvent the wheel (the build process) and allows customization
+  - The React team is no longer recommending using Create React App because it supports only client-side only rendering (CSR) also known as a single-page application or SPA.
+  - The React team is promoting a new feature which is currently experimental called [React Server Components](https://nextjs.org/docs/app/building-your-application/rendering/server-components). It allows developers to choose between client-side rendering (CSR) or server-side rendering (SSR) on a component-by-component basis. This requires additional commitment to using Node.js on the server to render the React components on the server.
+  - Many developers feel all their requirements are met by CSR (particularly those building line of business applications that are behind a login and not public to search engines which do handle SSR applications more reliably) and don't want or need the added complexity of SSR
+  - The React team has had recently had one of the champions of the server-side component feature, Dan Abramov, leave Meta and the React team.
+  - Because the React team's roadmap is headed in future a direction SSR that Create React App cannot support (only supports CSR) the project seems to be getting less frequent patches
+- Use [Next.js](https://nextjs.org/)
+  - Next.js assumes you want an application with both client-side rendering (CSR) and server-side rendering (SSR)
+  - If you are building a website with web application functionality in some areas supporting CSR and SSR (as Next.js does) is a very compelling value proposition
+  - It is the first framework to support React's server components although support is still experimental
+  - Other frameworks will likely support SSR in the future. Remix is the first of these frameworks to gain traction.
+  - Next.js also supports static site generation (SSG) as well which can help with the performance of product pages on an e-commerce site that don't change as often
+- Use [Vite.js](https://vitejs.dev/)
+  - Supports just client-side rendering (CSR) but is an evolution over Create React App
+  - Originated in the Vue community
+  - Both Vue and Vite were created by Evan You
+  - Works with many JavaScript libraries including React
+  - Is fast when developing as it utilizes native ES Modules
+  - Is fast in production as it utilizes Rollup
+  - Doesn't support IE in the development workflow but can support it in production
+
+<br>
+
+This course continues to use Create React App because:
+
+- it is still the most used solution for React projects
+- React Server Components are still experimental (at the time this was written)
+- many developers don't use JavaScript for their backend but instead use Java, .NET, or Python for their backend APIs and don't have requirements for React Server Components
+- we are waiting for the dust to settle
+
+## Create New JavaScript (ECMAScript) Project
 
 [Create React App](https://facebook.github.io/create-react-app/) is an officially supported way to create single-page React
 applications. It offers a modern build setup with no configuration.
@@ -90,24 +136,6 @@ If you have Git installed and your project is not part of a larger repository, t
 
 By default, the generated project supports all modern browsers. Support for Internet Explorer 9, 10, and 11 requires polyfills. For a set of polyfills to support older browsers, use [react-app-polyfill](https://github.com/facebook/create-react-app/blob/master/packages/react-app-polyfill/README.md).
 
-### Supported Language Features
-
-This project supports a superset of the latest JavaScript standard. In addition to [ES6](https://github.com/lukehoban/es6features) syntax features, it also supports:
-
-- [Exponentiation Operator](https://github.com/rwaldron/exponentiation-operator) (ES2016).
-- [Async/await](https://github.com/tc39/ecmascript-asyncawait) (ES2017).
-- [Object Rest/Spread Properties](https://github.com/tc39/proposal-object-rest-spread) (ES2018).
-- [Dynamic import()](https://github.com/tc39/proposal-dynamic-import) (stage 3 proposal)
-- [Class Fields and Static Properties](https://github.com/tc39/proposal-class-public-fields) (part of stage 3 proposal).
-
-Learn more about [different proposal stages](https://tc39.github.io/process-document/).
-
-While we recommend using experimental proposals with some caution, Facebook heavily uses these features in the product code, so we intend to provide [codemods](https://medium.com/@cpojer/effective-javascript-codemods-5a6686bb46fb) if any of these proposals change in the future.
-
-Note that **this project includes no [polyfills](https://github.com/facebook/create-react-app/blob/master/packages/react-app-polyfill/README.md)** by default.
-
-If you use any other ES6+ features that need **runtime support** (such as `Array.from()` or `Symbol`), make sure you are [including the appropriate polyfills manually](https://github.com/facebook/create-react-app/blob/master/packages/react-app-polyfill/README.md), or that the browsers you are targeting already support them.
-
 By default, the generated project includes a [`browserslist`](https://github.com/browserslist/browserslist) configuration in your `package.json` file to target a broad range of browsers based on global usage (`> 0.2%`) for production builds, and modern browsers for development.
 
 The `browserslist` configuration controls the outputted JavaScript so that the emitted code will be compatible with the browsers specified. The `browserslist` configuration does not automatically change what polyfills are included in the build it affects the code generated by the compiler that emits JavaScript.
@@ -137,8 +165,8 @@ For IE11:
 
 ```js
 // These must be the first lines in src/index.js
-import "react-app-polyfill/ie11";
-import "react-app-polyfill/stable";
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
 
 // ...
 ```
@@ -162,8 +190,8 @@ This project setup uses [Webpack](https://webpack.js.org/) for handling all asse
 #### `Button.js`
 
 ```js
-import React, { Component } from "react";
-import "./Button.css"; // Tell Webpack that Button.js uses these styles
+import React, { Component } from 'react';
+import './Button.css'; // Tell Webpack that Button.js uses these styles
 
 class Button extends Component {
   render() {
