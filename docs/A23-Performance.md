@@ -259,7 +259,7 @@ function ListItem({ item, onEdit, onRemove }) {
 // );
 
 //3) Wasted renders fixed using React.memo and useCallback
-// const ListItem = React.memo(function ListItem({ item, onEdit }) {
+// const ListItem = React.memo(function ListItem({ item, onEdit, onRemove }) {
 //   return (
 //     <div className="box">
 //       <LastRendered />
