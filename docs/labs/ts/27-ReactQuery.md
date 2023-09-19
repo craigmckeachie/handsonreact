@@ -24,7 +24,8 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
    #### npm
 
    ```sh
-   npm install react-query@3
+   npm install @tanstack/react-query
+   npm install @tanstack/react-query-devtools
    ```
 
    OR
@@ -32,7 +33,8 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
    #### yarn
 
    ```
-   yard add react-query@3
+   yard add @tanstack/react-query
+   yard add @tanstack/react-query-devtools
    ```
 
 ### Configure **React Query Client** provider and **React Query Devtools**.
@@ -45,8 +47,8 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
     import ReactDOM from 'react-dom';
     import './index.css';
     import App from './App';
-    +import { QueryClientProvider, QueryClient } from 'react-query';
-    +import { ReactQueryDevtools } from 'react-query/devtools';
+    +import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+    +import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
     + const queryClient = new QueryClient();
 
@@ -145,24 +147,26 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
    ```ts
    import { useState } from 'react';
    import { projectAPI } from './projectAPI';
-   import { useMutation, useQuery, useQueryClient } from 'react-query';
+   import {
+     useMutation,
+     useQuery,
+     useQueryClient,
+   } from '@tanstack/react-query';
    import { Project } from './Project';
 
    export function useProjects() {
      const [page, setPage] = useState(0);
-     let queryInfo = useQuery(
-       ['projects', page],
-       () => projectAPI.get(page + 1),
-       {
-         keepPreviousData: true,
-         // staleTime: 5000,
-       }
-     );
+     let queryInfo = useQuery({
+       queryKey: ['projects', page],
+       queryFn: () => projectAPI.get(page + 1),
+       keepPreviousData: true,
+     });
      console.log(queryInfo);
      return { ...queryInfo, page, setPage };
    }
    ```
 
+1. **DELETE** ALL the **code** in `src/projects/ProjectsPage.tsx`.
 1. Update the `ProjectsPage.tsx` to use the React Query based custom hook.
 
    #### `src/projects/ProjectsPage.tsx`
@@ -190,7 +194,9 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
 
          {data ? (
            <>
-             {isFetching && <span className="toast">Refreshing...</span>}
+             {isFetching && !isLoading && (
+               <span className="toast">Refreshing...</span>
+             )}
              <ProjectList projects={data} />
              <div className="row">
                <div className="col-sm-4">Current page: {page + 1}</div>
@@ -241,6 +247,7 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
 
    export default ProjectsPage;
 
+   // this commented code is unnecessary it's just here to show you the pattern
    // return (
    //   <>
    //     <h1>Header</h1>
@@ -294,8 +301,9 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
 
    export function useSaveProject() {
      const queryClient = useQueryClient();
-     return useMutation((project: Project) => projectAPI.put(project), {
-       onSuccess: () => queryClient.invalidateQueries('projects'),
+     return useMutation({
+       mutationFn: (project: Project) => projectAPI.put(project),
+       onSuccess: () => queryClient.invalidateQueries(['projects']),
      });
    }
    ```

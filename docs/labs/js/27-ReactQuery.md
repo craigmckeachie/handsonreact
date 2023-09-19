@@ -21,7 +21,8 @@ title: 'Lab 27: React Query Refactor'
    #### npm
 
    ```sh
-   npm install react-query@3
+   npm install @tanstack/react-query
+   npm install @tanstack/react-query-devtools
    ```
 
    OR
@@ -29,7 +30,8 @@ title: 'Lab 27: React Query Refactor'
    #### yarn
 
    ```
-   yard add react-query@3
+   yard add @tanstack/react-query
+   yard add @tanstack/react-query-devtools
    ```
 
 ### Configure **React Query Client** provider and **React Query Devtools**.
@@ -43,8 +45,8 @@ title: 'Lab 27: React Query Refactor'
     import './index.css';
     import App from './App';
     import * as serviceWorker from './serviceWorker';
-    +import { QueryClientProvider, QueryClient } from 'react-query';
-    +import { ReactQueryDevtools } from 'react-query/devtools';
+    +import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+    +import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
     + const queryClient = new QueryClient();
 
@@ -151,24 +153,27 @@ title: 'Lab 27: React Query Refactor'
    ```js
    import { useState } from 'react';
    import { projectAPI } from './projectAPI';
-   import { useMutation, useQuery, useQueryClient } from 'react-query';
+   import {
+     useMutation,
+     useQuery,
+     useQueryClient,
+   } from '@tanstack/react-query';
    import { Project } from './Project';
 
    export function useProjects() {
      const [page, setPage] = useState(0);
-     let queryInfo = useQuery(
-       ['projects', page],
-       () => projectAPI.get(page + 1),
-       {
-         keepPreviousData: true,
-         // staleTime: 5000,
-       }
-     );
+     let queryInfo = useQuery({
+       queryKey: ['projects', page],
+       queryFn: () => projectAPI.get(page + 1),
+       keepPreviousData: true,
+       // staleTime: 5000,
+     });
      console.log(queryInfo);
      return { ...queryInfo, page, setPage };
    }
    ```
 
+1. **DELETE ALL** the **code** in `src/projects/ProjectsPage.js`
 1. Update the `ProjectsPage.js` to use the React Query based custom hook.
 
    #### `src/projects/ProjectsPage.js`
@@ -196,7 +201,9 @@ title: 'Lab 27: React Query Refactor'
 
          {data ? (
            <>
-             {isFetching && <span className="toast">Refreshing...</span>}
+             {isFetching && !isLoading && (
+               <span className="toast">Refreshing...</span>
+             )}
              <ProjectList projects={data} />
              <div className="row">
                <div className="col-sm-4">Current page: {page + 1}</div>
@@ -247,6 +254,7 @@ title: 'Lab 27: React Query Refactor'
 
    export default ProjectsPage;
 
+   // this commented code is unnecessary it's just here to show you the pattern
    // return (
    //   <>
    //     <h1>Header</h1>
@@ -300,8 +308,9 @@ title: 'Lab 27: React Query Refactor'
 
    export function useSaveProject() {
      const queryClient = useQueryClient();
-     return useMutation((project) => projectAPI.put(project), {
-       onSuccess: () => queryClient.invalidateQueries('projects'),
+     return useMutation({
+      mutationFn: (project) => projectAPI.put(project),
+      onSuccess: () => queryClient.invalidateQueries(['projects']),
      });
    }
    ```
