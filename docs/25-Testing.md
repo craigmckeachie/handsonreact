@@ -572,7 +572,9 @@ Snapshot testing is a feature of Jest that automatically generates text snapshot
 
 > .. avoid huge snapshots and take smaller, more focused ones. While you're at it, see if you can actually change it from a snapshot to a more explicit assertion (because you probably can 😉). - Kent C Dodds
 
-Snapshot testing requires you to install the `react-test-renderer` which we already did for shallow testing.
+Snapshot testing requires you to install the `react-test-renderer` which you may have already done for the Enzyme shallow testing section but if you skipped it you will need to install it now.
+
+The `react-test-renderer` library allows you to render React components as JavaScript objects without using the DOM which improves performance of these tests.
 
 1.  If you haven't previously install the `react-test-renderer`.
     ```
