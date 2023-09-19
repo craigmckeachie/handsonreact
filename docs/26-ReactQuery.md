@@ -11,14 +11,14 @@ slug: /react-query
 ## Installation
 
 ```
-npm i react-query@3
+npm install @tanstack/react-query
 ```
 
 #### `index.html`
 
 ```html
 ...
-<script src="/node_modules/react-query/dist/react-query.production.min.js"></script>
+<script src="/node_modules/@tanstack/react-query/build/umd/index.development.js"></script>
 ...
 ```
 
@@ -26,7 +26,7 @@ npm i react-query@3
 
 ```js
 const baseUrl = 'http://localhost:3000';
-const url = `${baseUrl}/photos`;
+const url = `${baseUrl}/photos?_page=1&_limit=10`;
 
 const {
   useQuery,
@@ -35,8 +35,6 @@ const {
   QueryClient,
   QueryClientProvider,
 } = ReactQuery;
-
-// const { ReactQueryDevtools } = ReactQuery.Devtools;
 
 function translateStatusToErrorMessage(status) {
   switch (status) {
@@ -93,10 +91,12 @@ const photoAPI = {
 };
 
 function usePhotos() {
-  const queryInfo = useQuery('photos', photoAPI.getAll);
+  const queryInfo = useQuery({
+    queryKey: ['photos'],
+    queryFn: photoAPI.getAll,
+  });
   console.log(queryInfo);
-  const { isLoading: loading, error, data: photos } = queryInfo;
-  return { loading, photos, error };
+  return queryInfo;
   // const [loading, setLoading] = React.useState(false);
   // const [photos, setPhotos] = React.useState([]);
   // const [error, setError] = React.useState(null);
@@ -119,19 +119,19 @@ function usePhotos() {
 }
 
 function PhotoList() {
-  const { loading, photos, error } = usePhotos();
+  const { isLoading, data, error } = usePhotos();
 
   if (error) {
     return <div>{error}</div>;
-  } else if (loading) {
+  } else if (isLoading) {
     return <div>Loading...</div>;
   } else {
     return (
       <ul>
-        {photos.map((photo) => {
+        {data?.map((photo) => {
           return (
             <li key={photo.id}>
-              <img src={photo.thumbnailUrl} alt={photo.title} />
+              <img loading="lazy" src={photo.thumbnailUrl} alt={photo.title} />
               <h3>{photo.title}</h3>
             </li>
           );
@@ -145,12 +145,11 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById('root')).render(
   <QueryClientProvider client={queryClient}>
     <PhotoList />
-    <ReactQueryDevtools initialIsOpen={false} />
   </QueryClientProvider>
 );
 ```
 
 ## Reference
 
-- [React Query Documementation](https://react-query-v3.tanstack.com/)
-- [Video: React Query: It's Time to Break up with your "Global State"!](https://react-query-v3.tanstack.com/videos)
+- [React Query Documentation](https://tanstack.com/query/latest/)
+- [Video: React Query: It's Time to Break up with your "Global State"!](https://tanstack.com/query/latest/docs/react/videos)

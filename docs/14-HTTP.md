@@ -424,7 +424,7 @@ Review the examples below (using the fetch API). If time permits get the example
 
 ```js
 const baseUrl = 'http://localhost:3000';
-const url = `${baseUrl}/photos`;
+const url = `${baseUrl}/photos?_page=1&_limit=10`;
 
 function translateStatusToErrorMessage(status) {
   switch (status) {
@@ -528,7 +528,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<PhotoList />);
 
 ```js
 const baseUrl = 'http://localhost:3000';
-const url = `${baseUrl}/photos`;
+const url = `${baseUrl}/photos?_page=1&_limit=10`;
 
 function translateStatusToErrorMessage(status) {
   switch (status) {
