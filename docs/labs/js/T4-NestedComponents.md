@@ -13,11 +13,7 @@ title: 'Testing Lab 4: Nested Components'
 
 ### Test Setup
 
-1. **Upgrade** the `@testing-library/user-event` library to version 14.
-   ```
-   npm install @testing-library/user-event@14
-   ```
-1. **Create** the **file** `src\projects\MockProjects.js`.
+<!-- 1. **Create** the **file** `src\projects\MockProjects.js`.
 1. **Add** the **mock** data below to the file.
 
    #### `src\projects\MockProjects.js`
@@ -93,7 +89,7 @@ title: 'Testing Lab 4: Nested Components'
        isActive: false,
      }),
    ];
-   ```
+   ``` -->
 
 1. **Create** the **file** `src\projects\__tests__\ProjectList-test.js`.
 1. **Add** the **setup** code below to test the component.
@@ -111,7 +107,7 @@ title: 'Testing Lab 4: Nested Components'
    import { store } from '../../state';
 
    describe('<ProjectList />', () => {
-     beforeEach(() => {
+     const setup = () =>
        render(
          <Provider store={store}>
            <MemoryRouter>
@@ -119,9 +115,11 @@ title: 'Testing Lab 4: Nested Components'
            </MemoryRouter>
          </Provider>
        );
-     });
+
+     beforeEach(() => {});
 
      test('should render without crashing', () => {
+       setup();
        expect(screen).toBeDefined();
      });
    });

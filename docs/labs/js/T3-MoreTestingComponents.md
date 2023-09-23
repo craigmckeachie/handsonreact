@@ -152,10 +152,11 @@ describe('<ProjectCard />', () => {
 
 ### Testing a Function Prop
 
-1. Open a command-prompt or terminal and run the following command to install `user-event` from the core testing library behind React testing library.
+1. Open a command-prompt or terminal and run the following commands to install a more recent version of the `@testing-library/user-event` package.
 
    ```
-   npm install --save-dev @testing-library/user-event @testing-library/dom
+   npm uninstall @testing-library/user-event
+   npm install @testing-library/user-event@14
    ```
 
 1. **Test** that the **handler prop** is called when edit is clicked.
