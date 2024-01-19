@@ -9,9 +9,32 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 It's valuable to understand how JavaScript applications are architected.
 In particular, it's valuable to understand how JavaScript application architecture is different from other web frameworks.
 
+## Where to Render
+
+It's useful to think about where the HTML and data come together or where the contents of a web page are rendered.
+There are three places to render:
+
+1. Server-side Rendering (SSR)
+
+- on the web server in the chosen server-side programming language
+- the most common servers-side programming languages are Java, C#, Python, Ruby, and PHP but it could be JavaScript running on a JavaScript runtime environment (for example: Node.js)
+
+2. Client-side Rendering (CSR)
+
+- in the end user's web browser using a client-side programming language
+- the most common client-side programming language is JavaScript
+- Web Assembly has made it possible to use other languages in the browser
+
+3. Static Site Generation (SSG)
+
+- on the developer machine or continuous build server at build time
+- the most common languages are JavaScript (Next.js, Gatsby, Docusaurus, Nuxt, Astro), Go (Hugo), and Ruby (Jekyll)
+- this is sometimes referred to as a Jamstack architecture
+- here is a list of [common SSGs](https://jamstack.org/generators/)
+
 ## Web application architectures
 
-### Server-side web application architecture
+### Server-side web application architecture (SSR)
 
 - Java Spring
 - ASP.NET
@@ -21,7 +44,7 @@ In particular, it's valuable to understand how JavaScript application architectu
 
 ![Server-side web app architecture](https://user-images.githubusercontent.com/1474579/65373190-30715300-dc48-11e9-8343-84fa96372e1b.png)
 
-### Single-page web application architecture
+### Single-page web application architecture (CSR)
 
 - React
 - Angular
