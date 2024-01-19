@@ -55,9 +55,17 @@ There are three places to render:
 
 ![SPA Architecture](https://user-images.githubusercontent.com/1474579/101680131-3f4f4b80-3a2e-11eb-9e03-78e325ebdea4.png)
 
-### Why a Single-page web application architecture?
+### What's Next
 
-So why are single-page web application architectures so popular? I think it can be summed up in the following statement.
+- SSR + CSR + SSG
+- Can make the decision on where to render per page
+  - Next.js
+- Can make the decision on where to render per component (part of the page)
+  - Next.js or Remix + React Server Components
+
+### Why a Single-page web application architecture (CSR)?
+
+So why are single-page web application architectures (client-side rendering) so popular? I think it can be summed up in the following statement.
 
 > JavaScript libraries and frameworks provide an interactive user experience similar to a desktop or native application that is as easy to update as a web application.
 
