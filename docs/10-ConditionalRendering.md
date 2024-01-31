@@ -33,7 +33,7 @@ Just use the features in the JavaScript language.
 
 ```js
 const condition = props.condition;
-const elementVariable;
+let elementVariable;
 if(condition){
     elementVariable = <div>true</div>
 }
@@ -50,7 +50,7 @@ return (
 
 ```js
 const condition = props.condition;
-const elementVariable;
+let elementVariable;
 if(condition){
     elementVariable = <div>true</div>
 }
