@@ -18,7 +18,7 @@ npm install @tanstack/react-query
 
 ```html
 ...
-<script src="/node_modules/@tanstack/react-query/build/umd/index.development.js"></script>
+<script src="/node_modules/@tanstack/react-query/build/modern/index.js"></script>
 ...
 ```
 

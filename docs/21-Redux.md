@@ -259,7 +259,8 @@ The next few chapters provide more detail on each of these commonly used complem
 1. Install
 
 ```bash
-npm install --save redux react-redux redux-thunk
+npm install redux@4 react-redux@8 redux-devtools-extension redux-thunk@2
+npm install --save-dev @types/react-redux@8
 ```
 
 2.  Add scripts
