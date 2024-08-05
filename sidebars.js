@@ -119,6 +119,7 @@ module.exports = {
         ],
       },
       'Forms',
+      '13.1-ReactHookForm',
       'A7-BackendAPISetup',
       'HTTP',
       {
