@@ -104,9 +104,9 @@ title: "Testing Lab 5: Container Components"
 1. **Run** _one_ of the following sets of commands to install `Mock Service Worker` to mock the HTTP requests.
 
    ```
-   $ npm install msw --save-dev
+   $ npm install msw@1 --save-dev
    # or
-   $ yarn add msw --dev
+   $ yarn add msw@1 --dev
    ```
 
 1. Export the url used in the component from the `projectAPI.js` file.
