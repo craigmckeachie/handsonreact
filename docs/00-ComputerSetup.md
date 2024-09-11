@@ -10,9 +10,10 @@ slug: /computer-setup
    - _current system updates_
    - at least `4 GB` of `RAM`
 2. **Node.js** installed, a recent **16.x, 18.x, or 20.x LTS** version.
-   - Why?  Create React App requires Node >= 14 on your local development machine (not on the server) 
+
+   - Why? Create React App requires Node >= 14 on your local development machine (not on the server)
    - **Visit** [http://nodejs.org/](http://nodejs.org/).
-   - **Click** the `20.9.[x] LTS Recommended For Most Users` (or similar) **green button on the LEFT** to **download** the **installer** file.
+   - **Click** the `Download Node.js (LTS)` (or similar) ** button ** to **download** the **installer** file.
    - **Run** the **installer**, accepting all _default_ _settings_.
    - After installation, **confirm** that the `Path` environment variable on your computer has been modified to include the path for `node` and `npm` by following these steps.
      - **Open** a `command prompt` (Windows) or `terminal` (Mac).
@@ -24,6 +25,7 @@ slug: /computer-setup
        ```
      - **Verify** the **version** of each program is **returned**.
    - Please **DO use** a recent Node.js (Long Term Support (LTS)) versions for this class.
+
      - [x] `16.x`
      - [x] `18.x`
      - [x] `20.x`
@@ -52,7 +54,7 @@ slug: /computer-setup
   - For details on how to do this [see this article](https://www.sitepoint.com/quick-tip-multiple-versions-node-nvm/).
   - Note: As explained in the article, depending on your operating system there are two different open-source projects for installing multiple versions of `Node.js`: one is named `nvm` (Mac) and the other `nvm for Windows`...make sure you use the appropriate one.
 
-3. **Install** **Create React App** and **verify** a project can be created.
+1. **Install** **Create React App** and **verify** a project can be created.
 
    1. Create a `working` directory for the course somewhere on your computer that you will remember.
    2. **Open** a `command prompt` (Windows) or `terminal` (Mac).
@@ -68,13 +70,13 @@ slug: /computer-setup
 
    > If you've previously installed `create-react-app` globally via `npm install -g create-react-app`, it is recommended that you uninstall the package using `npm uninstall -g create-react-app` to ensure that `npx` always uses the latest version.
 
-   3. After the application builds, your default browser should open to [http://localhost:3000/](http://localhost:3000/).
+   5. After the application builds, your default browser should open to [http://localhost:3000/](http://localhost:3000/).
 
       > If [http://localhost:3000/](http://localhost:3000/) does not open automatically, open your browser and navigate there manually.
 
-   4. **Verify** the **React logo** is displayed in the browser.
+   6. **Verify** the **React logo** is displayed in the browser.
 
-4. An **IDE** (Integrated Development Environment) _or_ code **editor** of your choice.
+2. An **IDE** (Integrated Development Environment) _or_ code **editor** of your choice.
 
    > Students may use any IDE/editor that they are comfortable with using.
 
@@ -85,7 +87,7 @@ slug: /computer-setup
 
     > Don't confuse Visual Studio Code with the heavier Visual Studio IDE used for .NET development.
 
-  -  **Configure Visual Studio Code** for the course by [following these directions](./00-VisualStudioCodeSetup.md).
+  - **Configure Visual Studio Code** for the course by [following these directions](./00-VisualStudioCodeSetup.md).
 
   > ! Don't miss the above link to configure Visual Studio Code with appropriate extensions for the course
 

@@ -64,6 +64,8 @@ title: 'Lab 4: Your First Component'
    +   </div>
    +   );
    }
+
+   export default App;
    ```
 
 2. **Verify** the following is displayed in the browser:
