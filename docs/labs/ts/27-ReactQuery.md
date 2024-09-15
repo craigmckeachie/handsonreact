@@ -24,8 +24,8 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
    #### npm
 
    ```sh
-   npm install @tanstack/react-query
-   npm install @tanstack/react-query-devtools
+   npm install @tanstack/react-query@4
+   npm install @tanstack/react-query-devtools@4
    ```
 
    OR

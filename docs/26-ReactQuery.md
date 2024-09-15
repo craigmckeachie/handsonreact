@@ -11,14 +11,16 @@ slug: /react-query
 ## Installation
 
 ```
-npm install @tanstack/react-query
+npm install @tanstack/react-query@4
 ```
 
 #### `index.html`
 
 ```html
 ...
-<script src="/node_modules/@tanstack/react-query/build/modern/index.js"></script>
+
+<script src="./node_modules/@tanstack/react-query/build/umd/index.development.js"></script>
+
 ...
 ```
 

@@ -21,8 +21,8 @@ title: 'Lab 27: React Query Refactor'
    #### npm
 
    ```sh
-   npm install @tanstack/react-query
-   npm install @tanstack/react-query-devtools
+   npm install @tanstack/react-query@4
+   npm install @tanstack/react-query-devtools@4
    ```
 
    OR
