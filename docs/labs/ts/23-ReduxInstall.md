@@ -16,13 +16,11 @@ title: "Lab 23 Redux: Installation & Configuration"
 1. **Run** _one_ of the following sets of commands:
    #### npm
    ```shell
-   npm install redux react-redux redux-devtools-extension redux-thunk
-   npm install --save-dev @types/react-redux
+   npm install redux@4 react-redux@8 redux-devtools-extension redux-thunk@2
    ```
    #### Yarn
    ```shell
-   yarn add redux react-redux redux-devtools-extension redux-thunk
-   yarn add --dev @types/react-redux
+   yarn add redux@4 react-redux@8 redux-devtools-extension redux-thunk@2
    ```
 1. After the installs finish, **open** the `\package.json` file and quickly **verify** the **packages** were added to the `dependencies` and `devDependencies`.
 
