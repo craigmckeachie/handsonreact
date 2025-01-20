@@ -9,7 +9,7 @@ slug: /computer-setup
 1. A **recent** version of **Windows** (10 or later), **macOS**, or **Linux**, with:
    - _current system updates_
    - at least `4 GB` of `RAM`
-2. **Node.js** installed, a recent **16.x, 18.x, or 20.x LTS** version.
+2. **Node.js** installed, a recent **16.x, 18.x, 20.x, or 22.x LTS** version.
 
    - Why? Create React App requires Node >= 14 on your local development machine (not on the server)
    - **Visit** [http://nodejs.org/](http://nodejs.org/).
@@ -29,6 +29,7 @@ slug: /computer-setup
      - [x] `16.x`
      - [x] `18.x`
      - [x] `20.x`
+     - [x] `22.x`
 
    - Please **DO NOT use** these Node.js versions for this class.
 
@@ -37,6 +38,7 @@ slug: /computer-setup
      - [ ] ~~`13.x`~~
      - [ ] ~~`15.x`~~
      - [ ] ~~`19.x`~~
+     - [ ] ~~`21.x`~~
 
    - Why?
 
@@ -89,7 +91,8 @@ slug: /computer-setup
 
   - **Configure Visual Studio Code** for the course by [following these directions](./00-VisualStudioCodeSetup.md).
 
-  > ! Don't miss the above link to configure Visual Studio Code with appropriate extensions for the course
+  :::success
+  - Don't miss the above link to configure Visual Studio Code with the appropriate extensions for the course
 
 - **WebStorm** or **IntelliJ IDEA Ultimate** both made by `JetBrains` are also great choices.
 
@@ -102,17 +105,17 @@ slug: /computer-setup
 
     > Each download comes with a free 30-day trial.
 
-5. `Google Chrome` browser.
+1. `Google Chrome` browser.
    - **Visit** [http://www.google.com/chrome/](http://www.google.com/chrome/) to **install**.
      > Any recent version will work for the class.
    - Also, any other browsers that you plan to support
-6. **Internet access in the classroom is required** because attendees will download additional software packages and material from github.com as part of the class. This can be confirmed by following these steps.
+2. **Internet access in the classroom is required** because attendees will download additional software packages and material from github.com as part of the class. This can be confirmed by following these steps.
 
    - **Visit**: https://github.com/facebook/react/
    - **Verify** the **page** **loads** successfully on your company's network.
      s
 
-7. You will need to have **Git** installed. To verify it is installed open a terminal or command-prompt and run the command:
+3. You will need to have **Git** installed. To verify it is installed open a terminal or command-prompt and run the command:
    ```
    git --version
    ```
