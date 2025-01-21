@@ -10,11 +10,11 @@ title: 'Lab 16: Form Validation'
 
 ### Add Form Validation
 
-1. **Open** the file `src\project\ProjectForm.js`
+1. **Open** the file `src\project\ProjectForm.jsx`
 
 1. **Initialize** an `errors` object as a state variable to `{name: '', description: '', budget: ''}` so we can hold form errors in the component's `state`.
 
-   #### `src\projects\ProjectForm.js`
+   #### `src\projects\ProjectForm.jsx`
 
    ```diff
    ...
@@ -47,7 +47,7 @@ title: 'Lab 16: Form Validation'
 
    Also, **implement** an `isValid` function in the `ProjectForm` component that checks whether there are any validation errors.
 
-   #### `src\projects\ProjectForm.js`
+   #### `src\projects\ProjectForm.jsx`
 
    ```diff
    ...
@@ -147,7 +147,7 @@ title: 'Lab 16: Form Validation'
 
 1. **Call** the `isValid` function on form submit and return back out of the function before saving changes if the form is invalid.
 
-   #### `src\projects\ProjectForm.js`
+   #### `src\projects\ProjectForm.jsx`
 
    ```diff
    ...
@@ -182,7 +182,7 @@ title: 'Lab 16: Form Validation'
    </div>
    ```
 
-   #### `src\projects\ProjectForm.js`
+   #### `src\projects\ProjectForm.jsx`
 
    ```diff
    ...

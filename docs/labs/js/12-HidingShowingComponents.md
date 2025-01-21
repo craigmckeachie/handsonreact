@@ -13,7 +13,7 @@ title: 'Lab 12: Hiding and Showing Components'
 
 1. Add a state variable `projectBeingEdited` to hold which project is currently being edited. And update `handleEdit` to set the `projectBeingEdited` variable.
 
-   #### `src\projects\ProjectList.js`
+   #### `src\projects\ProjectList.jsx`
 
    ```diff
    - import React from 'react';
@@ -43,7 +43,7 @@ title: 'Lab 12: Hiding and Showing Components'
 
 1. Conditionally render the `ProjectForm` when the projectBeingEdited equals the current project in the list, otherwise display a `ProjectCard` .
 
-   #### src\projects\ProjectList.js
+   #### src\projects\ProjectList.jsx
 
 ```diff
 ...

@@ -1,5 +1,5 @@
 ---
-title: "Lab 15: Form Values to State"
+title: 'Lab 15: Form Values to State'
 ---
 
 ## Objectives
@@ -12,10 +12,10 @@ title: "Lab 15: Form Values to State"
 
 ### Add form data to component state
 
-1. **Open** the **file** `src\projects\ProjectForm.js`.
+1. **Open** the **file** `src\projects\ProjectForm.jsx`.
 1. To the `propTypes`, add a `project` prop.
 
-   #### `src\projects\ProjectForm.js`
+   #### `src\projects\ProjectForm.jsx`
 
    ```diff
    ...
@@ -29,7 +29,7 @@ title: "Lab 15: Form Values to State"
 
 1. **Destructure** the `project` prop in the function component signature and **rename** it `initialProject` so that we can name our state variable `project`. Next, **create** a _state variable_ `project` using the `useState` hook.
 
-   #### `src\projects\ProjectForm.js`
+   #### `src\projects\ProjectForm.jsx`
 
    ```diff
    - import React from 'react';
@@ -64,7 +64,7 @@ title: "Lab 15: Form Values to State"
      - `<textarea />`
        > Alternatively, you could write a separate handler for each of the form field types and invoke them as appropriate but this can be tedious and more difficult to maintain.
 
-     #### `src\projects\ProjectForm.js`
+     #### `src\projects\ProjectForm.jsx`
 
 ```diff
 ...
@@ -155,7 +155,7 @@ export default ProjectForm;
 
 1. In `handleSubmit`, when calling the `onSave` `prop` pass `state.project` instead of `new Project({ name: 'Updated Project' })`.
 
-   #### `src\projects\ProjectForm.js`
+   #### `src\projects\ProjectForm.jsx`
 
 ```diff
 ...
@@ -179,7 +179,7 @@ export default ProjectForm;
 
 2. In `ProjectList` **set** the `project` **prop** into the `<ProjectForm />`.
 
-   #### `src\projects\ProjecList.js`
+   #### `src\projects\ProjecList.jsx`
 
    ```diff
    ...
@@ -218,7 +218,7 @@ export default ProjectForm;
 
 3. ProjectsPage update the project.
 
-   #### `src\projects\ProjectsPage.js`
+   #### `src\projects\ProjectsPage.jsx`
 
    ```diff
    import React, { Fragment,

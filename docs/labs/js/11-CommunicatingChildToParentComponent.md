@@ -13,7 +13,7 @@ title: 'Lab 11: Communicating from Child to Parent Component'
 
 1. In the `Prop Types` definition, **add** an `onEdit` **function** that requires a `project` as a parameter and returns `void`.
 
-   #### `src\projects\ProjectCard.js`
+   #### `src\projects\ProjectCard.jsx`
 
    ```diff
    ...
@@ -30,7 +30,7 @@ title: 'Lab 11: Communicating from Child to Parent Component'
 
 2. Update the `handleEditClick` event to invoke the function passed into the `onEdit` `prop` and **remove** the console.log statement.
 
-   #### `src\projects\ProjectCard.js`
+   #### `src\projects\ProjectCard.jsx`
 
    ```diff
     function ProjectCard(props) {
@@ -54,7 +54,7 @@ title: 'Lab 11: Communicating from Child to Parent Component'
 
    > In VS Code, the code snippet `nfn` can help create the `handleEdit` event handler.
 
-   #### `src\projects\ProjectList.js`
+   #### `src\projects\ProjectList.jsx`
 
    ```diff
    ...

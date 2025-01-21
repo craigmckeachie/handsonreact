@@ -11,11 +11,11 @@ title: 'Lab 13: More Component Communication'
 
 ### In a child component, accept a function as a prop and invoke it
 
-1. **Open** the **file** `src\projects\ProjectForm.js`.
+1. **Open** the **file** `src\projects\ProjectForm.jsx`.
 2. In the `ProjectFormProps` interface, **add** an `onCancel` **event handler** that takes no parameters and returns `void`.
 3. Update the `cancel` button and add a `click` event to invoke the function passed into the `onCancel` `prop`.
 
-   #### `src\projects\ProjectForm.js`
+   #### `src\projects\ProjectForm.jsx`
 
    ```diff
 
@@ -55,10 +55,10 @@ title: 'Lab 13: More Component Communication'
 
 ### In a parent component, implement a function and pass it as a prop to a child component
 
-1. In `src\projects\ProjectList.js` **add** a `cancelEditing`**event handler** to`ProjectList`that sets the state of the component so that `editingProject` is an empty object `{}`.
+1. In `src\projects\ProjectList.jsx` **add** a `cancelEditing`**event handler** to`ProjectList`that sets the state of the component so that `editingProject` is an empty object `{}`.
 2. **Wire** up the **onCancel** **event** of the `<ProjectForm />` component rendered in the `ProjectList` to the `cancelEditing` event handler.
 
-   #### `src\projects\ProjectList.js`
+   #### `src\projects\ProjectList.jsx`
 
 ```diff
 ...

@@ -12,10 +12,10 @@ title: 'Lab 14: Component Communication through Multiple Levels'
 
 ### In a child component, accept a function as a prop and invoke it and pass a parameter
 
-1. **Open** the **file** `src\projects\ProjectForm.js`.
+1. **Open** the **file** `src\projects\ProjectForm.jsx`.
 2. To the `propTypes`, **add** an `onSave` function.
 
-   #### `src\projects\ProjectForm.js`
+   #### `src\projects\ProjectForm.jsx`
 
    ```diff
    ...
@@ -32,7 +32,7 @@ title: 'Lab 14: Component Communication through Multiple Levels'
 
    Update the `<form>` tag in the `render` method to invoke handleSubmit and pass the SyntheticEvent object representing the DOM submit event.
 
-   #### `src\projects\ProjectForm.js`
+   #### `src\projects\ProjectForm.jsx`
 
    ```diff
    ...
@@ -75,10 +75,10 @@ title: 'Lab 14: Component Communication through Multiple Levels'
 
 ### At the next level in the component hierarchy, accept a function as a prop and invoke it
 
-1. **Open** the **file** `src\projects\ProjectList.js`.
+1. **Open** the **file** `src\projects\ProjectList.jsx`.
 2. To the `propTypes`, **add** an `onSave` **event handler**.
 
-   #### `src\projects\ProjectList.js`
+   #### `src\projects\ProjectList.jsx`
 
    ```diff
    ...
@@ -91,7 +91,7 @@ title: 'Lab 14: Component Communication through Multiple Levels'
 
 3. **Update** the `<ProjectForm>` component tag to **handle** a `onSave` event and have it **invoke** the function passed into the `onSave` `prop`.
 
-   #### `src\projects\ProjectList.js`
+   #### `src\projects\ProjectList.jsx`
 
    ```diff
    - function ProjectList({ projects }) {
@@ -128,12 +128,12 @@ title: 'Lab 14: Component Communication through Multiple Levels'
 
 ### In a parent component, implement a function and pass it as a prop to a child component
 
-1. In the file `src\projects\ProjectsPage.js`:
+1. In the file `src\projects\ProjectsPage.jsx`:
 
    1. **Add** a `saveProject`**event handler** that takes a `project` to `ProjectPage` and `console.log`'s the project out.
    2. **Wire** up the **onSave** **event** of the `<ProjectList />` component rendered in the `ProjectPage` to the `saveProject` event handler.
 
-   #### `src\projects\ProjectsPage.js`
+   #### `src\projects\ProjectsPage.jsx`
 
    ```diff
    import React, { Fragment } from 'react';
