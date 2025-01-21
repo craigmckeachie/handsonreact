@@ -27,6 +27,8 @@ Here is a list of popular choices for setting up a new project and some thoughts
   - Many developers feel all their requirements are met by CSR (particularly those building line of business applications that are behind a login and not public to search engines which do handle SSR applications more reliably) and don't want or need the added complexity of SSR. [Reference](https://www.reddit.com/r/reactjs/comments/15f34gd/comment/jubhx5e/?utm_source=share&utm_medium=web2x&context=3)
   - The React team recently had one of the champions of the server-side component feature, Dan Abramov, leave Meta and the React team. [Reference](https://www.reddit.com/r/reactjs/comments/154trk7/dan_abramov_announces_retirementleaving_meta/)
   - Because the React team's roadmap is headed in a future direction embracing SSR that Create React App cannot support (only supports CSR) the project seems to be getting less frequent patches. [Reference](https://github.com/facebook/create-react-app/discussions/11768)
+    :::info
+    [Learn more about React Server Components and their adoption](./A27-ReactServerComponents.md)
 - Use [Next.js](https://nextjs.org/)
   - Next.js assumes you want an application with both client-side rendering (CSR) and server-side rendering (SSR)
   - If you are building a website with web application functionality in some areas supporting CSR and SSR (as Next.js does) is a very compelling value proposition
@@ -46,11 +48,10 @@ Here is a list of popular choices for setting up a new project and some thoughts
 
 This course uses Vite because:
 
-- it is a  modern, faster solution for building client-side rendered (CSR) apps which is the focus of this course
+- it is a modern, faster solution for building client-side rendered (CSR) apps which is the focus of this course
 - React Server Components are still experimental (at the time this was written)
 - many developers don't use JavaScript for their backend but instead use Java, .NET, or Python for their backend APIs and don't have requirements for React Server Components
 - we are waiting for the dust to settle
-
 
 ## Create New JavaScript (ECMAScript) Project
 
@@ -60,23 +61,23 @@ To create a new React project using Vite, follow these steps:
 
 1. Open a command prompt or terminal and run the following commands:
 
-### npm
+   ### npm
 
-```sh
-npm create vite@latest my-app --template react
-cd my-app
-npm install
-npm run dev
-```
+   ```sh
+   npm create vite@latest my-app --template react
+   cd my-app
+   npm install
+   npm run dev
+   ```
 
-### Yarn
+   ### Yarn
 
-```sh
-yarn create vite my-app --template react
-cd my-app
-yarn
-yarn dev
-```
+   ```sh
+   yarn create vite my-app --template react
+   cd my-app
+   yarn
+   yarn dev
+   ```
 
 2. Open the development server at the address displayed in the terminal, such as [http://localhost:5173/](http://localhost:5173/).
 
@@ -86,23 +87,23 @@ To create a React project using TypeScript with Vite:
 
 1. Run these commands in your terminal:
 
-### npm
+   ### npm
 
-```sh
-npm create vite@latest my-app --template react-ts
-cd my-app
-npm install
-npm run dev
-```
+   ```sh
+   npm create vite@latest my-app --template react-ts
+   cd my-app
+   npm install
+   npm run dev
+   ```
 
-### Yarn
+   ### Yarn
 
-```sh
-yarn create vite my-app --template react-ts
-cd my-app
-yarn
-yarn dev
-```
+   ```sh
+   yarn create vite my-app --template react-ts
+   cd my-app
+   yarn
+   yarn dev
+   ```
 
 Then open the development server at the address displayed in the terminal.
 
