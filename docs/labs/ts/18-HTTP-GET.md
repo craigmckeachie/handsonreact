@@ -93,7 +93,7 @@ title: 'Lab 18: HTTP GET'
 ### Update a component to use the API object
 
 1. **Open** the file `src\projects\ProjectsPage.tsx`.
-1. **Use** the `useState` function to create two additonal state variables `loading` and `error`.
+1. **Use** the `useState` function to create two additional state variables `loading` and `error`.
 
    #### `src\projects\ProjectsPage.tsx`
 
@@ -125,7 +125,7 @@ title: 'Lab 18: HTTP GET'
    }
    ```
 
-1. **Implement** the loading of the data from the API after the intial component render in a `useEffect` hook. Follow these specifications.
+1. **Implement** the loading of the data from the API after the initial component render in a `useEffect` hook. Follow these specifications.
 
    1. **Set** state of `loading` to `true`
    2. Call the API: `projectAPI.get(1)`.
@@ -360,7 +360,7 @@ function ProjectsPage() {
 
 ### Add Pagination
 
-1. **Use** the `useState` function to create an additonal state variable `currentPage`.
+1. **Use** the `useState` function to create an additional state variable `currentPage`.
 
    #### `src\projects\ProjectsPage.tsx`
 

@@ -94,10 +94,10 @@ title: "Lab 18: HTTP GET"
 
 ### Update a component to use the API object
 
-1. **Open** the file `src\projects\ProjectsPage.js`.
-1. **Use** the `useState` function to create two additonal state variables `loading` and `error`.
+1. **Open** the file `src\projects\ProjectsPage.jsx`.
+1. **Use** the `useState` function to create two additional state variables `loading` and `error`.
 
-   #### `src\projects\ProjectsPage.js`
+   #### `src\projects\ProjectsPage.jsx`
 
    ```diff
    ...
@@ -113,7 +113,7 @@ title: "Lab 18: HTTP GET"
 
 1. **Change** the `projects` **state** to be an empty array `[]` **(be sure to remove the mock data)**.
 
-   #### `src\projects\ProjectsPage.js`
+   #### `src\projects\ProjectsPage.jsx`
 
    ```diff
    - import { Project } from './Project';
@@ -129,14 +129,14 @@ title: "Lab 18: HTTP GET"
    ...
    ```
 
-1. **Implement** the loading of the data from the API after the intial component render in a `useEffect` hook. Follow these specifications.
+1. **Implement** the loading of the data from the API after the initial component render in a `useEffect` hook. Follow these specifications.
 
    1. **Set** state of `loading` to `true`
    2. Call the API: `projectAPI.get(1)`.
    3. If **successful**, **set** the returned `data` into the components `projects` state variable and set the `loading` state variable to `false`.
    4. If an **error occurs**, **set** the returned error's message `error.message` to the components `error` state and `loading` to `false`.
 
-   #### `src\projects\ProjectsPage.js`
+   #### `src\projects\ProjectsPage.jsx`
 
 ```diff
 import React, { Fragment, useState,
@@ -197,7 +197,7 @@ function ProjectsPage() {
    </div>
    ```
 
-   #### `src\projects\ProjectsPage.js`
+   #### `src\projects\ProjectsPage.jsx`
 
    ```diff
    function ProjectsPage() {
@@ -265,7 +265,7 @@ function ProjectsPage() {
    </div>
    ```
 
-   #### `src\projects\ProjectsPage.js`
+   #### `src\projects\ProjectsPage.jsx`
 
    ```diff
    function ProjectsPage() {
@@ -359,9 +359,9 @@ function ProjectsPage() {
 
 ### Add Pagination
 
-1. **Use** the `useState` function to create an additonal state variable `currentPage`.
+1. **Use** the `useState` function to create an additional state variable `currentPage`.
 
-   #### `src\projects\ProjectsPage.js`
+   #### `src\projects\ProjectsPage.jsx`
 
    ```diff
    ...
@@ -376,7 +376,7 @@ function ProjectsPage() {
 
 1. **Update** the `useEffect` method to make `currentPage` a dependency and use it when fetching the data.
 
-   #### `src\projects\ProjectsPage.js`
+   #### `src\projects\ProjectsPage.jsx`
 
 ```diff
 ...
@@ -413,7 +413,7 @@ function ProjectsPage() {
 
 1. **Implement** a `handleMoreClick` event handler and implement it by incrementing the page and then calling `loadProjects`.
 
-   #### `src\projects\ProjectsPage.js`
+   #### `src\projects\ProjectsPage.jsx`
 
    ```diff
    ...
@@ -431,7 +431,7 @@ function ProjectsPage() {
 
 1. Add a `More...` button below the `<ProjectList />` . Display the `More...` button only when not `loading` and there is not an `error` and handle the `More...` button's `click` event and call `handleMoreClick`.
 
-   #### `src\projects\ProjectsPage.js`
+   #### `src\projects\ProjectsPage.jsx`
 
    ```diff
    ...
