@@ -43,7 +43,7 @@ title: 'Lab 19: HTTP PUT'
 
 1. **Invoke** the **method** in your container (`ProjectsPage`) component.
 
-   #### `src\projects\ProjectsPage.js`
+   #### `src\projects\ProjectsPage.jsx`
 
    ```diff
    + import { Project } from './Project';

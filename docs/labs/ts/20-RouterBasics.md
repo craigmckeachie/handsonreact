@@ -94,7 +94,7 @@ title: 'Lab 20: Router Basics'
 
 2. **Add** two `<NavLink>` **components** (which are provided by the React Router) and set them to visit the configured routes.
 
-   #### `src/app.tsx`
+   #### `src/App.tsx`
 
    ```diff
    function App() {

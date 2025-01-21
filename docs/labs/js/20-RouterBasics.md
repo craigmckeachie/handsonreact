@@ -16,7 +16,7 @@ title: 'Lab 20: Router Basics'
 
    > You will need to create a `home` directory.
 
-   #### `src\home\HomePage.js`
+   #### `src\home\HomePage.jsx`
 
    ```jsx
    function HomePage() {
@@ -42,7 +42,7 @@ title: 'Lab 20: Router Basics'
    ```
 1. **Configure** the **routes**.
 
-   #### `src/App.js`
+   #### `src/App.jsx`
 
    ```diff
 
@@ -94,7 +94,7 @@ title: 'Lab 20: Router Basics'
 
 2. **Add** two `<NavLink>` **components** (which are provided by the React Router) and set them to visit the configured routes.
 
-   #### `src/app.js`
+   #### `src/App.jsx`
 
    ```diff
    function App() {
