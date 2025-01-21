@@ -44,194 +44,169 @@ Here is a list of popular choices for setting up a new project and some thoughts
 
 <br />
 
-This course continues to use Create React App because:
+This course uses Vite because:
 
-- it is still the most used solution for React projects
+- it is a  modern, faster solution for building client-side rendered (CSR) apps which is the focus of this course
 - React Server Components are still experimental (at the time this was written)
 - many developers don't use JavaScript for their backend but instead use Java, .NET, or Python for their backend APIs and don't have requirements for React Server Components
 - we are waiting for the dust to settle
 
+
 ## Create New JavaScript (ECMAScript) Project
 
-[Create React App](https://facebook.github.io/create-react-app/) is an officially supported way to create single-page React
-applications. It offers a modern build setup with no configuration.
+[Vite](https://vitejs.dev/) is a modern build tool that provides a fast, minimal-setup environment for building web applications. It’s optimized for speed during development and includes features like hot module replacement (HMR) and a flexible plugin ecosystem.
 
-1. Open a command prompt or terminal and run the commands:
+To create a new React project using Vite, follow these steps:
+
+1. Open a command prompt or terminal and run the following commands:
 
 ### npm
 
 ```sh
-npx create-react-app my-app --use-npm
+npm create vite@latest my-app --template react
 cd my-app
+npm install
 npm run dev
 ```
 
 ### Yarn
 
 ```sh
-yarn create react-app my-app
+yarn create vite my-app --template react
+cd my-app
+yarn
+yarn dev
 ```
 
-2. Then open [http://localhost:3000/](http://localhost:3000/) to see your app.
-
-   > If you've previously installed `create-react-app` globally via `npm install -g create-react-app`, it is recommended that you uninstall the package using `npm uninstall -g create-react-app` to ensure that `npx` always uses the latest version.
+2. Open the development server at the address displayed in the terminal, such as [http://localhost:5173/](http://localhost:5173/).
 
 ## Create New TypeScript Project
 
-1. Open a command prompt or terminal and run the commands:
+To create a React project using TypeScript with Vite:
+
+1. Run these commands in your terminal:
 
 ### npm
 
 ```sh
-npx create-react-app my-app --use-npm --template typescript
+npm create vite@latest my-app --template react-ts
+cd my-app
+npm install
+npm run dev
 ```
 
 ### Yarn
 
-```
-yarn create react-app my-app --template typescript
+```sh
+yarn create vite my-app --template react-ts
+cd my-app
+yarn
+yarn dev
 ```
 
-1. Then open [http://localhost:3000/](http://localhost:3000/) to see your app.
+Then open the development server at the address displayed in the terminal.
 
 ## Folder Structure
 
-After creation, your project should look like this:
+After creating your project, the structure will look like this:
 
 ```
 my-app/
-  README.md
+  .git/
   node_modules/
-  package.json
   public/
-    index.html
-    favicon.ico
+    vite.svg
   src/
     App.css
-    App.js
-    App.test.js
-    index.css
-    index.js
-    logo.svg
+    App.jsx
+    main.jsx
+  index.html
+  package.json
+  README.md
 ```
 
-For the project to build, **these files must exist with exact filenames**:
+Key files and directories:
 
-- `public/index.html` is the page template;
-- `src/index.js` is the JavaScript entry point.
+- **`public/index.html`**: The main HTML template for your application.
+- **`src/main.jsx`**: The JavaScript/TypeScript entry point for your app.
+- **`src/App.jsx`**: The default React component, ready to edit.
+- **`vite.config.js`**: The configuration file for Vite.
 
-You can delete or rename the other files.
-
-You may create subdirectories inside `src`. For faster rebuilds, only files inside `src` are processed by Webpack. You need to **put any JS and CSS files inside `src`**, otherwise Webpack won’t see them.
-
-Only files inside `public` can be used from `public/index.html`. Read instructions below for using assets from JavaScript and HTML.
-
-You can, however, create more top-level directories. They will not be included in the production build so you can use them for things like documentation.
-
-If you have Git installed and your project is not part of a larger repository, then a new repository will be initialized resulting in an additional top-level `.git` directory.
-
-[Reference](https://facebook.github.io/create-react-app/docs/folder-structure)
+Feel free to create subdirectories inside `src/` as needed for organizing your components, utilities, and styles. Vite processes files inside the `src/` directory and supports `import` for a variety of assets.
 
 ## Browser Support
 
-By default, the generated project supports all modern browsers. Support for Internet Explorer 9, 10, and 11 requires polyfills. For a set of polyfills to support older browsers, use [react-app-polyfill](https://github.com/facebook/create-react-app/blob/master/packages/react-app-polyfill/README.md).
-
-By default, the generated project includes a [`browserslist`](https://github.com/browserslist/browserslist) configuration in your `package.json` file to target a broad range of browsers based on global usage (`> 0.2%`) for production builds, and modern browsers for development.
-
-The `browserslist` configuration controls the outputted JavaScript so that the emitted code will be compatible with the browsers specified. The `browserslist` configuration does not automatically change what polyfills are included in the build it affects the code generated by the compiler that emits JavaScript.
-
-### Polyfills
-
-#### react-app-polyfill
-
-This package includes polyfills for various browsers.
-It includes minimum requirements and commonly used language features used by [Create React App](https://github.com/facebook/create-react-app) projects.
-
-### Usage
-
-First, install the package using Yarn or npm:
+By default, Vite supports all modern browsers that support ES modules. Vite compiles JavaScript to ensure compatibility with most browser environments. For supporting older browsers, you can use tools like `@vitejs/plugin-legacy` to include polyfills:
 
 ```sh
-npm install react-app-polyfill
+npm install @vitejs/plugin-legacy
 ```
 
-or
-
-```sh
-yarn add react-app-polyfill
-```
-
-For IE11:
+Update the `vite.config.js` to use the plugin:
 
 ```js
-// These must be the first lines in src/index.js
-import 'react-app-polyfill/ie11';
-import 'react-app-polyfill/stable';
+import legacy from '@vitejs/plugin-legacy';
 
-// ...
+export default {
+  plugins: [
+    legacy({
+      targets: ['defaults', 'not IE 11'],
+    }),
+  ],
+};
 ```
 
-> See the [react-app-polyfill documentation](https://github.com/facebook/create-react-app/blob/master/packages/react-app-polyfill/README.md) for details.
+For more information, see [Legacy Plugin Documentation](https://vitejs.dev/guide/using-plugins.html#plugins).
 
-> The react-app-polyfill can be used to fill in the Fetch API to make AJAX requests in older browsers. [For more details, read this documentation.](https://facebook.github.io/create-react-app/docs/fetching-data-with-ajax-requests)
+## Adding Dependencies
 
-## Styles and Assets
+Adding dependencies with Vite is straightforward. For example, to add React Router:
 
-This project setup uses [Webpack](https://webpack.js.org/) for handling all assets. Webpack offers a custom way of “extending” the concept of `import` beyond JavaScript. To express that a JavaScript file depends on a CSS file, you need to **import the CSS from the JavaScript file**:
-
-#### `Button.css`
-
-```css
-.Button {
-  padding: 20px;
-}
-```
-
-#### `Button.js`
-
-```js
-import React, { Component } from 'react';
-import './Button.css'; // Tell Webpack that Button.js uses these styles
-
-class Button extends Component {
-  render() {
-    // You can use them as regular CSS styles
-    return <div className="Button" />;
-  }
-}
-```
-
-This is not required for React but many people find this feature convenient. You can read about the benefits of this approach [here](https://medium.com/seek-blog/block-element-modifying-your-javascript-components-d7f99fcab52b). However you should be aware that this makes your code less portable to other build tools and environments than Webpack.
-
-In development, expressing dependencies this way allows your styles to be reloaded on the fly as you edit them. In production, all CSS files will be concatenated into a single minified `.css` file in the build output.
-
-If you are concerned about using Webpack-specific semantics, you can put all your CSS right into `src/index.css`. It would still be imported from `src/index.js`, but you could always remove that import if you later migrate to a different build tool.
-
-## Dependencies
-
-The generated project includes React and ReactDOM as dependencies. It also includes a set of scripts used by Create React App as a development dependency. You may install other dependencies (for example, React Router) with `npm`:
+### npm
 
 ```sh
-npm install --save react-router-dom
+npm install react-router-dom
 ```
 
-Alternatively you may use `yarn`:
+### Yarn
 
 ```sh
 yarn add react-router-dom
 ```
 
-This works for any library, not just `react-router-dom`.
+Import and use it in your project files as you would with any React library.
 
-## Uses Webpack
+## Styles and Assets
 
-As previously mentioned, Create React App internally uses WebPack to build your application. If you are curious, you can see [the WebPack configuration file in GitHub here](https://github.com/facebook/create-react-app/blob/main/packages/react-scripts/config/webpack.config.js).
+Vite supports importing CSS and assets directly within JavaScript files. For example:
+
+#### `Button.module.css`
+
+```css
+.Button {
+  padding: 20px;
+  color: white;
+}
+```
+
+#### `Button.jsx`
+
+```jsx
+import React from 'react';
+import styles from './Button.module.css';
+
+function Button() {
+  return <button className={styles.Button}>Click me!</button>;
+}
+
+export default Button;
+```
+
+Vite also provides out-of-the-box support for preprocessors like Sass or Less. Install the required package (`npm install sass`) and import the file as usual.
 
 ## Reference
 
-- [Create React App](https://facebook.github.io/create-react-app/)
-- [3 ways to create-react-app with npm](https://elijahmanor.com/npm-init-initializer/)
-- [Getting Started with Create React App](https://www.youtube.com/watch?v=eCz3rhsDG5s&list=PLmbQyp9IK3JPFBrv31e5Gq-Zv57KxtTnZ)
-- [Installing a Dependency](https://facebook.github.io/create-react-app/docs/installing-a-dependency)
-- [Adding a Router](https://facebook.github.io/create-react-app/docs/adding-a-router)
-- [Adding Bootstrap](https://facebook.github.io/create-react-app/docs/adding-bootstrap)
+- [Vite Official Site](https://vitejs.dev/)
+- [Vite React Guide](https://vitejs.dev/guide/#scaffolding-your-first-vite-project)
+- [Vite Plugin Ecosystem](https://vitejs.dev/plugins/)
+- [React Router](https://reactrouter.com/)
