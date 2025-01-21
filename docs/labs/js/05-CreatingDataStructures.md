@@ -17,11 +17,17 @@ title: 'Lab 5: Data'
    3. Unzip the file `react-starter-files-main.zip` archive you downloaded in the prior step.
 1. Open File Explorer (Windows) or Finder (Mac).
 1. **Copy** the `assets` directory and its contents into the `keeptrack\public` directory.
-1. **Create** two files to be the model and the data and fill in the code as shown below.
+   
+   :::danger
+
+   - Do not copy the assets into the `keeptrack\src\assets` directory. You want to place the images into `keeptrack\public\assets`
+   
+   :::
+2. **Create** two files to be the model and the data and fill in the code as shown below.
 
    #### `src\projects\Project.js`
 
-   ```js
+   ```jsx
    export class Project {
      constructor(initializer) {
        this.id = undefined;
@@ -129,13 +135,13 @@ export const MOCK_PROJECTS = [
 
 ### Display the data
 
-1. Open the file `src\projects\ProjectsPage.js`.
+1. Open the file `src\projects\ProjectsPage.jsx`.
 2. Use `JSON.stringify()` to output the `MOCK_PROJECTS` array from `MockProjects.js` in the component.
 
    > **TIPS:**
    >
    > - React components can only return one root element so you will need to wrap the `<h1>` and `<pre>` tags in a React Fragement `<></>`.
-   > - Wrapping output in a HTML `<pre></pre>` (preformatted) tag retains whitespace.
+   > - Wrapping output in a HTML `<pre></pre>` (pre-formatted) tag retains whitespace.
    > - To switch to JavaScript in JSX use `{ }`
    > - JSON.stringify(MOCK_PROJECTS, null, ' ')'s third argument is used to insert white space into the output JSON string for readability purposes.
    >   The second argument is a replacer function so we can pass null because we don't need to replace anything.
@@ -146,7 +152,7 @@ export const MOCK_PROJECTS = [
 
    ### Solution
 
-   #### `src\projects\ProjectsPage.js`
+   #### `src\projects\ProjectsPage.jsx`
 
    ```diff
    + import { MOCK_PROJECTS } from './MockProjects';
