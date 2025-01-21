@@ -11,13 +11,13 @@ title: 'Lab 6: Passing Data to a Component'
 
 ### Create a reusable list component
 
-1. **Create** the **file** `src\projects\ProjectList.js`
+1. **Create** the **file** `src\projects\ProjectList.jsx`
 2. **Implement** a `ProjectList` **function component** that meets the following specifications:
 
    1. Takes a `projects` array as a `prop`.
    2. **Displays** the `projects` array as a `JSON string`.
 
-   #### `src\projects\ProjectList.js`
+   #### `src\projects\ProjectList.jsx`
 
    ```jsx
    import { Project } from './Project';
@@ -37,7 +37,7 @@ title: 'Lab 6: Passing Data to a Component'
       ```
    1. Add the following prop type definition.
 
-   #### `src\projects\ProjectList.js`
+   #### `src\projects\ProjectList.jsx`
 
    ```diff
 
@@ -58,9 +58,9 @@ title: 'Lab 6: Passing Data to a Component'
 
 ### Pass data into a component property
 
-1. **Modify** `src\projects\ProjectsPage.js` to **render** the `ProjectList` component and **pass** it the `MOCK_PROJECTS` array instead of directly displaying the data.
+1. **Modify** `src\projects\ProjectsPage.jsx` to **render** the `ProjectList` component and **pass** it the `MOCK_PROJECTS` array instead of directly displaying the data.
 
-   #### `src\projects\ProjectsPage.js`
+   #### `src\projects\ProjectsPage.jsx`
 
    ```diff
 
