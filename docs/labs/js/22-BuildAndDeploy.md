@@ -12,12 +12,12 @@ title: 'Lab 22: Build & Deploy'
 ### Build a React Application
 
 1. **Open** a `command prompt` (Windows) or `terminal` (Mac).
-1. Change the **current directory** to `working\keeptrack`.
-1. **Run** the following command to install the node.js web server named `serve`:
+2. Change the **current directory** to `keeptrack`.
+3. **Run** the following command to install the node.js web server named `serve`:
    ```shell
    npm install -g serve
    ```
-1. **Run** _one_ of the following commands:
+4. **Run** _one_ of the following commands:
    #### npm
    ```shell
    npm run build
@@ -26,14 +26,14 @@ title: 'Lab 22: Build & Deploy'
    ```shell
    yarn build
    ```
-1. After the buld finishes, verify a `keeptrack\build` directory was created.
+5. After the build finishes, verify a `keeptrack\dist` directory was created.
 
 ### Deploy the application to a web server
 
-1. **In** the `command prompt` (Windows) or `terminal` (Mac) **run** the following **command** to **start** a **web server** and serve up the contents of the `build` directory created in the last step.
+1. **In** the `command prompt` (Windows) or `terminal` (Mac) **run** the following **command** to **start** a **web server** and serve up the contents of the `dist` directory created in the last step.
 
    ```shell
-   serve build
+   serve dist
    ```
 
    > Assuming you would like to serve a state site, single page application or just a static file (no matter if on your device or on the local network), the package `serve` is a web server that serves static content.
@@ -63,7 +63,7 @@ title: 'Lab 22: Build & Deploy'
 1. Use `Ctrl+C` to **stop** the **web server**.
 1. **Start** the **web server** again but add the `-s` flag for single-page-application.
    ```shell
-    serve -s build
+    serve -s dist
    ```
 1. Follow these steps to verify the server is now redirecting to `index.html` when it can't find a route.
    1. **Visit** the root of the site `http://localhost:5000/`
@@ -78,4 +78,3 @@ title: 'Lab 22: Build & Deploy'
 
 > If time permits you can read the documentation linked below for very similar steps to deploy the application on common production web servers and cloud platforms including AWS, Azure, Heroku, Netlify, and Vercel.
 
-- [https://create-react-app.dev/docs/deployment](https://create-react-app.dev/docs/deployment)

@@ -4,179 +4,309 @@ sidebar_label: Build & Deploy
 slug: /build-deploy
 ---
 
-## Build
+Deploying a Vite React app as a static site involves building the project and copying the output to the server. Here’s how you can do it step by step:
 
-`npm run build` creates a `build` directory with a production build of your app. Inside the `build/static` directory will be your JavaScript and CSS files. Each filename inside of `build/static` will contain a unique hash of the file contents. This hash in the file name enables [long term caching techniques](#static-file-caching).
+---
 
-When running a production build of freshly created Create React App application, there are a number of `.js` files (called _chunks_) that are generated and placed in the `build/static/js` directory:
+## 1. **Prepare Your Project**
 
-`main.[hash].chunk.js`
+Before deployment, ensure your project is configured correctly:
 
-- This is your _application_ code. `App.js`, etc.
+- Update the `vite.config.js` to include the correct `base` URL if your site will be hosted in a subdirectory.
 
-`[number].[hash].chunk.js`
+  ```javascript
+  import { defineConfig } from 'vite';
+  import react from '@vitejs/plugin-react';
 
-- These files can either be _vendor_ code, or **code splitting chunks**. _Vendor_ code includes modules that you've imported from within `node_modules`. One of the potential advantages with splitting your _vendor_ and _application_ code is to enable [long term caching techniques](#static-file-caching) to improve application loading performance. Since _vendor_ code tends to change less often than the actual _application_ code, the browser will be able to cache them separately, and won't re-download them each time the app code changes.
+  export default defineConfig({
+    plugins: [react()],
+    base: '/your-subdirectory/', // Set '/' if deployed at the domain root
+  });
+  ```
 
-`runtime-main.[hash].js`
+---
 
-- This is a small chunk of [webpack runtime](https://webpack.js.org/configuration/optimization/#optimization-runtimechunk) logic which is used to load and run your application. The contents of this will be embedded in your `build/index.html` file by default to save an additional network request. You can opt out of this by specifying `INLINE_RUNTIME_CHUNK=false`, which will load this chunk instead of embedding it in your `index.html`.
+## 2. **Build Your Project**
 
-If you're using **code splitting** to split up your application, this will create additional chunks in the `build/static` folder as well.
+Run the build command:
 
-## Deploy
-
-`npm run build` creates a `build` directory with a production build of your app. Set up your favorite HTTP server so that a visitor to your site is served `index.html`, and requests to static paths like `/static/js/main.<hash>.js` are served with the contents of the `/static/js/main.<hash>.js` file. For more information see the [production build](https://facebook.github.io/create-react-app/docs/production-build) section of the Create React App documentation.
-
-## Static Server
-
-For environments using [Node](https://nodejs.org/), the easiest way to handle this would be to install [serve](https://github.com/zeit/serve) and let it handle the rest:
-
-```sh
-npm install -g serve
-serve -s build
+```bash
+npm run build
 ```
 
-The last command shown above will serve your static site on the port **5000**. Like many of [serve](https://github.com/zeit/serve)’s internal settings, the port can be adjusted using the `-l` or `--listen` flags:
+This generates a static version of your app in the `dist/` folder.
 
-```sh
-serve -s build -l 4000
-```
+---
 
-Run this command to get a full list of the options available:
+## 3. **Deploy to a Web Server**
 
-```sh
-serve -h
-```
+The output in `dist/` can be served by any static web server. Below are some options:
 
-## Other Solutions
+### Static Server for Local Testing
 
-You don’t necessarily need a static server in order to run a Create React App project in production. It works just as fine integrated into an existing dynamic one.
-
-Here’s a programmatic example using [Node](https://nodejs.org/) and [Express](https://expressjs.com/):
-
-```javascript
-const express = require('express');
-const path = require('path');
-const app = express();
-
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
-app.listen(9000);
-```
-
-The choice of your server software isn’t important either. Since Create React App is completely platform-agnostic, there’s no need to explicitly use Node.
-
-The `build` folder with static assets is the only output produced by Create React App.
-
-However this is not quite enough if you use client-side routing. Read the next section if you want to support URLs like `/todos/42` in your single-page app.
-
-## Serving Apps with Client-Side Routing
-
-If you use routers that use the HTML5 [`pushState` history API](https://developer.mozilla.org/en-US/docs/Web/API/History_API#Adding_and_modifying_history_entries) under the hood (for example, [React Router](https://github.com/ReactTraining/react-router) with `browserHistory`), many static file servers will fail. For example, if you used React Router with a route for `/todos/42`, the development server will respond to `localhost:3000/todos/42` properly, but an Express serving a production build as above will not.
-
-This is because when there is a fresh page load for a `/todos/42`, the server looks for the file `build/todos/42` and does not find it. The server needs to be configured to respond to a request to `/todos/42` by serving `index.html`. For example, we can amend our Express example above to serve `index.html` for any unknown paths:
-
-```diff
- app.use(express.static(path.join(__dirname, 'build')));
-
--app.get('/', function (req, res) {
-+app.get('/*', function (req, res) {
-   res.sendFile(path.join(__dirname, 'build', 'index.html'));
- });
-```
-
-If you’re using [Apache HTTP Server](https://httpd.apache.org/), you need to create a `.htaccess` file in the `public` folder that looks like this:
-
-```
-    Options -MultiViews
-    RewriteEngine On
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.html [QSA,L]
-```
-
-It will get copied to the `build` folder when you run `npm run build`.
-
-If you’re using [Apache Tomcat](https://tomcat.apache.org/), you need to follow [this Stack Overflow answer](https://stackoverflow.com/a/41249464/4878474).
-
-Now requests to `/todos/42` will be handled correctly both in development and in production.
-
-## Building for Relative Paths
-
-By default, Create React App produces a build assuming your app is hosted at the server root.
-
-To override this, specify the `homepage` in your `package.json`, for example:
-
-```js
-  "homepage": "http://mywebsite.com/relativepath",
-```
-
-This will let Create React App correctly infer the root path to use in the generated HTML file.
-
-**Note**: If you are using `react-router@^4`, you can root `<Link>`s using the `basename` prop on any `<Router>`.<br />
-More information [here](https://reacttraining.com/react-router/web/api/BrowserRouter/basename-string).<br />
-
-<br />
-For example:
-
-```js
-<BrowserRouter basename="/calendar"/>
-<Link to="/today"/> // renders <a href="/calendar/today">
-```
-
-### Serving the Same Build from Different Paths
-
-> Note: this feature is available with `react-scripts@0.9.0` and higher.
-
-If you are not using the HTML5 `pushState` history API or not using client-side routing at all, it is unnecessary to specify the URL from which your app will be served. Instead, you can put this in your `package.json`:
-
-```js
-  "homepage": ".",
-```
-
-This will make sure that all the asset paths are relative to `index.html`. You will then be able to move your app from `http://mywebsite.com` to `http://mywebsite.com/relativepath` or even `http://mywebsite.com/relative/path` without having to rebuild it.
-
-## Customizing Environment Variables for Arbitrary Build Environments
-
-You can create an arbitrary build environment by creating a custom `.env` file and loading it using [env-cmd](https://www.npmjs.com/package/env-cmd).
-
-For example, to create a build environment for a staging environment:
-
-1. Create a file called `.env.staging`
-1. Set environment variables as you would any other `.env` file (e.g. `REACT_APP_API_URL=http://api-staging.example.com`)
-1. Install [env-cmd](https://www.npmjs.com/package/env-cmd)
-   ```sh
-   $ npm install env-cmd --save
-   $ # or
-   $ yarn add env-cmd
+1. Install a simple static server:
+   ```bash
+   npm install -g serve
    ```
-1. Add a new script to your `package.json`, building with your new environment:
+2. Serve the `dist` folder:
+   ```bash
+   serve -s dist
+   ```
+
+---
+
+### GitHub Pages
+
+1. Install the `gh-pages` package:
+   ```bash
+   npm install gh-pages --save-dev
+   ```
+2. Add these scripts to `package.json`:
    ```json
-   {
-     "scripts": {
-       "build:staging": "env-cmd -f .env.staging npm run build"
-     }
+   "scripts": {
+     "predeploy": "npm run build",
+     "deploy": "gh-pages -d dist"
+   }
+   ```
+3. Deploy to GitHub Pages:
+   ```bash
+   npm run deploy
+   ```
+
+---
+
+### Netlify
+
+1. Drag and drop the `dist/` folder in Netlify's dashboard for manual deployment, or:
+2. Link your repository to Netlify, and specify the build command (`npm run build`) and the publish directory (`dist`).
+3. If needed, add redirects in a `_redirects` file for single-page apps:
+   ```
+   /*    /index.html   200
+   ```
+
+---
+
+### Vercel
+
+1. Install the Vercel CLI:
+   ```bash
+   npm install -g vercel
+   ```
+2. Run `vercel` in the project directory and follow the prompts.
+
+---
+
+### Firebase Hosting
+
+1. Install Firebase CLI:
+   ```bash
+   npm install -g firebase-tools
+   ```
+2. Initialize Firebase in the project:
+   ```bash
+   firebase init
+   ```
+3. Deploy:
+   ```bash
+   firebase deploy
+   ```
+
+---
+
+### Nginx
+
+1. Copy the contents of `dist/` to the root directory served by Nginx (e.g., `/usr/share/nginx/html`).
+2. Configure Nginx to serve the files. Example configuration:
+
+   ```nginx
+   server {
+       listen 80;
+       server_name example.com;
+
+       root /usr/share/nginx/html;
+       index index.html;
+
+       location / {
+           try_files $uri /index.html;
+       }
    }
    ```
 
-Now you can run `npm run build:staging` to build with the staging environment config.
-You can specify other environments in the same way.
+---
 
-Variables in `.env.production` will be used as fallback because `NODE_ENV` will always be set to `production` for a build.
+### Apache
+
+1. Copy the `dist/` folder to your web server directory.
+2. Enable mod_rewrite and add `.htaccess` for SPA routing:
+   ```apache
+   <IfModule mod_rewrite.c>
+       RewriteEngine On
+       RewriteCond %{REQUEST_FILENAME} !-f
+       RewriteCond %{REQUEST_FILENAME} !-d
+       RewriteRule . /index.html [L]
+   </IfModule>
+   ```
+
+---
+
+### Microsoft IIS
+
+To deploy on IIS (Internet Information Services), follow these steps:
+
+1. **Enable Static Content Module**:
+
+   - Open IIS Manager.
+   - Go to `Server Roles` or `Feature Delegation` and ensure that **Static Content** is enabled.
+
+2. **Set Up a Site for Your App**:
+
+   - Copy the `dist/` folder to a directory on your server (e.g., `C:\inetpub\wwwroot\my-vite-app`).
+   - Add a new site in IIS:
+     - Open IIS Manager and right-click **Sites**.
+     - Click **Add Website**, name it, and set the `Physical Path` to your app directory.
+
+3. **SPA Routing with web.config**:
+
+   - Add a `web.config` file to the `dist/` folder:
+     ```xml
+     <configuration>
+       <system.webServer>
+         <rewrite>
+           <rules>
+             <rule name="React Routes" stopProcessing="true">
+               <match url=".*" />
+               <conditions logicalGrouping="MatchAll">
+                 <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+                 <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+               </conditions>
+               <action type="Rewrite" url="/index.html" />
+             </rule>
+           </rules>
+         </rewrite>
+       </system.webServer>
+     </configuration>
+     ```
+
+4. **Grant Permissions**:
+
+   - Ensure the app pool identity has read access to your site directory.
+
+5. **Access Your App**:
+   - Navigate to the site using your configured URL or IP address.
+
+---
+
+### Amazon S3 and CloudFront
+
+1. **Upload the `dist/` folder to S3**:
+
+   - In the AWS Management Console, go to your S3 bucket and upload the contents of the `dist/` folder.
+   - Ensure the `index.html` file is included.
+
+2. **Enable Static Website Hosting**:
+
+   - In the S3 bucket settings, enable static website hosting:
+     - In the **Properties** tab, choose **Static website hosting**.
+     - Specify `index.html` as the index document.
+     - Also specify `index.html` as the error document to ensure SPA routing works.
+
+3. **Grant Public Access**:
+
+   - Go to the **Permissions** tab.
+   - Under **Bucket Policy**, add a policy to allow public read access:
+     ```json
+     {
+       "Version": "2012-10-17",
+       "Statement": [
+         {
+           "Sid": "PublicReadGetObject",
+           "Effect": "Allow",
+           "Principal": "*",
+           "Action": "s3:GetObject",
+           "Resource": "arn:aws:s3:::your-bucket-name/*"
+         }
+       ]
+     }
+     ```
+
+4. **SPA Redirect Configuration**:
+
+   - In **Error document**, set the same file as `index.html`.
+   - This ensures all paths, including 404 errors, are routed to `index.html`. React Router will then handle client-side routing.
+
+5. **(Optional) Use CloudFront**:
+
+   - Create a CloudFront distribution using the S3 bucket as the origin.
+   - In the **Error Pages** tab of the CloudFront distribution, create a rule:
+
+     - **HTTP Error Code**: 403 or 404
+     - **Customize Error Response**: Yes
+     - **Response Page Path**: `/index.html`
+     - **HTTP Response Code**: 200.
+
+   - Update your DNS to point your domain (if using one) to the CloudFront distribution.
+
+---
+
+### Azure Static Web Apps
+
+1. **Create a Static Web App**:
+
+   - Go to the [Azure portal](https://portal.azure.com/).
+   - Search for **Static Web Apps** in the search bar.
+   - Click **Create** to create a new Static Web App resource.
+   - Set the required fields:
+     - **Subscription**, **Resource group**, and **Region**.
+     - Choose a **Name** for your app.
+
+2. **Deployment Method**:
+
+   - Use a GitHub repository and allow Azure to set up a CI/CD pipeline automatically:
+
+     - Provide your GitHub repository details.
+     - Choose a build preset like "React".
+
+   - Alternatively, manually deploy the `dist/` folder:
+     - Install Azure CLI:
+       ```bash
+       npm install -g azure-cli
+       ```
+     - Login to your Azure account:
+       ```bash
+       az login
+       ```
+     - Deploy:
+       ```bash
+       az storage blob upload-batch --account-name YOUR_STORAGE_ACCOUNT_NAME --destination $web --source dist
+       ```
+
+3. **SPA Routing**:
+
+   - Add a `routes.json` file in the root of the `dist` folder:
+
+     ```json
+     {
+       "routes": [
+         {
+           "route": "/*",
+           "serve": "/index.html",
+           "statusCode": 200
+         }
+       ]
+     }
+     ```
+
+   - Azure automatically picks up this routing configuration.
+
+---
+
+:::info
 
 ## Static File Caching
 
-Each file inside of the `build/static` directory will have a unique hash appended to the filename that is generated based on the contents of the file, which allows you to use [aggressive caching techniques](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching#invalidating_and_updating_cached_responses) to avoid the browser re-downloading your assets if the file contents haven't changed. If the contents of a file changes in a subsequent build, the filename hash that is generated will be different.
+Each file inside of the `dist` directory will have a unique hash appended to the filename that is generated based on the contents of the file, which allows you to use [aggressive caching techniques](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching#invalidating_and_updating_cached_responses) to avoid the browser re-downloading your assets if the file contents haven't changed. If the contents of a file changes in a subsequent build, the filename hash that is generated will be different.
 
 To deliver the best performance to your users, it's best practice to specify a `Cache-Control` header for `index.html`, as well as the files within `build/static`. This header allows you to control the length of time that the browser as well as CDNs will cache your static assets. If you aren't familiar with what `Cache-Control` does, see [this article](https://jakearchibald.com/2016/caching-best-practices/) for a great introduction.
 
 Using `Cache-Control: max-age=31536000` for your `build/static` assets, and `Cache-Control: no-cache` for everything else is a safe and effective starting point that ensures your user's browser will always check for an updated `index.html` file, and will cache all of the `build/static` files for one year. Note that you can use the one year expiration on `build/static` safely because the file contents hash is embedded into the filename.
-
-## Reference
-
-- [Create React App Production Builds](https://facebook.github.io/create-react-app/docs/production-build)
-- [Create React App Deployment](https://facebook.github.io/create-react-app/docs/deployment)
+:::
