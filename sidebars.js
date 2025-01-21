@@ -173,6 +173,7 @@ module.exports = {
       'A16-Security',
       'A23-Performance',
       'A9-Styling',
+      'A27-ReactServerComponents',
     ],
     Redux: [
       'Redux',
