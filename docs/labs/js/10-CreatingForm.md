@@ -1,5 +1,5 @@
 ---
-title: "Lab 10: Creating a Form to Edit Your Data"
+title: 'Lab 10: Creating a Form to Edit Your Data'
 ---
 
 ## Objectives
@@ -21,7 +21,7 @@ title: "Lab 10: Creating a Form to Edit Your Data"
    }
    ```
 
-2. Create the file `src\projects\ProjectForm.js`.
+2. Create the file `src\projects\ProjectForm.jsx`.
 3. Implement a `ProjectForm` **function** component that meets the following specifications:
 
    - Paste the HTML below into the `ProjectForm` and use your editor and the link below to identify the changes needed to the `HTML` to make it `JSX`.
@@ -53,10 +53,10 @@ title: "Lab 10: Creating a Form to Edit Your Data"
 
      ### Solution
 
-     #### src\projects\ProjectForm.js
+     #### src\projects\ProjectForm.jsx
 
      ```jsx
-     import React from "react";
+     import React from 'react';
 
      function ProjectForm() {
        return (
@@ -85,10 +85,10 @@ title: "Lab 10: Creating a Form to Edit Your Data"
 
 ### Render the form component
 
-1. Open the file `src\projects\ProjectList.js`.
+1. Open the file `src\projects\ProjectList.jsx`.
 2. Render the `ProjectForm` component below the `ProjectCard`.
 
-   #### `src\projects\ProjectList.js`
+   #### `src\projects\ProjectList.jsx`
 
    ```diff
    ...

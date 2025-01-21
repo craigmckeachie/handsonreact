@@ -11,7 +11,7 @@ title: 'Lab 9: Responding to an Event'
 
 ### Add a button
 
-1. **Open** the **file** `src\projects\ProjectCard.js`
+1. **Open** the **file** `src\projects\ProjectCard.jsx`
 2. **Add** an **edit button** to the `ProjectCard` using the `HTML` snippet below.
 
    ```html
@@ -24,7 +24,7 @@ title: 'Lab 9: Responding to an Event'
 
    > Remember you will need to change some things about the `HTML` to make it valid `JSX`
 
-   #### `src\projects\ProjectCard.js`
+   #### `src\projects\ProjectCard.jsx`
 
    ```html
    ...
@@ -43,7 +43,7 @@ title: 'Lab 9: Responding to an Event'
 
 1. **Add** a `handleEditClick` **event handler** to `ProjectCard` that takes a `project` as an argument and logs it to the `console`.
 
-   #### `src\projects\ProjectCard.js`
+   #### `src\projects\ProjectCard.jsx`
 
    ```diff
    function ProjectCard(props) {
@@ -72,7 +72,7 @@ title: 'Lab 9: Responding to an Event'
 
 2. **Wire** up the **click** **event** of the edit button to the `handleEditClick` event handler.
 
-   #### `src\projects\ProjectCard.js`
+   #### `src\projects\ProjectCard.jsx`
 
    ```diff
    function ProjectCard(props) {
