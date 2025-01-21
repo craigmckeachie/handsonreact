@@ -63,7 +63,7 @@ title: 'Lab 3: Styles Using CSS'
    src\assets\react.svg
    public\vite.svg
    ```
-5. Remove the **Vite** favicon.
+5. Remove the **Vite** favicon and update the page title.
 
    #### index.html
 
@@ -72,13 +72,14 @@ title: 'Lab 3: Styles Using CSS'
    <html lang="en">
      <head>
        <meta charset="UTF-8" />
-   -      <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+   -   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-       <title>Vite + React</title>
+   -   <title>Vite + React</title>
+   +   <title>Keeptrack</title>       
      </head>
      <body>
        <div id="root"></div>
-       <script type="module" src="/src/main.tsx"></script>
+       <script type="module" src="/src/main.jsx"></script>
      </body>
    </html>
    ```
