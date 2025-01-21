@@ -19,7 +19,7 @@ npm install
 then
 
 ```sh
-npm start
+npm run dev
 ```
 
 5. You should get the message.
@@ -53,7 +53,7 @@ for (let myLetVariable = 0; myLetVariable < 5; myLetVariable++) {
      console.log(numbers[counter]);
    }
 
-   console.log("at end: " + counter);
+   console.log('at end: ' + counter);
    ```
 
 2. Result
@@ -154,10 +154,10 @@ for (let myLetVariable = 0; myLetVariable < 5; myLetVariable++) {
 
     ```js
     let person = {
-      first: "Thomas",
-      last: "Edison",
+      first: 'Thomas',
+      last: 'Edison',
       age: 5,
-      twitter: "@tom",
+      twitter: '@tom',
     };
 
     let { first, last } = person;
@@ -178,10 +178,10 @@ Assignment is left to right with an object literal.
 
     ```js
     let person = {
-      first: "Thomas",
-      last: "Edison",
+      first: 'Thomas',
+      last: 'Edison',
       age: 5,
-      twitter: "@tom",
+      twitter: '@tom',
     };
 
     let { first: firstName, last: lastName } = person;
@@ -233,8 +233,8 @@ Assignment is left to right with an object literal.
       }
     }
 
-    let person = new Person("Ron", "Swanson");
-    console.log(person.first + " " + person.last);
+    let person = new Person('Ron', 'Swanson');
+    console.log(person.first + ' ' + person.last);
     ```
 
     #### If using TypeScript (`tsc`) compiler:
@@ -249,8 +249,8 @@ Assignment is left to right with an object literal.
       }
     }
 
-    let person = new Person("Ron", "Swanson");
-    console.log(person.first + " " + person.last);
+    let person = new Person('Ron', 'Swanson');
+    console.log(person.first + ' ' + person.last);
     ```
 
 2.  Result:
@@ -272,11 +272,11 @@ Assignment is left to right with an object literal.
         this.last = last;
       }
       getFullName() {
-        return this.first + " " + this.last;
+        return this.first + ' ' + this.last;
       }
     }
 
-    let person = new Person("Ron", "Swanson");
+    let person = new Person('Ron', 'Swanson');
     console.log(person.getFullName());
     ```
 
@@ -291,11 +291,11 @@ Assignment is left to right with an object literal.
         this.last = last;
       }
       getFullName() {
-        return this.first + " " + this.last;
+        return this.first + ' ' + this.last;
       }
     }
 
-    let person = new Person("Ron", "Swanson");
+    let person = new Person('Ron', 'Swanson');
     console.log(person.getFullName());
     ```
 
@@ -324,10 +324,10 @@ This propsed feature is available in TypeScript without any additional configura
    }
 
    let person = new Person();
-   person.first = "Tom";
-   person.last = "Haverford";
+   person.first = 'Tom';
+   person.last = 'Haverford';
 
-   console.log(person.first + " " + person.last);
+   console.log(person.first + ' ' + person.last);
    ```
 
 4. Result:
@@ -345,7 +345,7 @@ This propsed feature is available in TypeScript without any additional configura
 
     ```js
     export function myFunction() {
-      return "myFunction was run.";
+      return 'myFunction was run.';
     }
     ```
 
@@ -354,7 +354,7 @@ This propsed feature is available in TypeScript without any additional configura
     - Auto import doesn't work in JavaScript, you need to use TypeScript
 
     ```js
-    import { myFunction } from "./my-module";
+    import { myFunction } from './my-module';
     console.log(myFunction());
     ```
 
@@ -370,17 +370,17 @@ This propsed feature is available in TypeScript without any additional configura
 
     ```js
     export function myFunction() {
-      return "myFunction was run.";
+      return 'myFunction was run.';
     }
 
     function myPrivateFunction() {
-      return "myPrivateFunction was run.";
+      return 'myPrivateFunction was run.';
     }
 
     let myObject = {
       myName: "I can access myObject's name",
       myMethod: function () {
-        return "myMethod on myObject is running.";
+        return 'myMethod on myObject is running.';
       },
     };
 
@@ -390,7 +390,7 @@ This propsed feature is available in TypeScript without any additional configura
 
     export class MyClass {
       myClassMethod() {
-        return "myClassMethod on myClass is running.";
+        return 'myClassMethod on myClass is running.';
       }
     }
     ```
@@ -398,7 +398,7 @@ This propsed feature is available in TypeScript without any additional configura
 2.  Code in `program.[js|ts]`
 
     ```js
-    import { myFunction, myObject, myPrimitive, MyClass } from "./my-module";
+    import { myFunction, myObject, myPrimitive, MyClass } from './my-module';
 
     console.log(myFunction());
 
@@ -429,10 +429,10 @@ This propsed feature is available in TypeScript without any additional configura
 
     ```js
     let person = {
-      first: "Thomas",
-      last: "Edison",
+      first: 'Thomas',
+      last: 'Edison',
       age: 5,
-      twitter: "@tom",
+      twitter: '@tom',
     };
 
     let anotherPerson = {

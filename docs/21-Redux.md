@@ -321,7 +321,7 @@ store.dispatch(decrement());
 4. If your web server is not running, start it up:
 
 ```bash
-npm start
+npm run dev
 ```
 
 5. Open `http://localhost:5000/` in your browser

@@ -63,7 +63,7 @@ applications. It offers a modern build setup with no configuration.
 ```sh
 npx create-react-app my-app --use-npm
 cd my-app
-npm start
+npm run dev
 ```
 
 ### Yarn

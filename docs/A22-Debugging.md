@@ -11,7 +11,7 @@ slug: /debugging
 2. In a command-prompt or terminal, run the commands.
    ```
    npm install
-   npm start
+   npm run dev
    ```
 3. In another command-prompt or terminal, run the command.
    ```shell
@@ -32,7 +32,7 @@ slug: /debugging
     ></ProjectForm>
     ```
 
-1.  You should see the following error in the terminal where you are running `npm start`.
+1.  You should see the following error in the terminal where you are running `npm run dev`.
 
     ```
     Failed to compile.
@@ -65,7 +65,7 @@ slug: /debugging
     }
     ```
 
-1.  You should see the following error in the terminal where you are running `npm start`.
+1.  You should see the following error in the terminal where you are running `npm run dev`.
 
 ```
 Failed to compile.
@@ -118,7 +118,7 @@ This section describes how you can set breakpoints and debug JavaScript or TypeS
 
 ### Steps
 
-1. In a **Create React App** project, run `npm start` command from the command prompt or terminal.
+1. In a **Create React App** project, run `npm run dev` command from the command prompt or terminal.
 2. Open `App.js` or `App.tsx` and set a breakpoint by clicking in the gutter to the left of the line number.
 3. Click the `Run\Debugger` in Toolbar.
 4. Click the `Run and Debug` button.

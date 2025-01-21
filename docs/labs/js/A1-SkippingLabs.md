@@ -73,7 +73,7 @@ Download the completed code for the lab **before** the one you would like to wor
    ```
 1. After the install finishes, run the command.
    ```shell
-   npm start
+   npm run dev
    ```
 1. If you are working on a lab which requires the backend api (lab 17 or later). Open another command-line or terminal. Run the command.
    ```shell

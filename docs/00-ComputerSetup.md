@@ -67,7 +67,7 @@ slug: /computer-setup
    ```shell
    npx create-react-app my-app --use-npm
    cd my-app
-   npm start
+   npm run dev
    ```
 
    > If you've previously installed `create-react-app` globally via `npm install -g create-react-app`, it is recommended that you uninstall the package using `npm uninstall -g create-react-app` to ensure that `npx` always uses the latest version.
@@ -92,6 +92,7 @@ slug: /computer-setup
   - **Configure Visual Studio Code** for the course by [following these directions](./00-VisualStudioCodeSetup.md).
 
   :::success
+
   - Don't miss the above link to configure Visual Studio Code with the appropriate extensions for the course
 
 - **WebStorm** or **IntelliJ IDEA Ultimate** both made by `JetBrains` are also great choices.

@@ -137,7 +137,7 @@ In this part of the course we will create a `Hello World` application in vanilla
 
 12. Run the web server
     ```sh
-    npm start
+    npm run dev
     ```
 13. Open `http://localhost:5000/` in your Chrome browser
 

@@ -1,5 +1,5 @@
 ---
-title: "Lab 1: Creating a New Project"
+title: 'Lab 1: Creating a New Project'
 ---
 
 ## Objectives
@@ -24,15 +24,18 @@ title: "Lab 1: Creating a New Project"
    #### `npm`
 
    ```bash
-   npx create-react-app keeptrack --use-npm
+  
+   npm create vite@latest keeptrack -- --template react
    ```
+
+   > npm 7+, extra double-dash is needed:
 
    If you want to use `Yarn` as your package manager.
 
    #### `Yarn`
 
    ```bash
-   yarn create react-app keeptrack
+   yarn create vite keeptrack --template react
    ```
 
    > `yarn create` is available in Yarn 0.25+
@@ -43,33 +46,39 @@ title: "Lab 1: Creating a New Project"
    ```bash
    cd keeptrack
    ```
-2. **Open** the `keeptrack` directory in your **editor** of choice.
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+3. **Open** the `keeptrack` directory in your **editor** of choice.
 
    > If you are using `Visual Studio Code` you can run the following command in your terminal: `code .`
 
    > ...`code` refers to Visual Studio Code and `.` means current directory
 
-   > if `code` is not in your `command prompt` (Windows) or `terminal` (Mac) `PATH`
+   > **MacOS**
+
+   > if `code` is not in your `terminal` (Mac) `PATH` you will receive the message:
+   > `command not found: code`
    >
    > - in `Visual Studio Code` choose `View>Command Palette> Shell Command: Install 'code' command in PATH`
+
+   > **Windows**
+
+   > if `code` is not in your `command-prompt` (Windows) `PATH` you will receive the message:
+   > `command not found: code`
+   >
+   > - You will need to add `code` to the environment variable path manually or rerun the Visual Studio code installer and choose the option to add `code` to the path.
 
 ### Review the default project structure
 
 1.  Take a few minutes to go over the default project structure. Below are some files to look at:
 
     - `package.json`
-    - `public/index.html` is the page template
-    - `src/index.js` is the JavaScript entry point
+    - `/index.html` is the page template
+    - `src/main.jsx` is the JavaScript entry point
 
     <br/>
-
-    > For the project to build, **the last two files above files must exist with exact filenames**:
-
-    > You can delete or rename the other files.
-
-    > You may create subdirectories inside `src`. For faster rebuilds, only files inside `src` are processed by Webpack. You need to **put any JS and CSS files inside `src`**, otherwise Webpack won’t see them.
-
-    > Only files inside `public` can be used from `public/index.html`.
 
 ---
 
