@@ -61,7 +61,6 @@ title: 'Lab 8: More Reusable Components'
    #### `src\projects\ProjectList.tsx`
 
    ```diff
-
    import { Project } from './Project';
    + import ProjectCard from './ProjectCard';
 

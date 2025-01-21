@@ -13,18 +13,17 @@ title: 'Lab 8: More Reusable Components'
 
 ### Create another reusable component
 
-1. Create the file `src\projects\ProjectCard.js`.
+1. Create the file `src\projects\ProjectCard.jsx`.
 1. Implement a `ProjectCard` as a **function** (not class) component that meets the following specifications:
 
    1. Takes a `project` object as a `prop`.
    1. Cut the `<div className="card">...</div>` from the `ProjectList` component and use it as the JSX for the `ProjectCard` component.
    1. Add a function to format the description to 60 characters and call it when rendering the description.
 
-   #### `src\projects\ProjectCard.js`
+   #### `src\projects\ProjectCard.jsx`
 
    ```jsx
    import { Project } from './Project';
-
    import PropTypes from 'prop-types';
 
    function formatDescription(description) {
@@ -56,13 +55,12 @@ title: 'Lab 8: More Reusable Components'
 
 ### Render the reusable component
 
-1. Open the file `src\projects\ProjectList.js`.
+1. Open the file `src\projects\ProjectList.jsx`.
 1. Render the `ProjectCard` component passing it the `project` as a `prop`.
 
-   #### `src\projects\ProjectList.js`
+   #### `src\projects\ProjectList.jsx`
 
    ```diff
-
    import PropTypes from 'prop-types';
    import { Project } from './Project';
    + import ProjectCard from './ProjectCard';
