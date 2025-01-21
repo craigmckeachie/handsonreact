@@ -27,21 +27,39 @@ title: 'Lab 17: Setup Backend REST API'
 ### Create a custom npm script to run the REST API server
 
 1. **Add** a **script** to **start** the **backend** REST API.
-   #### `\package.json`
-   ```diff
-   {
-    "name": "keeptrack",
-    ...
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
-   +    "api": "json-server api/db.json --port 4000"
-    },
-   }
+
+#### `\package.json`
+
+```diff
+{
+  "name": "keep-track",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
++   "api": "json-server api/db.json --port 4000"
+  },
+}
+```
+
+1. **Find** the starter files directory that you downloaded from git and unzipped in Lab 7. 
+   :::info
+   > The directory should be named `react-starter-files-main` and it probably is inside your `downloads` directory.
+3. **Copy** the entire directory `react-starter-files-main\api` into the `code\keeptrack` directory.
+   :::tip
+   When you are done you should have a `code\keeptrack\api` directory with a `db.json` file and a `test` directory inside it.
+   ```bash
+   ├── keeptrack
+   │   ├── api
+   │   │   ├──db.json
+   │   │   ├──test      
+   ...
    ```
-2. From the starter files repo that you downloaded in Lab 5 (might be in your downloads folder), copy the directory `api` into the `code\keeptrack` directory.
+   :::
 
 ### Start the REST API server
 
@@ -72,12 +90,11 @@ title: 'Lab 17: Setup Backend REST API'
 
     Type s + enter at any time to create a snapshot of the database
    ```
+   > There is no need to type `s + enter` at this point. 
 
-   > Note that if you visit `http://localhost:4000/` you would normally see the `json-server` landing page but this will not work when you are inside a `Create React App` project.
-
-1. In your `Chrome` browser open:
+2. In your `Chrome` browser open:
    - [http://localhost:4000/projects](http://localhost:4000/projects)
-1. You should see `JSON` data being returned.
+3. You should see `JSON` data being returned.
 
    ```json
    [
