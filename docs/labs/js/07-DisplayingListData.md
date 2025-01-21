@@ -13,7 +13,7 @@ title: 'Lab 7: Displaying List Data'
 
 ### Format the list data as list items
 
-1. **Modify** `src\projects\ProjectList.js` to format the project information into a `HTML` unordered list.
+1. **Modify** `src\projects\ProjectList.jsx` to format the project information into a `HTML` unordered list.
 
    ```html
    <ul>
@@ -24,30 +24,30 @@ title: 'Lab 7: Displaying List Data'
 
    > Be sure to set a key for each list item.
 
-#### `src\projects\ProjectList.js`
+   #### `src\projects\ProjectList.jsx`
 
-```diff
-...
+   ```diff
+   ...
 
-function ProjectList({ projects }) {
--  return <pre>{JSON.stringify(projects, null, ' ')}</pre>;
-+  return (
-+    <ul className="row">
-+      {projects.map((project) => (
-+        <li key={project.id}>{project.name}</li>
-+      ))}
-+    </ul>
-+  );
-}
+   function ProjectList({ projects }) {
+   -  return <pre>{JSON.stringify(projects, null, ' ')}</pre>;
+   +  return (
+   +    <ul className="row">
+   +      {projects.map((project) => (
+   +        <li key={project.id}>{project.name}</li>
+   +      ))}
+   +    </ul>
+   +  );
+   }
 
-export default ProjectList;
-```
+   export default ProjectList;
+   ```
 
 2. Verify the project names display in the browser (they may overlap at this point).
 
 ### Format the list data as cards
 
-1. **Update** `src\projects\ProjectList.js` to format the project information into a rows of cards that show additional project information using the `HTML` template below.
+1. **Update** `src\projects\ProjectList.jsx` to format the project information into a rows of cards that show additional project information using the `HTML` template below.
 
    ```html
    <div class="cols-sm">
@@ -68,7 +68,7 @@ export default ProjectList;
 
    > **TIP:** Visual Studio Code has an extension [HTML to JSX](https://marketplace.visualstudio.com/items?itemName=riazxrazor.html-to-jsx) to do the attribute conversion.
 
-   #### `src\projects\ProjectList.js`
+   #### `src\projects\ProjectList.jsx`
 
    ```diff
    ...
@@ -111,6 +111,19 @@ export default ProjectList;
 
    export default ProjectList;
    ```
+
+1. **Download** the code snippets, data, and images needed for the labs by **following these steps**.
+   1. **Click** this **link** to open the [starter files repository](https://github.com/craigmckeachie/react-starter-files) on GitHub.
+   2. **Click** the **Green Code button** then choose **Download ZIP**.
+   3. Unzip the file `react-starter-files-main.zip` archive you downloaded in the prior step.
+1. Open File Explorer (Windows) or Finder (Mac).
+1. **Copy** the `assets` directory (which has images used in the application) and its contents into the `keeptrack\public` directory.
+
+   :::danger
+
+   - Do not copy the assets into the `keeptrack\src\assets` directory. You want to place the images into `keeptrack\public\assets`
+
+   :::
 
 1. **Verify** the **project** **data** **displays** correctly in the browser.
 
