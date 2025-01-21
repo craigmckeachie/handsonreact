@@ -14,7 +14,7 @@ title: 'Lab 21 b: Splash Screen'
 
    - Copy [logo-splash-screen.svg](https://github.com/craigmckeachie/react-course/blob/master/concepts/assets/logo-splash-screen.svg) into `keeptrack\public\assets`
 
-   #### public\index.html
+   #### index.html
 
    ```diff
    <!DOCTYPE html>

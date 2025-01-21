@@ -12,7 +12,7 @@ The finished solution code for this optional lab is available in the `makeover` 
 
 - Copy [logo-splash-screen.svg](https://github.com/craigmckeachie/react-course/blob/master/concepts/assets/logo-splash-screen.svg) into `keeptrack\public\assets`
 
-#### public\index.html
+#### index.html
 
 ```diff
 <!DOCTYPE html>
