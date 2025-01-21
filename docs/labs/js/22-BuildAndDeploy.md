@@ -76,5 +76,5 @@ title: 'Lab 22: Build & Deploy'
 
 ### &#10004; You have completed Lab 22
 
-> If time permits you can read the documentation linked below for very similar steps to deploy the application on common production web servers and cloud platforms including AWS, Azure, Heroku, Netlify, and Vercel.
+> If time permits you can [read the documentation provided to deploy the application](../../17-BuildDeploy.md) on common production web servers and cloud platforms including Nginx, Apache, IIS, AWS, and Azure.
 
