@@ -139,7 +139,7 @@ title: 'Lab 5: Data'
 
    > **TIPS:**
    >
-   > - React components can only return one root element so you will need to wrap the `<h1>` and `<pre>` tags in a React Fragement `<></>`.
+   > - React components can only return one root element so you will need to wrap the `<h1>` and `<pre>` tags in a React Fragment `<></>`.
    > - Wrapping output in a HTML `<pre></pre>` (pre-formatted) tag retains whitespace.
    > - To switch to JavaScript in JSX use `{ }`
    > - JSON.stringify(MOCK_PROJECTS, null, ' ')'s third argument is used to insert white space into the output JSON string for readability purposes.

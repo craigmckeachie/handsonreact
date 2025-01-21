@@ -46,7 +46,7 @@ title: 'Lab 12: Hiding and Showing Components'
 
 1. Conditionally render the `ProjectForm` when the projectBeingEdited equals the current project in the list, otherwise display a `ProjectCard` .
 
-   #### src\projects\ProjectList.tsx
+   #### `src\projects\ProjectList.tsx`
 
 ```diff
 ...
