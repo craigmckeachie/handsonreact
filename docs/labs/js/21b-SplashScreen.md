@@ -50,7 +50,7 @@ title: 'Lab 21 b: Splash Screen'
 
    ```
 
-   #### public\index.html
+   #### index.html
 
    ```diff
    ...

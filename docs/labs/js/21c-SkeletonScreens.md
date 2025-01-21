@@ -51,7 +51,7 @@ title: 'Lab 21 c: Skeleton Screens'
 
 3. Create a `ProjectCardSkeleton` component using the `ContentLoader` component from the `react-content-loader` library .
 
-   #### `src\projects\ProjectCardSkeleton.js`
+   #### `src\projects\ProjectCardSkeleton.jsx`
 
    ```js
    import ContentLoader from 'react-content-loader';
@@ -81,7 +81,7 @@ title: 'Lab 21 c: Skeleton Screens'
 
 4. Create the `ProjectListSkeleton` component by listing multiple `ProjectCardSkeleton` components.
 
-   #### `src\projects\ProjectListSkeleton.js`
+   #### `src\projects\ProjectListSkeleton.jsx`
 
    ```ts
    import ProjectCardSkeleton from './ProjectCardSkeleton';
@@ -99,7 +99,7 @@ title: 'Lab 21 c: Skeleton Screens'
 
 5. Use the `ProjectsPage` component's `loading` state to determine when to display the `ProjectListSkeleton`. Also, remove the current loading spinner.
 
-   #### `src\projects\ProjectsPage.js`
+   #### `src\projects\ProjectsPage.jsx`
 
    ```diff
    ...

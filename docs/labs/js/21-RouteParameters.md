@@ -30,7 +30,7 @@ title: 'Lab 21: Route Parameters'
 
 2. **Create** the files below and add the code for these pre-built components we will use in this lab. Take a moment to review the code in them.
 
-   #### `src\projects\ProjectDetail.js`
+   #### `src\projects\ProjectDetail.jsx`
 
    ```jsx
    import { Project } from './Project';
@@ -67,7 +67,7 @@ title: 'Lab 21: Route Parameters'
    }
    ```
 
-   #### `src\projects\ProjectPage.js`
+   #### `src\projects\ProjectPage.jsx`
 
    ```jsx
    import React, { useEffect, useState } from 'react';
@@ -132,7 +132,7 @@ title: 'Lab 21: Route Parameters'
 
 3. Add a route to display the `ProjectPage` (notice that we now have a `ProjectPage` and a `ProjectsPage` so be careful you are in the correct file).
 
-   #### `src\App.js`
+   #### `src\App.jsx`
 
    ```diff
    import ProjectsPage from './projects/ProjectsPage';
@@ -167,7 +167,7 @@ title: 'Lab 21: Route Parameters'
 
 4. Make the name and description clickable by adding a `<Link />` component around them.
 
-   #### `src\projects\ProjectCard.js`
+   #### `src\projects\ProjectCard.jsx`
 
    ```diff
    + import { Link } from 'react-router-dom';

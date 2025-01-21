@@ -1,5 +1,5 @@
 ---
-title: "Lab 21 a: Route Transitions"
+title: 'Lab 21 a: Route Transitions'
 ---
 
 > This lab is optional and should only be done if time permits
@@ -34,7 +34,7 @@ title: "Lab 21 a: Route Transitions"
 
    > `React Transition Group` is **not an animation library** like `React-Motion`, it does not animate styles by itself. Instead it exposes transition stages, manages classes and group elements and manipulates the DOM in useful ways, making the implementation of actual visual transitions much easier.
 
-   #### `src\App.js`
+   #### `src\App.jsx`
 
    ```diff
    ...
@@ -80,14 +80,13 @@ title: "Lab 21 a: Route Transitions"
    export default App;
    ```
 
-   #### `src\index.js`
+   #### `src\main.jsx`
 
    ```diff
    ...
    + import { BrowserRouter as Router } from 'react-router-dom';
 
-   const root = ReactDOM.createRoot(document.getElementById('root'));
-   root.render(
+   createRoot(document.getElementById('root').render(
    <React.StrictMode>
    +  <Router>
         <App />
@@ -99,7 +98,7 @@ title: "Lab 21 a: Route Transitions"
 
 3. Wrap the `react-router`'s `Routes` component with a `TransitionGroup` and `CSSTransition` component from the `react-transition-group` library.
 
-   #### `src\App.js`
+   #### `src\App.jsx`
 
    ```diff
    + import { CSSTransition, TransitionGroup } from 'react-transition-group';
