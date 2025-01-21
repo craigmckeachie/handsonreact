@@ -44,19 +44,19 @@ slug: /computer-setup
 
      > Major Node.js versions enter Current release status for six months, which gives library authors time to add support for them. After six months, odd-numbered releases (9, 11, etc.) become unsupported, and even-numbered releases (10, 12, etc.) move to Active LTS status and are ready for general use. LTS release status is "long-term support", which typically guarantees that critical bugs will be fixed for a total of 30 months. Production applications should only use Active LTS or Maintenance LTS releases.
 
-- If you are using one of the older or experimental versions of `Node.js` listed above, uninstall it and reinstall a recent **LTS** version.
-  - [How to remove Node.js from Windows](https://stackoverflow.com/a/20711410/48175)
-  ```
-  tldr;
-  1. Uninstall from Programs & Features with the uninstaller.
-  2. Reboot (or you probably can get away with killing all node-related processes from Task Manager).
-  ```
-  - [How to Remove Node.js from Mac OSX](https://stackabuse.com/how-to-uninstall-node-js-from-mac-osx/)
-- If you are **using another version of Node** and **do not want to uninstall it** because you need to support an existing application that uses that version I would recommend using a N**ode Version Manager** so you can install multiple versions of `Node.js` on a machine.
-  - For details on how to do this [see this article](https://www.sitepoint.com/quick-tip-multiple-versions-node-nvm/).
-  - Note: As explained in the article, depending on your operating system there are two different open-source projects for installing multiple versions of `Node.js`: one is named `nvm` (Mac) and the other `nvm for Windows`...make sure you use the appropriate one.
+   - If you are using one of the older or experimental versions of `Node.js` listed above, uninstall it and reinstall a recent **LTS** version.
+     - [How to remove Node.js from Windows](https://stackoverflow.com/a/20711410/48175)
+     ```
+     tldr;
+     1. Uninstall from Programs & Features with the uninstaller.
+     2. Reboot (or you probably can get away with killing all node-related processes from Task Manager).
+     ```
+     - [How to Remove Node.js from Mac OSX](https://stackabuse.com/how-to-uninstall-node-js-from-mac-osx/)
+   - If you are **using another version of Node** and **do not want to uninstall it** because you need to support an existing application that uses that version I would recommend using a N**ode Version Manager** so you can install multiple versions of `Node.js` on a machine.
+     - For details on how to do this [see this article](https://www.sitepoint.com/quick-tip-multiple-versions-node-nvm/).
+     - Note: As explained in the article, depending on your operating system there are two different open-source projects for installing multiple versions of `Node.js`: one is named `nvm` (Mac) and the other `nvm for Windows`...make sure you use the appropriate one.
 
-1. **Install** **Create React App** and **verify** a project can be created.
+3. **Verify** you can use **Vite** to create a React project.
 
    1. Create a `working` directory for the course somewhere on your computer that you will remember.
    2. **Open** a `command prompt` (Windows) or `terminal` (Mac).
@@ -65,58 +65,60 @@ slug: /computer-setup
    4. **Run** the following **commands**:
 
    ```shell
-   npx create-react-app my-app --use-npm
+   npm create vite@latest my-app -- --template react
    cd my-app
    npm run dev
    ```
 
-   > If you've previously installed `create-react-app` globally via `npm install -g create-react-app`, it is recommended that you uninstall the package using `npm uninstall -g create-react-app` to ensure that `npx` always uses the latest version.
+   5. After the application builds, you should see:
+      ```sh
+      ➜  Local:   http://localhost:5173/
+      ```
+    6. Hold down the CTRL (Windows) or COMMAND (Mac) key and simultaneously click the localhost link in the terminal.  
 
-   5. After the application builds, your default browser should open to [http://localhost:3000/](http://localhost:3000/).
+      > If the link is not clickable copy the URL and paste it the location/address bar of a browser
 
-      > If [http://localhost:3000/](http://localhost:3000/) does not open automatically, open your browser and navigate there manually.
+   6. **Verify** a page with the heading **Vite + React** is displayed in the browser.
 
-   6. **Verify** the **React logo** is displayed in the browser.
-
-2. An **IDE** (Integrated Development Environment) _or_ code **editor** of your choice.
+4. An **IDE** (Integrated Development Environment) _or_ code **editor** of your choice.
 
    > Students may use any IDE/editor that they are comfortable with using.
 
-- We **recommend** **Visual Studio Code**.
+   - We **recommend** **Visual Studio Code**.
 
-  - It is **free**, **cross-platform** has a small download, and is a quick install.
-  - **Visit** [code.visualstudio.com](https://code.visualstudio.com/) to **install**.
+     - It is **free**, **cross-platform** has a small download, and is a quick install.
+     - **Visit** [code.visualstudio.com](https://code.visualstudio.com/) to **install**.
 
-    > Don't confuse Visual Studio Code with the heavier Visual Studio IDE used for .NET development.
+       > Don't confuse Visual Studio Code with the heavier Visual Studio IDE used for .NET development.
 
-  - **Configure Visual Studio Code** for the course by [following these directions](./00-VisualStudioCodeSetup.md).
+     - **Configure Visual Studio Code** for the course by [following these directions](./00-VisualStudioCodeSetup.md).
 
-  :::success
+     :::success
 
-  - Don't miss the above link to configure Visual Studio Code with the appropriate extensions for the course
+     - Don't miss the above link to configure Visual Studio Code with the appropriate extensions for the course
 
-- **WebStorm** or **IntelliJ IDEA Ultimate** both made by `JetBrains` are also great choices.
+   - **WebStorm** or **IntelliJ IDEA Ultimate** both made by `JetBrains` are also great choices.
 
-  - In summary, these IDEs are heavier but have more features built-in.
-  - **Visit** [Download WebStorm](https://www.jetbrains.com/webstorm/download/) to **install**.
-    - OR
-  - **Visit** [Download IntelliJ IDEA](https://www.jetbrains.com/idea/download/) to **install**.
+     - In summary, these IDEs are heavier but have more features built-in.
+     - **Visit** [Download WebStorm](https://www.jetbrains.com/webstorm/download/) to **install**.
+       - OR
+     - **Visit** [Download IntelliJ IDEA](https://www.jetbrains.com/idea/download/) to **install**.
 
-    > Note: IntelliJ IDEA Ultimate includes TypeScript support while the Community Edition does not.
+       > Note: IntelliJ IDEA Ultimate includes TypeScript support while the Community Edition does not.
 
-    > Each download comes with a free 30-day trial.
+       > Each download comes with a free 30-day trial.
 
-1. `Google Chrome` browser.
+5. `Google Chrome` browser.
    - **Visit** [http://www.google.com/chrome/](http://www.google.com/chrome/) to **install**.
      > Any recent version will work for the class.
    - Also, any other browsers that you plan to support
-2. **Internet access in the classroom is required** because attendees will download additional software packages and material from github.com as part of the class. This can be confirmed by following these steps.
+6. **Internet access in the classroom is required** because attendees will download additional software packages and material from github.com as part of the class. This can be confirmed by following these steps.
 
    - **Visit**: https://github.com/facebook/react/
    - **Verify** the **page** **loads** successfully on your company's network.
      s
 
-3. You will need to have **Git** installed. To verify it is installed open a terminal or command-prompt and run the command:
+7. You will need to have **Git** installed. To verify it is installed open a terminal or command-prompt and run the command:
    ```
    git --version
    ```
