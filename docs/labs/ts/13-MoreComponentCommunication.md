@@ -18,8 +18,6 @@ title: 'Lab 13: More Component Communication'
    #### `src\projects\ProjectForm.tsx`
 
    ```diff
-
-
    + interface ProjectFormProps {
    +   onCancel: () => void;
    + }
