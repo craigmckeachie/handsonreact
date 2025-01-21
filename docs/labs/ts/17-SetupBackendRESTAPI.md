@@ -5,7 +5,7 @@ title: 'Lab 17: Setup Backend REST API'
 ## Objectives
 
 - [ ] Install the backend REST API server
-- [ ] Create a custom npm script to run the REST API server
+- [ ] Create a custom `npm` script to run the REST API server
 - [ ] Start the REST API server
 
 ## Steps
@@ -15,7 +15,7 @@ title: 'Lab 17: Setup Backend REST API'
 1. **Open** a `command prompt` (Windows) or `terminal` (Mac).
 1. Change the **current directory** to `code\keeptrack`.
 1. **Run** _one_ of the following commands:
-   #### npm
+   #### `npm`
    ```shell
    npm install json-server@0.16.2
    ```
@@ -24,32 +24,32 @@ title: 'Lab 17: Setup Backend REST API'
    yarn add json-server@0.16.2
    ```
 
-### Create a custom npm script to run the REST API server
+### Create a custom `npm` script to run the REST API server
 
 1. **Add** a **script** to **start** the **backend** REST API.
 
-#### `\package.json`
+   #### `\package.json`
 
-```diff
-{
-  "name": "keep-track",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-+   "api": "json-server api/db.json --port 4000"
-  },
-}
-```
+   ```diff
+   {
+   "name": "keep-track",
+   "private": true,
+   "version": "0.0.0",
+   "type": "module",
+   "scripts": {
+      "dev": "vite",
+      "build": "vite build",
+      "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+      "preview": "vite preview",
+   +   "api": "json-server api/db.json --port 4000"
+   },
+   }
+   ```
 
 1. **Find** the starter files directory that you downloaded from git and unzipped in Lab 7.
    :::info
    > The directory should be named `react-starter-files-main` and it probably is inside your `downloads` directory.
-2. **Copy** the entire directory `react-starter-files-main\api` into the `code\keeptrack` directory.
+1. **Copy** the entire directory `react-starter-files-main\api` into the `code\keeptrack` directory.
    :::tip
    When you are done you should have a `code\keeptrack\api` directory with a `db.json` file and a `test` directory inside it.
    ```bash
@@ -65,7 +65,7 @@ title: 'Lab 17: Setup Backend REST API'
 
 1. **In** a `command prompt` (Windows) or `terminal` (Mac) with the current **directory** set to `code\keeptrack`.
 1. **Run** _one_ of the following commands:
-   #### npm
+   #### `npm`
    ```shell
    npm run api
    ```
