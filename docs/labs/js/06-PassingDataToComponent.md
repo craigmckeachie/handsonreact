@@ -20,7 +20,6 @@ title: 'Lab 6: Passing Data to a Component'
    #### `src\projects\ProjectList.js`
 
    ```jsx
-   import React from 'react';
    import { Project } from './Project';
 
    function ProjectList({ projects }) {
@@ -41,7 +40,7 @@ title: 'Lab 6: Passing Data to a Component'
    #### `src\projects\ProjectList.js`
 
    ```diff
-   import React from 'react';
+
    + import PropTypes from 'prop-types';
    + import { Project } from './Project';
 
@@ -64,7 +63,7 @@ title: 'Lab 6: Passing Data to a Component'
    #### `src\projects\ProjectsPage.js`
 
    ```diff
-   import React from 'react';
+
    import { MOCK_PROJECTS } from './MockProjects';
    + import ProjectList from './ProjectList';
 

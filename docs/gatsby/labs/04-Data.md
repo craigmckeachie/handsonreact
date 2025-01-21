@@ -1,5 +1,5 @@
 ---
-title: "Data"
+title: 'Data'
 ---
 
 ## Query Site MetaData
@@ -151,10 +151,10 @@ title: "Data"
    #### `src\pages\files.js`
 
    ```js
-   import { graphql } from "gatsby";
-   import React from "react";
-   import Layout from "../components/layout";
-   import { PageTitle } from "../components/page-title";
+   import { graphql } from 'gatsby';
+
+   import Layout from '../components/layout';
+   import { PageTitle } from '../components/page-title';
 
    const Th = ({ children }) => {
      return (
@@ -280,10 +280,10 @@ title: "Data"
    #### `src\pages\index.html`
 
    ```js
-   import { graphql } from "gatsby";
-   import React from "react";
-   import Layout from "../components/layout";
-   import { PageTitle } from "../components/page-title";
+   import { graphql } from 'gatsby';
+
+   import Layout from '../components/layout';
+   import { PageTitle } from '../components/page-title';
 
    export default function Home({ data }) {
      console.log(data);
@@ -373,9 +373,8 @@ title: "Data"
    #### `src\pages\articles\{MarkdownRemark.frontmatter__slug}.js`
 
    ```js
-   import React from "react";
-   import Layout from "../../components/layout";
-   import { PageTitle } from "../../components/page-title";
+   import Layout from '../../components/layout';
+   import { PageTitle } from '../../components/page-title';
 
    export default function Article() {
      return (
@@ -426,7 +425,7 @@ sl
 
    ```diff
    + import { graphql } from 'gatsby';
-   import React from 'react';
+
    import Layout from '../components/layout';
    import { PageTitle } from "../components/page-title"
 

@@ -33,7 +33,6 @@ title: 'Lab 21: Route Parameters'
    #### `src\projects\ProjectDetail.js`
 
    ```jsx
-   import React from 'react';
    import { Project } from './Project';
 
    export default function ProjectDetail({ project }) {

@@ -54,7 +54,6 @@ title: 'Lab 21 c: Skeleton Screens'
    #### `src\projects\ProjectCardSkeleton.js`
 
    ```js
-   import React from 'react';
    import ContentLoader from 'react-content-loader';
 
    const ProjectCardSkeleton = (props) => (
@@ -85,7 +84,6 @@ title: 'Lab 21 c: Skeleton Screens'
    #### `src\projects\ProjectListSkeleton.js`
 
    ```ts
-   import React from 'react';
    import ProjectCardSkeleton from './ProjectCardSkeleton';
 
    const ProjectListSkeleton = () => {

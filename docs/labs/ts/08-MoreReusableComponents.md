@@ -25,7 +25,6 @@ title: 'Lab 8: More Reusable Components'
 
    ```tsx
    import { Project } from './Project';
-   import React from 'react';
 
    function formatDescription(description: string): string {
      return description.substring(0, 60) + '...';
@@ -62,7 +61,7 @@ title: 'Lab 8: More Reusable Components'
    #### `src\projects\ProjectList.tsx`
 
    ```diff
-   import React from 'react';
+
    import { Project } from './Project';
    + import ProjectCard from './ProjectCard';
 

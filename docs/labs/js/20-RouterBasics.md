@@ -19,8 +19,6 @@ title: 'Lab 20: Router Basics'
    #### `src\home\HomePage.js`
 
    ```jsx
-   import React from 'react';
-
    function HomePage() {
      return <h2>Home</h2>;
    }
@@ -47,7 +45,7 @@ title: 'Lab 20: Router Basics'
    #### `src/App.js`
 
    ```diff
-   import React from 'react';
+
    import './App.css';
    import ProjectsPage from './projects/ProjectsPage';
 

@@ -18,7 +18,7 @@ title: 'Lab 13: More Component Communication'
    #### `src\projects\ProjectForm.tsx`
 
    ```diff
-   import React from 'react';
+
 
    + interface ProjectFormProps {
    +   onCancel: () => void;

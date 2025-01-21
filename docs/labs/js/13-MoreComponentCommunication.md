@@ -18,7 +18,7 @@ title: 'Lab 13: More Component Communication'
    #### `src\projects\ProjectForm.js`
 
    ```diff
-   import React from 'react';
+
    + import PropTypes from 'prop-types';
 
    - function ProjectForm() {

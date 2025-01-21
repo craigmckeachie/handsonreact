@@ -34,7 +34,6 @@ title: 'Lab 21: Route Parameters'
    #### `src\projects\ProjectDetail.tsx`
 
    ```tsx
-   import React from 'react';
    import { Project } from './Project';
 
    interface ProjectDetailProps {

@@ -21,7 +21,6 @@ title: 'Lab 6: Passing Data to a Component'
    #### `src\projects\ProjectList.tsx`
 
    ```tsx
-   import React from 'react';
    import { Project } from './Project';
 
    interface ProjectListProps {
@@ -42,7 +41,7 @@ title: 'Lab 6: Passing Data to a Component'
    #### `src\projects\ProjectsPage.tsx`
 
    ```diff
-   import React from 'react';
+
    import { MOCK_PROJECTS } from './MockProjects';
    + import ProjectList from './ProjectList';
 

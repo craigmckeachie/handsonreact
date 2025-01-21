@@ -24,7 +24,7 @@ title: 'Lab 8: More Reusable Components'
 
    ```jsx
    import { Project } from './Project';
-   import React from 'react';
+
    import PropTypes from 'prop-types';
 
    function formatDescription(description) {
@@ -62,7 +62,7 @@ title: 'Lab 8: More Reusable Components'
    #### `src\projects\ProjectList.js`
 
    ```diff
-   import React from 'react';
+
    import PropTypes from 'prop-types';
    import { Project } from './Project';
    + import ProjectCard from './ProjectCard';

@@ -119,7 +119,7 @@ We are going to use `CSS Modules` to modularize our CSS just as we have modulari
 
    ```js
    import { Link } from 'gatsby';
-   import React from 'react';
+
    import * as styles from './header.module.css';
 
    export default function Header() {
@@ -166,7 +166,6 @@ We are going to use `CSS Modules` to modularize our CSS just as we have modulari
    #### `src\components\footer.js`
 
    ```js
-   import React from 'react';
    import * as styles from './footer.module.css';
 
    export default function Footer() {
@@ -225,7 +224,7 @@ _Install_
 
    ```js
    import { Link } from 'gatsby';
-   import React from 'react';
+
    import styled from '@emotion/styled';
 
    const NavLink = styled(Link)`
@@ -274,7 +273,7 @@ _Install_
 
    ```js
    import { Link } from 'gatsby';
-   import React from 'react';
+
    import { css } from '@emotion/react';
 
    const NavLink = (props) => (
