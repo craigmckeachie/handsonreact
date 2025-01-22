@@ -21,14 +21,20 @@ title: 'Lab 2: Running Your Project'
    ```shell
    yarn run dev
    ```
-2. After the application builds, it will **automatically** **open** your `Chrome` **browser** to [http://localhost:3000](http://localhost:3000).
+2. After the application builds, you should see:
+   ```bash
+   ➜  Local:   http://localhost:5173/
+   ```
+3. Hold down the CTRL (Windows) or COMMAND (Mac) key and simultaneously click the localhost link in the terminal.
 
-3. **Verify** the heading **Vite + React** is displayed in the browser.
+   > If the link is NOT clickable copy the URL and paste it the location/address bar of a browser
+
+4. **Verify** a page with the heading **Vite + React** is displayed in the browser.
    ![1](../images/default-page.png)
 
 ### Make a change and see the app update
 
-1. **Add** some additional text (exclamation points) in the `render` method of the `App` component as shown below.
+1. **Change** the text in the `App` component's heading as shown below.
 
    #### `src\App.jsx`
 
@@ -71,11 +77,11 @@ title: 'Lab 2: Running Your Project'
    export default App
    ```
 
-1. **Save** your changes to the file.
+2. **Save** your changes to the file.
    > In the VS Code menu bar you can turn on `File > Autosave` and this is recommended for the course.
-1. **Verify** the new text "Ready to React" is displayed in your browser.
+3. **Verify** the new text **"Ready to React"** is displayed in your browser.
 
-> The page will automatically reload if you make changes to the code. The file saves then the code compiles then the browser refreshes.
+   > The page will automatically reload if you make changes to the code. The file saves then the code compiles then the browser refreshes.
 
 ### Stop the Project
 
