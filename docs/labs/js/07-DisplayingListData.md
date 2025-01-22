@@ -115,9 +115,10 @@ title: 'Lab 7: Displaying List Data'
 1. **Download** the code snippets, data, and images needed for the labs by **following these steps**.
    1. **Click** this **link** to open the [starter files repository](https://github.com/craigmckeachie/react-starter-files) on GitHub.
    2. **Click** the **Green Code button** then choose **Download ZIP**.
-   3. Unzip the file `react-starter-files-main.zip` archive you downloaded in the prior step.
-1. Open File Explorer (Windows) or Finder (Mac).
-1. **Copy** the `assets` directory (which has images used in the application) and its contents into the `projectpilot\public` directory.
+2. Open File Explorer (Windows) or Finder (Mac) and go to your `downloads` directory.
+3. Unzip the file `react-starter-files-main.zip` archive you just downloaded.
+4. If it doesn't already exist, **create** the directory `projectpilot\public`
+5. **Copy** the `assets` directory (which has images used in the application) and its contents into the `projectpilot\public` directory.
 
    :::danger
 
@@ -125,7 +126,7 @@ title: 'Lab 7: Displaying List Data'
 
    :::
 
-1. **Verify** the **project** **data** **displays** correctly in the browser.
+6. **Verify** the **project** **data** **displays** correctly in the browser.
    :::tip
    If the images aren't loading refresh your browser. Vite's reloading is fast but not perfect.
    :::
