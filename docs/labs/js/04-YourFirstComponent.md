@@ -59,6 +59,8 @@ title: 'Lab 4: Your First Component'
    +   );
    }
    ```
+   :::tip
+   Be sure to include the import for the component at the top of the file.
 
 2. **Verify** the following is displayed in the browser:
 

@@ -60,6 +60,9 @@ title: 'Lab 4: Your First Component'
    }
    ```
 
+   :::tip
+   Be sure to include the import for the component at the top of the file. Since you are in TypeScript, this should get automatically be imported for you.
+
 2. **Verify** the following is displayed in the browser:
 
    **Projects**
