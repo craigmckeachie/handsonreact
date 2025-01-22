@@ -20,8 +20,8 @@ Labs can be skipped by attendees who:
 
 ### Backup your current code
 
-1. Close any editor(s) and command prompt(s) or terminal(s) related to your code copy of the course labs in the directory `code\keeptrack`.
-1. Rename `code\keeptrack` to `code\keeptrack_bkup1` or something similar.
+1. Close any editor(s) and command prompt(s) or terminal(s) related to your code copy of the course labs in the directory `code\projectpilot`.
+1. Rename `code\projectpilot` to `code\projectpilot_bkup1` or something similar.
 
 ### Download code
 
@@ -29,20 +29,20 @@ Download the completed code for the lab **before** the one you would like to wor
 
 > For example, if you wanted to work on lab 18 download lab 17
 
-> [Finished solution code for each of the labs is available in this repository](https://github.com/craigmckeachie/keeptrack-js)
+> [Finished solution code for each of the labs is available in this repository](https://github.com/craigmckeachie/projectpilot-js)
 
 1. Open the branch you want to download:
 
    - For example:
 
    ```shell
-   https://github.com/craigmckeachie/keeptrack-js/tree/lab25
+   https://github.com/craigmckeachie/projectpilot-js/tree/lab25
    ```
 
    - You can use this template:
 
    ```shell
-   https://github.com/craigmckeachie/keeptrack-js/tree/labxx
+   https://github.com/craigmckeachie/projectpilot-js/tree/labxx
    ```
 
    > Replacing xx with the lab number
@@ -50,23 +50,23 @@ Download the completed code for the lab **before** the one you would like to wor
 2. Change `tree` to `archive` and add a `.zip` extension
 
 ```diff
--   https://github.com/craigmckeachie/keeptrack-js/tree/lab25
-+   https://github.com/craigmckeachie/keeptrack-js/archive/lab25.zip
+-   https://github.com/craigmckeachie/projectpilot-js/tree/lab25
++   https://github.com/craigmckeachie/projectpilot-js/archive/lab25.zip
 ```
 
 3.  Rename the zip.
 
 ```diff
-- keeptrack-js-lab25.zip
-+ keeptrack.zip
+- projectpilot-js-lab25.zip
++ projectpilot.zip
 ```
 
-4.  Copy `keeptrack.zip` into `code\keeptrack.zip`.
+4.  Copy `projectpilot.zip` into `code\projectpilot.zip`.
 5.  Unzip the file.
 
 ### Install dependencies
 
-1. Open a command prompt (Windows) or terminal (Mac) in `code\keeptrack`.
+1. Open a command prompt (Windows) or terminal (Mac) in `code\projectpilot`.
 1. Run the command.
    ```shell
    npm install

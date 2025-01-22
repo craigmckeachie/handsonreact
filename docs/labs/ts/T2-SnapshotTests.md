@@ -1,5 +1,5 @@
 ---
-title: "Testing Lab 2: Snapshot Tests"
+title: 'Testing Lab 2: Snapshot Tests'
 ---
 
 ## Objectives
@@ -12,7 +12,7 @@ title: "Testing Lab 2: Snapshot Tests"
 ### Install React's Test Renderer
 
 1. **Open** a `command prompt` (Windows) or `terminal` (Mac).
-1. Change the **current directory** to `code\keeptrack`.
+1. Change the **current directory** to `code\projectpilot`.
 1. **Run** _one_ of the following sets of commands:
 
    #### npm

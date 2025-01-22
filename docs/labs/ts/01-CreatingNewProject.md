@@ -24,7 +24,7 @@ title: 'Lab 1: Creating a New Project'
    #### `npm`
 
    ```bash
-   npm create vite@latest keeptrack -- --template react-ts
+   npm create vite@latest projectpilot -- --template react-ts
    ```
 
    > npm 7+, extra double-dash is needed:
@@ -34,7 +34,7 @@ title: 'Lab 1: Creating a New Project'
    #### `Yarn`
 
    ```bash
-   yarn create vite keeptrack --template react-ts
+   yarn create vite projectpilot --template react-ts
    ```
 
    > `yarn create` is available in Yarn 0.25+
@@ -43,13 +43,13 @@ title: 'Lab 1: Creating a New Project'
 
 1. **Change** the current **directory** (`cd`) to the directory you created in the last step.
    ```bash
-   cd keeptrack
+   cd projectpilot
    ```
 2. Install dependencies
    ```bash
    npm install
    ```
-3. **Open** the `keeptrack` directory in your **editor** of choice.
+3. **Open** the `projectpilot` directory in your **editor** of choice.
 
    > If you are using `Visual Studio Code` you can run the following command in your terminal: `code .`
 

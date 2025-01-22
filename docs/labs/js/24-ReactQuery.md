@@ -16,7 +16,7 @@ title: 'Lab 24: React Query Refactor'
 ### Install React Query and React Query Devtools.
 
 1. **Start** with the **Lab 26** solution code.
-2. Run the follow commands at a command-prompt or terminal (be sure you are in the keeptrack directory).
+2. Run the follow commands at a command-prompt or terminal (be sure you are in the projectpilot directory).
 
    #### npm
 

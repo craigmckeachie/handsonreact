@@ -132,7 +132,7 @@ npm install jest --save-dev
 
 ```diff
 {
-  "name": "keeptrack",
+  "name": "projectpilot",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

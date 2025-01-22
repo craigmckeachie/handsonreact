@@ -12,7 +12,7 @@ title: 'Lab 21 b: Splash Screen'
 
 1. Add a splash screen and the associated styles.
 
-   - Copy [logo-splash-screen.svg](https://github.com/craigmckeachie/react-course/blob/master/concepts/assets/logo-splash-screen.svg) into `keeptrack\public\assets`
+   - Copy [logo-splash-screen.svg](https://github.com/craigmckeachie/react-course/blob/master/concepts/assets/logo-splash-screen.svg) into `projectpilot\public\assets`
 
    #### index.html
 

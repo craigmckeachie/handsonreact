@@ -117,11 +117,11 @@ export default ProjectList;
    2. **Click** the **Green Code button** then choose **Download ZIP**.
    3. Unzip the file `react-starter-files-main.zip` archive you downloaded in the prior step.
 1. Open File Explorer (Windows) or Finder (Mac).
-1. **Copy** the `assets` directory (which has images used in the application) and its contents into the `keeptrack\public` directory.
+1. **Copy** the `assets` directory (which has images used in the application) and its contents into the `projectpilot\public` directory.
 
    :::danger
 
-   - Do not copy the assets into the `keeptrack\src\assets` directory. You want to place the images into `keeptrack\public\assets`
+   - Do not copy the assets into the `projectpilot\src\assets` directory. You want to place the images into `projectpilot\public\assets`
 
    :::
 

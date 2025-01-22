@@ -35,7 +35,7 @@ title: 'Lab 3: Styles Using CSS'
 
     ```diff
     {
-      "name": "keeptrack",
+      "name": "projectpilot",
       "private": true,
       "version": "0.0.0",
       "type": "module",
@@ -75,7 +75,7 @@ title: 'Lab 3: Styles Using CSS'
    -   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    -   <title>Vite + React</title>
-   +   <title>Keeptrack</title>
+   +   <title>projectpilot</title>
      </head>
      <body>
        <div id="root"></div>

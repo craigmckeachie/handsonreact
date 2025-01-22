@@ -65,7 +65,7 @@ _This is a preview of the application you will build._
 
 ### Solution Code
 
-- [A snapshot of the finished solution code at the completion of each of the above labs is available in this repository.](https://github.com/craigmckeachie/keeptrack-js)
+- [A snapshot of the finished solution code at the completion of each of the above labs is available in this repository.](https://github.com/craigmckeachie/projectpilot-js)
 
 > There is a separate branch with the finished code after each lab.
 

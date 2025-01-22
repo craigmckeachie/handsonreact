@@ -1,5 +1,5 @@
 ---
-title: "Testing Lab 7: Action Tests"
+title: 'Testing Lab 7: Action Tests'
 ---
 
 ## Objectives
@@ -21,7 +21,7 @@ title: "Testing Lab 7: Action Tests"
    #### `src\projects\__mocks__\projectAPI.js`
 
    ```js
-   import { MOCK_PROJECTS } from "../MockProjects";
+   import { MOCK_PROJECTS } from '../MockProjects';
    const projectAPI = {
      get(page = 1, limit = 20) {
        return Promise.resolve(MOCK_PROJECTS);
@@ -34,7 +34,7 @@ title: "Testing Lab 7: Action Tests"
 ### Mock the Store
 
 1. **Open** a `command prompt` (Windows) or `terminal` (Mac).
-1. Change the **current directory** to `working\keeptrack`.
+1. Change the **current directory** to `working\projectpilot`.
 1. **Run** _one_ of the following sets of commands:
 
    #### npm
@@ -57,23 +57,23 @@ title: "Testing Lab 7: Action Tests"
    #### `src\projects\state\__tests__\projectActions-test.js`
 
    ```js
-   import configureMockStore from "redux-mock-store";
-   import ReduxThunk from "redux-thunk";
-   import { initialAppState } from "../../../state";
-   import { loadProjects } from "../projectActions";
+   import configureMockStore from 'redux-mock-store';
+   import ReduxThunk from 'redux-thunk';
+   import { initialAppState } from '../../../state';
+   import { loadProjects } from '../projectActions';
    import {
      LOAD_PROJECTS_REQUEST,
      LOAD_PROJECTS_SUCCESS,
      LOAD_PROJECTS_FAILURE,
-   } from "../projectTypes";
-   import { projectAPI } from "../../projectAPI";
-   import { MOCK_PROJECTS } from "../../MockProjects";
-   jest.mock("../../projectAPI");
+   } from '../projectTypes';
+   import { projectAPI } from '../../projectAPI';
+   import { MOCK_PROJECTS } from '../../MockProjects';
+   jest.mock('../../projectAPI');
 
    const middlewares = [ReduxThunk];
    const mockStoreCreator = configureMockStore(middlewares);
 
-   describe("Project Actions", () => {
+   describe('Project Actions', () => {
      let store;
 
      beforeEach(() => {

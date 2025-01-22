@@ -12,7 +12,7 @@ title: 'Lab 22: Build & Deploy'
 ### Build a React Application
 
 1. **Open** a `command prompt` (Windows) or `terminal` (Mac).
-2. Change the **current directory** to `keeptrack`.
+2. Change the **current directory** to `projectpilot`.
 3. **Run** the following command to install the node.js web server named `serve`:
    ```shell
    npm install -g serve
@@ -26,7 +26,7 @@ title: 'Lab 22: Build & Deploy'
    ```shell
    yarn build
    ```
-5. After the build finishes, verify a `keeptrack\dist` directory was created.
+5. After the build finishes, verify a `projectpilot\dist` directory was created.
 
 ### Deploy the application to a web server
 
@@ -77,4 +77,3 @@ title: 'Lab 22: Build & Deploy'
 ### &#10004; You have completed Lab 22
 
 > If time permits you can [read the documentation provided to deploy the application](../../17-BuildDeploy.md) on common production web servers and cloud platforms including Nginx, Apache, IIS, AWS, and Azure.
-

@@ -99,7 +99,7 @@ Open `Chrome DevTools` by following these steps:
 1. Open `ProjectsPage.[js|tsx]` in the Chrome DevTools `Sources` tab.
 
    > To find a file in the Chrome DevTools `Sources` tab and open the navigation to follow this or a similar path:
-   > top/localhost:3000/Users/[your username]/Documents/git/r16/keeptrack-js/src/...
+   > top/localhost:3000/Users/[your username]/Documents/git/r16/projectpilot-js/src/...
    > The path may differ depending on your operating system.
 
 1. Set breakpoint on line 38.

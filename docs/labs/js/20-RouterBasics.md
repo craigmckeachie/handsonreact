@@ -29,8 +29,8 @@ title: 'Lab 20: Router Basics'
 ### Add Basic Routes (install, configure)
 
 1. **Open** a `command prompt` (Windows) or `terminal` (Mac).
-1. Change the **current directory** to `code\keeptrack`.
-   > If the top level directory you have open in VS Code is `keeptrack` and you are using the integrated terminal you will already be in this directory.
+1. Change the **current directory** to `code\projectpilot`.
+   > If the top level directory you have open in VS Code is `projectpilot` and you are using the integrated terminal you will already be in this directory.
 1. **Run** _one_ of the following commands to install `React Router`:
    #### npm
    ```shell

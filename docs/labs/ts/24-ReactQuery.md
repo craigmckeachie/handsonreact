@@ -19,7 +19,7 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
 ### Install React Query and React Query Devtools.
 
 1. **Start** with the **Lab 26** solution code.
-2. Run the follow commands at a command-prompt or terminal (be sure you are in the keeptrack directory).
+2. Run the follow commands at a command-prompt or terminal (be sure you are in the projectpilot directory).
 
    #### npm
 

@@ -100,7 +100,7 @@ title: 'Testing Lab 5: Container Components'
 ### Test the Projects Display
 
 1. **Open** a `command prompt` (Windows) or `terminal` (Mac).
-1. Change the **current directory** to `code\keeptrack`.
+1. Change the **current directory** to `code\projectpilot`.
 1. **Run** _one_ of the following sets of commands to install `Mock Service Worker` to mock the HTTP requests.
 
    ```

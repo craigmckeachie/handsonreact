@@ -245,7 +245,7 @@ module.exports = {
           {
             type: 'link',
             label: 'Solution Code',
-            href: 'https://github.com/craigmckeachie/keeptrack-js',
+            href: 'https://github.com/craigmckeachie/projectpilot-js',
           },
         ],
       },
@@ -297,7 +297,7 @@ module.exports = {
           {
             type: 'link',
             label: 'Solution Code',
-            href: 'https://github.com/craigmckeachie/keeptrack-ts',
+            href: 'https://github.com/craigmckeachie/projectpilot-ts',
           },
         ],
       },

@@ -14,11 +14,11 @@ slug: /backend-api-setup
    npm install json-server
    ```
 
-2. Create an `api` directory  at the top level in your project so `keeptrack\api`
+2. Create an `api` directory at the top level in your project so `projectpilot\api`
 3. Click this link to open this [db.json](https://gist.github.com/craigmckeachie/196d975a63271e550d25cb57852b88cc) file on Github
 4. On the Github page, in the upper right hand corner of the page click the **Download ZIP** button
 5. Open your downloads folder and find `196d97...zip` and unzip it.
-6. Copy the `db.json` file inside the `196d97...` directory into the `keeptrack\api` directory
+6. Copy the `db.json` file inside the `196d97...` directory into the `projectpilot\api` directory
 7. Open `package.json`
 8. Add the following script:
 

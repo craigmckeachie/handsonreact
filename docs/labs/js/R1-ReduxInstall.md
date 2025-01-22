@@ -12,7 +12,7 @@ title: 'Redux Lab 1: Installation & Configuration'
 ### Install Redux
 
 1. **Open** a `command prompt` (Windows) or `terminal` (Mac).
-1. Change the **current directory** to `working\keeptrack`.
+1. Change the **current directory** to `working\projectpilot`.
 1. **Run** _one_ of the following sets of commands:
    #### npm
    ```shell

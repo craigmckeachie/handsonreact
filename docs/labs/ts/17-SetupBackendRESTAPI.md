@@ -13,7 +13,7 @@ title: 'Lab 17: Setup Backend REST API'
 ### Install the backend REST API server
 
 1. **Open** a `command prompt` (Windows) or `terminal` (Mac).
-1. Change the **current directory** to `code\keeptrack`.
+1. Change the **current directory** to `code\projectpilot`.
 1. **Run** _one_ of the following commands:
    #### `npm`
    ```shell
@@ -49,11 +49,11 @@ title: 'Lab 17: Setup Backend REST API'
 1. **Find** the starter files directory that you downloaded from git and unzipped in Lab 7.
    :::info
    > The directory should be named `react-starter-files-main` and it probably is inside your `downloads` directory.
-1. **Copy** the entire directory `react-starter-files-main\api` into the `code\keeptrack` directory.
+1. **Copy** the entire directory `react-starter-files-main\api` into the `code\projectpilot` directory.
    :::tip
-   When you are done you should have a `code\keeptrack\api` directory with a `db.json` file and a `test` directory inside it.
+   When you are done you should have a `code\projectpilot\api` directory with a `db.json` file and a `test` directory inside it.
    ```bash
-   ├── keeptrack
+   ├── projectpilot
    │   ├── api
    │   │   ├──db.json
    │   │   ├──test
@@ -63,7 +63,7 @@ title: 'Lab 17: Setup Backend REST API'
 
 ### Start the REST API server
 
-1. **In** a `command prompt` (Windows) or `terminal` (Mac) with the current **directory** set to `code\keeptrack`.
+1. **In** a `command prompt` (Windows) or `terminal` (Mac) with the current **directory** set to `code\projectpilot`.
 1. **Run** _one_ of the following commands:
    #### `npm`
    ```shell
