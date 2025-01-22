@@ -43,11 +43,16 @@ _This is a preview of the application you will build._
 - [Lab 21: Route Parameters](21-RouteParameters.md)
 - [Lab 22: Build & Deploy](22-BuildAndDeploy.md)
 
+### Advanced
+
+- [Lab 23: Custom Hooks](23-CustomHooks.md)
+- [Lab 24: React Query](24-ReactQuery.md)
+
 ### Redux
 
-- [Lab 23: Redux Install](23-ReduxInstall.md)
-- [Lab 24: Redux Actions & Reducer](24-ReduxActionsReducer.md)
-- [Lab 25: Redux with React](25-ReduxWithReact.md)
+- [Lab 23: Redux Install](R1-ReduxInstall.md)
+- [Lab 24: Redux Actions & Reducer](R2-ReduxActionsReducer.md)
+- [Lab 25: Redux with React](R3-ReduxWithReact.md)
 
 ### Testing
 

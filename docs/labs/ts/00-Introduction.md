@@ -9,7 +9,7 @@ Build a project management application step-by-step in React by following the di
 ![Lab Application Preview](../../../static/img/lab-application-preview.gif)
 _This is a preview of the application you will build._
 
-- Uses TypeScript
+- Uses JavaScript
 - Uses only function components with Hooks
 - Uses a pre-built `Node.js` REST API as a backend to do CRUD operations
 - Uses React Router
@@ -43,11 +43,16 @@ _This is a preview of the application you will build._
 - [Lab 21: Route Parameters](21-RouteParameters.md)
 - [Lab 22: Build & Deploy](22-BuildAndDeploy.md)
 
+### Advanced
+
+- [Lab 23: Custom Hooks](23-CustomHooks.md)
+- [Lab 24: React Query](24-ReactQuery.md)
+
 ### Redux
 
-- [Lab 23: Redux Install](23-ReduxInstall.md)
-- [Lab 24: Redux Actions & Reducer](24-ReduxActionsReducer.md)
-- [Lab 25: Redux with React](25-ReduxWithReact.md)
+- [Lab 23: Redux Install](R1-ReduxInstall.md)
+- [Lab 24: Redux Actions & Reducer](R2-ReduxActionsReducer.md)
+- [Lab 25: Redux with React](R3-ReduxWithReact.md)
 
 ### Testing
 
@@ -65,7 +70,7 @@ _This is a preview of the application you will build._
 
 ### Solution Code
 
-- [A snapshot of the finished solution code at the completion of each of the above labs is available in this repository.](https://github.com/craigmckeachie/projectpilot-ts)
+- [A snapshot of the finished solution code at the completion of each of the above labs is available in this repository.](https://github.com/craigmckeachie/projectpilot-js)
 
 > There is a separate branch with the finished code after each lab.
 
