@@ -136,9 +136,12 @@ export const MOCK_PROJECTS = [
 
    <br/>
 
+3. **Verify** the projects data is displayed as shown below.
+
    ![image](https://user-images.githubusercontent.com/1474579/64889510-85efa380-d63b-11e9-8dc5-86f6dce8cec2.png)
 
-   ### Solution
+   :::tip
+   The solution to step 3 is shown below but try to get it on your own first.
 
    #### `src\projects\ProjectsPage.jsx`
 

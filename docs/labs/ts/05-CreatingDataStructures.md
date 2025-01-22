@@ -133,11 +133,15 @@ title: 'Lab 5: Data'
    > - JSON.stringify(MOCK_PROJECTS, null, ' ')'s third argument is used to insert white space into the output JSON string for readability purposes.
    >   The second argument is a replacer function so we can pass null because we don't need to replace anything.
 
+
+3. **Verify** the projects data is displayed as shown below.
+
    ![image](https://user-images.githubusercontent.com/1474579/64889510-85efa380-d63b-11e9-8dc5-86f6dce8cec2.png)
 
-   ### Solution
+   :::tip
+   The solution to step 3 is shown below but try to get it on your own first.
 
-   #### `src\projects\ProjectsPage.tsx`
+   #### `src\projects\ProjectsPage.jsx`
 
    ```diff
    + import { MOCK_PROJECTS } from './MockProjects';
