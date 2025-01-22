@@ -1,5 +1,5 @@
 ---
-title: 'Lab 26: Custom Hooks'
+title: 'Lab 23: Custom Hooks'
 ---
 
 > This lab is optional and should only be done if time permits
@@ -17,24 +17,22 @@ title: 'Lab 26: Custom Hooks'
    git checkout -b lab26working
    ```
 
-2. Create a `projectHooks.ts` file and add the following code.
+2. Create a `projectHooks.js` file and add the following code.
 
-   #### `src\projects\projectHooks.ts`
+   #### `src\projects\projectHooks.js`
 
-   ```ts
+   ```js
    import { useState, useEffect } from 'react';
    import { projectAPI } from './projectAPI';
    import { Project } from './Project';
 
    export function useProjects() {
-     const [projects, setProjects] = useState<Project[]>([]);
+     const [projects, setProjects] = useState([]);
      const [loading, setLoading] = useState(false);
-     const [error, setError] = useState<string | undefined>(undefined);
+     const [error, setError] = useState(undefined);
      const [currentPage, setCurrentPage] = useState(1);
      const [saving, setSaving] = useState(false);
-     const [savingError, setSavingError] = useState<string | undefined>(
-       undefined
-     );
+     const [savingError, setSavingError] = useState(undefined);
 
      useEffect(() => {
        async function loadProjects() {
@@ -47,9 +45,7 @@ title: 'Lab 26: Custom Hooks'
              setProjects((projects) => [...projects, ...data]);
            }
          } catch (e) {
-           if (e instanceof Error) {
-             setError(e.message);
-           }
+           setError(e.message);
          } finally {
            setLoading(false);
          }
@@ -57,7 +53,7 @@ title: 'Lab 26: Custom Hooks'
        loadProjects();
      }, [currentPage]);
 
-     const saveProject = (project: Project) => {
+     const saveProject = (project) => {
        setSaving(true);
        projectAPI
          .put(project)
@@ -90,9 +86,9 @@ title: 'Lab 26: Custom Hooks'
 
 3. Refactor the `ProjectsPage` component to remove the logic which is now in the hook and call the hook instead.
 
-> Be sure to open the `ProjectsPage.tsx` and not the singular `ProjectPage.tsx`
+> Be sure to open the `ProjectsPage.jsx` and not the singular `ProjectPage.jsx`
 
-#### `src\projects\ProjectsPage.ts`
+#### `src\projects\ProjectsPage.jsx`
 
 ```diff
 -import React, { useState, useEffect } from 'react';
@@ -103,14 +99,12 @@ title: 'Lab 26: Custom Hooks'
 +import { useProjects } from './projectHooks';
 
 function ProjectsPage() {
--  const [projects, setProjects] = useState<Project[]>([]);
+-  const [projects, setProjects] = useState([]);
 -  const [loading, setLoading] = useState(false);
--  const [error, setError] = useState<string | undefined>(undefined);
+-  const [error, setError] = useState(undefined);
 -  const [currentPage, setCurrentPage] = useState(1);
 -  const [saving, setSaving] = useState(false);
--  const [savingError, setSavingError] = useState<string | undefined>(undefined);
-
-
+-  const [savingError, setSavingError] = useState(undefined);
 
 
 -  useEffect(() => {
@@ -124,9 +118,7 @@ function ProjectsPage() {
 -          setProjects((projects) => [...projects, ...data]);
 -        }
 -      } catch (e) {
--         if (e instanceof Error) {
 -          setError(e.message);
--        }
 -      } finally {
 -        setLoading(false);
 -      }
@@ -148,7 +140,7 @@ function ProjectsPage() {
      setCurrentPage((currentPage) => currentPage + 1);
    };
 
--  const saveProject = (project: Project) => {
+-  const saveProject = (project) => {
 -    projectAPI
 -      .put(project)
 -      .then((updatedProject) => {
@@ -158,9 +150,7 @@ function ProjectsPage() {
 -        setProjects(updatedProjects);
 -      })
 -      .catch((e) => {
--        if (e instanceof Error) {
 -          setError(e.message);
--        }
 -      });
 -  };
 
@@ -194,7 +184,7 @@ export default ProjectsPage;
 
    - Add this line to test the loading spinner
 
-     #### `src\projects\projectAPI.ts`
+     #### `src\projects\projectAPI.js`
 
      ```diff
        get(page = 1, limit = 20) {
@@ -202,7 +192,7 @@ export default ProjectsPage;
      +     .then(delay(2000))
            .then(checkStatus)
            .then(parseJSON)
-           .catch((error: TypeError) => {
+           .catch((error) => {
              console.log('log client error ' + error);
              throw new Error(
                'There was an error retrieving the projects. Please try again.'

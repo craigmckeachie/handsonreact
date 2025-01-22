@@ -1,5 +1,5 @@
 ---
-title: "Lab 25: Redux with React using connect"
+title: 'Redux Lab 3: Redux with React using connect'
 ---
 
 ## Objectives
@@ -13,13 +13,22 @@ title: "Lab 25: Redux with React using connect"
 
 1. Remove the Page (container) component's state.
 
-   #### `src\projects\ProjectsPage.js`
+   #### `src\projects\ProjectsPage.tsx`
 
-   > Make sure you are in Project**s**Page.js not ProjectPage.js.
+   > Make sure you are in Project**s**Page.tsx not ProjectPage.tsx.
 
    ```diff
+   - interface ProjectsPageState {
+   -   projects: Project[];
+   -   loading: boolean;
+   -   error: string | undefined;
+   -   page: number;
+   - }
 
-   class ProjectsPage extends React.Component{
+   class ProjectsPage extends React.Component<any,
+   - ProjectsPageState
+   >
+   {
    -  state = {
    -    projects: [],
    -    loading: false,
@@ -32,12 +41,13 @@ title: "Lab 25: Redux with React using connect"
 
 2. Replace setState and API calls with calls to action creators passed in via props.
 
-   #### `src\projects\ProjectsPage.js`
+   #### `src\projects\ProjectsPage.tsx`
 
    ```diff
-   class ProjectsPage extends React.Component{
 
-   loadProjects(page) {
+   class ProjectsPage extends React.Component<any, {}>{
+
+   loadProjects(page: number) {
    - this.setState({ loading: true });
    - projectAPI
    -   .get(page)
@@ -91,10 +101,10 @@ title: "Lab 25: Redux with React using connect"
 
 3. In the render method, update all references to `state` to pull from `props`.
 
-   #### `src\projects\ProjectsPage.js`
+   #### `src\projects\ProjectsPage.tsx`
 
    ```diff
-   class ProjectsPage extends React.Component{
+   class ProjectsPage extends React.Component<any,{}>{
    ...
 
    render(){
@@ -156,17 +166,19 @@ title: "Lab 25: Redux with React using connect"
 
    > You will need to comment out the existing default export as shown below.
 
-   #### `src\projects\ProjectsPage.js`
+   #### `src\projects\ProjectsPage.tsx`
 
-   ```js
+   ```tsx
    // import { projectAPI } from './projectAPI';
+   import { AppState } from "../state";
+   import { ProjectState } from "./state/projectTypes";
    import { loadProjects, saveProject } from "./state/projectActions";
    import { connect } from "react-redux";
 
    // export default ProjectsPage;
 
    // React Redux (connect)---------------
-   function mapStateToProps(state) {
+   function mapStateToProps(state: AppState): ProjectState {
      return {
        ...state.projectState,
      };
@@ -184,7 +196,7 @@ title: "Lab 25: Redux with React using connect"
 
 6. Provide the store.
 
-   #### `src\App.js`
+   #### `src\App.tsx`
 
    ```diff
    import ProjectPage from './projects/ProjectPage';
@@ -228,46 +240,52 @@ title: "Lab 25: Redux with React using connect"
 
 1. Connect the Form component so it has access to the Redux store's state and is able to dispatch actions in the action creator functions passed in via props.
 
-> You will need to comment out the existing default export as shown below.
+   #### `src\projects\ProjectForm.tsx`
 
-#### `src\projects\ProjectForm.js`
+   ```tsx
+   ...
+   import { saveProject } from './state/projectActions';
+   import { connect } from 'react-redux';
+   ...
 
-```js
-...
-import { saveProject } from './state/projectActions';
-import { connect } from 'react-redux';
-...
+   // export default ProjectForm;
 
-// export default ProjectForm;
+   // React Redux (connect)---------------
 
-// React Redux (connect)---------------
+   const mapDispatchToProps = {
+   onSave: saveProject
+   };
 
-const mapDispatchToProps = {
-onSave: saveProject
-};
+   export default connect(
+   null,
+   mapDispatchToProps
+   )(ProjectForm);
 
-export default connect(
-null,
-mapDispatchToProps
-)(ProjectForm);
-
-```
+   ```
 
 2. Provide the store.
 
-   - This was already done in `src\App.js` because it is inherited from the parent Page component: Page =>List=>Form.
+   - This was already done in `src\App.tsx` because it is inherited from the parent Page component: Page =>List=>Form.
 
-3. In the `ProjectList` component, keep `onSave` in the `propTypes` but update the `render` method to not pass `onSave` to `<ProjectForm>` as it is now automatically connected to that Redux action via the `Provider`.
+3. In the `ProjectList` component, keep `onSave` in the `ProjectListProps` interface but update the `render` method to not pass `onSave` to `<ProjectForm>` as it is now automatically connected to that Redux action via the `Provider`.
 
-   #### `src\Projects\ProjectList.js`
+   #### `src\Projects\ProjectList.tsx`
 
    ```diff
+   interface ProjectListProps {
+     projects: Project[];
+     onSave: (project: Project) => void;
+   }
 
-   class ProjectList extends React.Component {
+   interface ProjectListState {
+     editingProject: Project | {};
+   }
+
+   class ProjectList extends React.Component<ProjectListProps, ProjectListState> {
      state = {
        editingProject: {}
      };
-     handleEdit = (project) => {
+     handleEdit = (project: Project) => {
        this.setState({ editingProject: project });
      };
 
@@ -279,8 +297,8 @@ mapDispatchToProps
    -   const { projects, onSave } = this.props;
    +    const { projects } = this.props;
 
-       let item;
-       const items = projects.map((project) => {
+       let item: JSX.Element;
+       const items = projects.map((project: Project) => {
          if (project !== this.state.editingProject) {
            item = (
              <div key={project.id} className="cols-sm">
@@ -309,11 +327,6 @@ mapDispatchToProps
        return <div className="row">{items}</div>;
      }
    }
-
-   ProjectList.propTypes = {
-     projects: PropTypes.arrayOf(PropTypes.instanceOf(Project)).isRequired,
-     onSave: PropTypes.func.isRequired
-   };
    ```
 
 4. **Verify** the application still works including loading and updating the projects.

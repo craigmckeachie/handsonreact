@@ -1,6 +1,9 @@
 ---
-title: 'Lab 27: React Query Refactor'
+title: 'Lab 24: React Query Refactor'
 ---
+
+<!--
+git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
 
 ## Objectives
 
@@ -38,13 +41,12 @@ title: 'Lab 27: React Query Refactor'
 
 1.  Wrap the `App` component in a `QueryClientProvider` and add the `ReactQueryDevtools` inside of the provider. Also, create a `QueryClient` and pass it to the `QueryClientProvider`.
 
-    #### `src/main.jsx`
+    #### `src/index.tsx`
 
     ```diff
     import ReactDOM from 'react-dom';
     import './index.css';
     import App from './App';
-    import * as serviceWorker from './serviceWorker';
     +import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
     +import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
@@ -65,7 +67,7 @@ title: 'Lab 27: React Query Refactor'
 
 1. Remove all the code highlighted from the following files
 
-   #### `src/projects/ProjectsPage.jsx`
+   #### `src/projects/ProjectsPage.tsx`
 
    ```diff
      ...
@@ -77,17 +79,13 @@ title: 'Lab 27: React Query Refactor'
      ...
    ```
 
-   #### `src/projects/ProjectList.jsx`
+   #### `src/projects/ProjectList.tsx`
 
    ```diff
-   ...
-
-   ProjectList.propTypes = {
-     projects: PropTypes.arrayOf(PropTypes.instanceOf(Project)).isRequired,
-   -  onSave: PropTypes.func.isRequired,
-   };
-
-   export default ProjectList;
+   interface ProjectListProps {
+     projects: Project[];
+   -  onSave: (project: Project) => void;
+   }
    ```
 
    ```diff
@@ -95,7 +93,7 @@ title: 'Lab 27: React Query Refactor'
 
    function ProjectList({ projects
    - , onSave
-   }) {
+   }: ProjectListProps) {
 
    ...
    ```
@@ -108,30 +106,26 @@ title: 'Lab 27: React Query Refactor'
    />
    ```
 
-   #### `src/projects/ProjectForm.jsx`
+   #### `src/projects/ProjectForm.tsx`
 
    ```diff
-    ...
+   ...
+   interface ProjectFormProps {
+     project: Project;
+   -  onSave: (project: Project) => void;
+     onCancel: () => void;
+   }
 
-    function ProjectForm({
-      project: initialProject,
+   function ProjectForm({
+     project: initialProject,
    -  onSave,
-      onCancel,
-    }) {
-    ...
-
-    ProjectForm.propTypes = {
-      project: PropTypes.instanceOf(Project),
-      onCancel: PropTypes.func.isRequired,
-   -  onSave: PropTypes.func.isRequired,
-    };
-
-    export default ProjectForm;
-
+     onCancel,
+   }: ProjectFormProps) {
+   ...
    ```
 
    ```diff
-   const handleSubmit = (event) => {
+   const handleSubmit = (event: SyntheticEvent) => {
        event.preventDefault();
        if (!isValid()) return;
    -    onSave(project);
@@ -145,12 +139,12 @@ title: 'Lab 27: React Query Refactor'
 
 > We will also use React Query’s `isFetching` status to show when data is refreshing in the background.
 
-1. **DELETE ALL** the **code** in `src/projects/projectHooks.js`
+1. **DELETE ALL** the **code** in `src/projects/projectHooks.ts`
 1. Add the following code. Notice that is significantly less code.
 
-   #### `src/projects/projectHooks.js`
+   #### `src/projects/projectHooks.ts`
 
-   ```js
+   ```ts
    import { useState } from 'react';
    import { projectAPI } from './projectAPI';
    import {
@@ -166,19 +160,18 @@ title: 'Lab 27: React Query Refactor'
        queryKey: ['projects', page],
        queryFn: () => projectAPI.get(page + 1),
        keepPreviousData: true,
-       // staleTime: 5000,
      });
      console.log(queryInfo);
      return { ...queryInfo, page, setPage };
    }
    ```
 
-1. **DELETE ALL** the **code** in `src/projects/ProjectsPage.jsx`
-1. Update the `ProjectsPage.jsx` to use the React Query based custom hook.
+1. **DELETE** ALL the **code** in `src/projects/ProjectsPage.tsx`.
+1. Update the `ProjectsPage.tsx` to use the React Query based custom hook.
 
-   #### `src/projects/ProjectsPage.jsx`
+   #### `src/projects/ProjectsPage.tsx`
 
-   ```jsx
+   ```tsx
    import React, { useEffect, useState } from 'react';
    import { useProjects } from './projectHooks';
    import ProjectList from './ProjectList';
@@ -271,7 +264,7 @@ title: 'Lab 27: React Query Refactor'
 
 1. To make it easier to see the pagination change the page size to 10 records. Delay the query to make it easier to see the loading indicator.
 
-   #### `src/projects/projectAPI.js`
+   #### `src/projects/projectAPI.tsx`
 
    ```diff
    const projectAPI = {
@@ -284,7 +277,7 @@ title: 'Lab 27: React Query Refactor'
            .then(delay(2000))
            .then(checkStatus)
            .then(parseJSON)
-           .catch((error) => {
+           .catch((error: TypeError) => {
              console.log('log client error ' + error);
              throw new Error(
                'There was an error retrieving the projects. Please try again.'
@@ -300,24 +293,24 @@ title: 'Lab 27: React Query Refactor'
 
 1. Add the `useSaveProject` custom hook.
 
-   #### `src/projects/projectHooks.js`
+   #### `src/projects/projectHooks.ts`
 
-   ```js
+   ```ts
    // existing code
    ...
 
    export function useSaveProject() {
      const queryClient = useQueryClient();
      return useMutation({
-      mutationFn: (project) => projectAPI.put(project),
-      onSuccess: () => queryClient.invalidateQueries(['projects']),
+       mutationFn: (project: Project) => projectAPI.put(project),
+       onSuccess: () => queryClient.invalidateQueries(['projects']),
      });
    }
    ```
 
 1. Update the `ProjectForm` to use the `useSaveProject` hook.
 
-   #### `src/projects/ProjectForm.jsx`
+   #### `src/projects/ProjectForm.tsx`
 
    ```diff
    import React, { SyntheticEvent, useState } from 'react';
@@ -327,12 +320,12 @@ title: 'Lab 27: React Query Refactor'
    ...
 
    function ProjectForm({ project: initialProject,
-                         onCancel }) {
+                         onCancel }: ProjectFormProps) {
 
    ...
 
    +  const { mutate: saveProject, isLoading } = useSaveProject();
-     const handleSubmit = (event) => {
+     const handleSubmit = (event: SyntheticEvent) => {
        event.preventDefault();
        if (!isValid()) return;
    +   saveProject(project);

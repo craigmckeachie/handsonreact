@@ -1,5 +1,5 @@
 ---
-title: 'Lab 25: Redux with React'
+title: 'Redux Lab 3: Redux with React'
 ---
 
 ## Objectives
@@ -13,37 +13,36 @@ title: 'Lab 25: Redux with React'
 
 1. Remove the Page (container) component's local state and replace with Redux state using useSelector. Also, get a reference to the Store's dispatch function using useDispatch so we can dispatch actions.
 
-   #### `src\projects\ProjectsPage.tsx`
+   #### `src\projects\ProjectsPage.js`
 
-   > Make sure you are in Project**s**Page.tsx not ProjectPage.tsx.
+   > Make sure you are in Project**s**Page.js not ProjectPage.js.
 
    ```diff
    - import React, { useState, useEffect } from 'react';
    + import React, { useEffect } from 'react';
    import ProjectList from './ProjectList';
-   import { Project } from './Project';
+   - import { Project } from './Project';
    + import { useSelector, useDispatch } from 'react-redux';
-   + import { AppState } from '../state';
 
    function ProjectsPage() {
    -  const [projects, setProjects] = useState<Project[]>([]);
    -  const [loading, setLoading] = useState(false);
-   -  const [error, setError] = useState<string | undefined>(undefined);
+   -  const [error, setError] = useState(undefined);
    -  const [currentPage, setCurrentPage] = useState(1);
 
    +  const loading = useSelector(
-   +    (appState: AppState) => appState.projectState.loading
+   +    (appState) => appState.projectState.loading
    +  );
    +  const projects = useSelector(
-   +    (appState: AppState) => appState.projectState.projects
+   +    (appState) => appState.projectState.projects
    +  );
    +  const error = useSelector(
-   +    (appState: AppState) => appState.projectState.error
+   +    (appState) => appState.projectState.error
    +  );
    +  const currentPage = useSelector(
-   +    (appState: AppState) => appState.projectState.page
+   +    (appState) => appState.projectState.page
    +  );
-   +  const dispatch = useDispatch<ThunkDispatch<ProjectState, any, AnyAction>>();
+   +  const dispatch = useDispatch();
 
    ...
    }
@@ -51,21 +50,17 @@ title: 'Lab 25: Redux with React'
 
 1. Replace state setter function calls and API calls with calls to dispatch passing action creators. Also, remove the `onSave` function and stop passing it as a prop to the `<ProjectList/>` component.
 
-   #### `src\projects\ProjectsPage.tsx`
+   #### `src\projects\ProjectsPage.js`
 
    ```diff
    ...
    - import { Project } from './Project';
    - import { projectAPI } from './projectAPI';
-
    + import { loadProjects } from './state/projectActions';
-   + import { AnyAction } from 'redux';
-   + import { ThunkDispatch } from 'redux-thunk';
-   + import { ProjectState } from './state/projectTypes';
 
    function ProjectsPage() {
      ...
-   +  const dispatch = useDispatch<ThunkDispatch<ProjectState, any, AnyAction>>();
+     const dispatch = useDispatch();
 
    -  useEffect(() => {
    -    setLoading(true);
@@ -81,9 +76,7 @@ title: 'Lab 25: Redux with React'
    -      })
    -      .catch((e) => {
    -        setLoading(false);
-   -         if (e instanceof Error) {
-   -             setError(e.message);
-   -        }
+   -        setError(e.message);
    -      });
    -  }, [currentPage]);
 
@@ -96,19 +89,17 @@ title: 'Lab 25: Redux with React'
    +    dispatch(loadProjects(currentPage + 1));
      };
 
-   -  const saveProject = (project: Project) => {
+   -  const saveProject = (project) => {
    -    projectAPI
    -      .put(project)
    -      .then((updatedProject) => {
-   -        let updatedProjects = projects.map((p: Project) => {
+   -        let updatedProjects = projects.map((p) => {
    -          return p.id === project.id ? project : p;
    -        });
    -        setProjects(updatedProjects);
    -      })
    -      .catch((e) => {
-   -         if (e instanceof Error) {
-   -             setError(e.message);
-   -        }
+   -        setError(e.message);
    -      });
    -  };
 
@@ -126,7 +117,7 @@ title: 'Lab 25: Redux with React'
 
 1. Provide the store.
 
-   #### `src\App.tsx`
+   #### `src\App.js`
 
    ```diff
    import ProjectPage from './projects/ProjectPage';
@@ -141,7 +132,7 @@ title: 'Lab 25: Redux with React'
              <span className="logo">
                <img src="/assets/logo-3.svg" alt="logo" width="49" height="99" />
              </span>
-             <NavLink to="/" className="button rounded">
+             <NavLink to="/"  className="button rounded">
                <span className="icon-home"></span>
                Home
              </NavLink>
@@ -152,7 +143,7 @@ title: 'Lab 25: Redux with React'
            <div className="container">
              <Routes>
                <Route path="/"  component={HomePage} />
-               <Route path="/projects" component={ProjectsPage} />
+               <Route path="/projects"  component={ProjectsPage} />
                <Route path="/projects/:id" component={ProjectPage} />
              </Routes>
            </div>
@@ -168,30 +159,19 @@ title: 'Lab 25: Redux with React'
 
 1. Refactor the Form component so it dispatches the `saveProject` action instead of receiving the function as a prop.
 
-   > Be sure to include the line to invoke the useDispatch hook as shown below `const dispatch = useDispatch();` in the next code block. If you don't your editor might implement an placeholder method named `dispatch` that throws an error.
-
-   #### `src\projects\ProjectForm.tsx`
+   #### `src\projects\ProjectForm.js`
 
    ```diff
    import React, { SyntheticEvent, useState } from 'react';
-   import { Project } from './Project';
    + import { useDispatch } from 'react-redux';
+   import { Project } from './Project';
    + import { saveProject } from './state/projectActions';
-   + import { ThunkDispatch } from 'redux-thunk';
-   + import { ProjectState } from './state/projectTypes';
-   + import { AnyAction } from 'redux';
-
-   interface ProjectFormProps {
-     project: Project;
-   - onSave: (project: Project) => void;
-     onCancel: () => void;
-   }
 
    function ProjectForm({
      project: initialProject,
    - onSave,
      onCancel,
-   }: ProjectFormProps) {
+   }) {
      const [project, setProject] = useState(initialProject);
      const [errors, setErrors] = useState({
        name: '',
@@ -199,20 +179,20 @@ title: 'Lab 25: Redux with React'
        budget: '',
      });
 
-   +  const dispatch = useDispatch<ThunkDispatch<ProjectState, any, AnyAction>>();
+   +  const dispatch = useDispatch();
 
-     const handleSubmit = (event: SyntheticEvent) => {
+     const handleSubmit = (event) => {
        event.preventDefault();
        if (!isValid()) return;
    -    onSave(project);
    +    dispatch(saveProject(project));
      };
 
-     const handleChange = (event: any) => {
+     const handleChange = (event) => {
        ...
      };
 
-     function validate(project: Project) {
+     function validate(project) {
      ...
      }
 
@@ -227,17 +207,20 @@ title: 'Lab 25: Redux with React'
      );
    }
 
+   ProjectForm.propTypes = {
+   -  onSave: PropTypes.func.isRequired,
+     onCancel: PropTypes.func.isRequired
+   };
    export default ProjectForm;
-
    ```
 
 2. Provide the store.
 
-   - This was already done in `src\App.tsx` because it is inherited from the parent Page component: Page =>List=>Form.
+   - This was already done in `src\App.js` because it is inherited from the parent Page component: Page =>List=>Form.
 
-3. In the `ProjectList` component, remove `onSave` in the `ProjectListProps` interface and update the component to not pass `onSave` to `<ProjectForm>` as it is now dispatches this action itself after importing it.
+3. In the `ProjectList` component, remove `onSave` in the `propTypes` definition and update the component to not pass `onSave` to `<ProjectForm>` as it is now dispatches this action itself after importing it.
 
-   #### `src\Projects\ProjectList.tsx`
+   #### `src\Projects\ProjectList.js`
 
    ```diff
    import React, { useState } from 'react';
@@ -245,16 +228,11 @@ title: 'Lab 25: Redux with React'
    import ProjectCard from './ProjectCard';
    import ProjectForm from './ProjectForm';
 
-   interface ProjectListProps {
-     projects: Project[];
-   -  onSave: (project: Project) => void;
-   }
-
-   - function ProjectList({ projects, onSave }: ProjectListProps) {
-   + function ProjectList({ projects }: ProjectListProps) {
+   - function ProjectList({ projects, onSave }) {
+   + function ProjectList({ projects }) {
      const [projectBeingEdited, setProjectBeingEdited] = useState({});
 
-     const handleEdit = (project: Project) => {
+     const handleEdit = (project) => {
        setProjectBeingEdited(project);
      };
 
@@ -277,8 +255,12 @@ title: 'Lab 25: Redux with React'
          ))}
        </div>
      );
-   }
+    }
 
+    ProjectList.propTypes = {
+      projects: PropTypes.arrayOf(PropTypes.instanceOf(Project)).isRequired,
+   -  onSave: PropTypes.func.isRequired
+    };
    export default ProjectList;
    ```
 

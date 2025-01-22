@@ -1,9 +1,6 @@
 ---
-title: 'Lab 27: React Query Refactor'
+title: 'Lab 24: React Query Refactor'
 ---
-
-<!--
-git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
 
 ## Objectives
 
@@ -41,12 +38,13 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
 
 1.  Wrap the `App` component in a `QueryClientProvider` and add the `ReactQueryDevtools` inside of the provider. Also, create a `QueryClient` and pass it to the `QueryClientProvider`.
 
-    #### `src/index.tsx`
+    #### `src/main.jsx`
 
     ```diff
     import ReactDOM from 'react-dom';
     import './index.css';
     import App from './App';
+    import * as serviceWorker from './serviceWorker';
     +import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
     +import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
@@ -67,7 +65,7 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
 
 1. Remove all the code highlighted from the following files
 
-   #### `src/projects/ProjectsPage.tsx`
+   #### `src/projects/ProjectsPage.jsx`
 
    ```diff
      ...
@@ -79,13 +77,17 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
      ...
    ```
 
-   #### `src/projects/ProjectList.tsx`
+   #### `src/projects/ProjectList.jsx`
 
    ```diff
-   interface ProjectListProps {
-     projects: Project[];
-   -  onSave: (project: Project) => void;
-   }
+   ...
+
+   ProjectList.propTypes = {
+     projects: PropTypes.arrayOf(PropTypes.instanceOf(Project)).isRequired,
+   -  onSave: PropTypes.func.isRequired,
+   };
+
+   export default ProjectList;
    ```
 
    ```diff
@@ -93,7 +95,7 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
 
    function ProjectList({ projects
    - , onSave
-   }: ProjectListProps) {
+   }) {
 
    ...
    ```
@@ -106,26 +108,30 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
    />
    ```
 
-   #### `src/projects/ProjectForm.tsx`
+   #### `src/projects/ProjectForm.jsx`
 
    ```diff
-   ...
-   interface ProjectFormProps {
-     project: Project;
-   -  onSave: (project: Project) => void;
-     onCancel: () => void;
-   }
+    ...
 
-   function ProjectForm({
-     project: initialProject,
+    function ProjectForm({
+      project: initialProject,
    -  onSave,
-     onCancel,
-   }: ProjectFormProps) {
-   ...
+      onCancel,
+    }) {
+    ...
+
+    ProjectForm.propTypes = {
+      project: PropTypes.instanceOf(Project),
+      onCancel: PropTypes.func.isRequired,
+   -  onSave: PropTypes.func.isRequired,
+    };
+
+    export default ProjectForm;
+
    ```
 
    ```diff
-   const handleSubmit = (event: SyntheticEvent) => {
+   const handleSubmit = (event) => {
        event.preventDefault();
        if (!isValid()) return;
    -    onSave(project);
@@ -139,12 +145,12 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
 
 > We will also use React Query’s `isFetching` status to show when data is refreshing in the background.
 
-1. **DELETE ALL** the **code** in `src/projects/projectHooks.ts`
+1. **DELETE ALL** the **code** in `src/projects/projectHooks.js`
 1. Add the following code. Notice that is significantly less code.
 
-   #### `src/projects/projectHooks.ts`
+   #### `src/projects/projectHooks.js`
 
-   ```ts
+   ```js
    import { useState } from 'react';
    import { projectAPI } from './projectAPI';
    import {
@@ -160,18 +166,19 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
        queryKey: ['projects', page],
        queryFn: () => projectAPI.get(page + 1),
        keepPreviousData: true,
+       // staleTime: 5000,
      });
      console.log(queryInfo);
      return { ...queryInfo, page, setPage };
    }
    ```
 
-1. **DELETE** ALL the **code** in `src/projects/ProjectsPage.tsx`.
-1. Update the `ProjectsPage.tsx` to use the React Query based custom hook.
+1. **DELETE ALL** the **code** in `src/projects/ProjectsPage.jsx`
+1. Update the `ProjectsPage.jsx` to use the React Query based custom hook.
 
-   #### `src/projects/ProjectsPage.tsx`
+   #### `src/projects/ProjectsPage.jsx`
 
-   ```tsx
+   ```jsx
    import React, { useEffect, useState } from 'react';
    import { useProjects } from './projectHooks';
    import ProjectList from './ProjectList';
@@ -264,7 +271,7 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
 
 1. To make it easier to see the pagination change the page size to 10 records. Delay the query to make it easier to see the loading indicator.
 
-   #### `src/projects/projectAPI.tsx`
+   #### `src/projects/projectAPI.js`
 
    ```diff
    const projectAPI = {
@@ -277,7 +284,7 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
            .then(delay(2000))
            .then(checkStatus)
            .then(parseJSON)
-           .catch((error: TypeError) => {
+           .catch((error) => {
              console.log('log client error ' + error);
              throw new Error(
                'There was an error retrieving the projects. Please try again.'
@@ -293,24 +300,24 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
 
 1. Add the `useSaveProject` custom hook.
 
-   #### `src/projects/projectHooks.ts`
+   #### `src/projects/projectHooks.js`
 
-   ```ts
+   ```js
    // existing code
    ...
 
    export function useSaveProject() {
      const queryClient = useQueryClient();
      return useMutation({
-       mutationFn: (project: Project) => projectAPI.put(project),
-       onSuccess: () => queryClient.invalidateQueries(['projects']),
+      mutationFn: (project) => projectAPI.put(project),
+      onSuccess: () => queryClient.invalidateQueries(['projects']),
      });
    }
    ```
 
 1. Update the `ProjectForm` to use the `useSaveProject` hook.
 
-   #### `src/projects/ProjectForm.tsx`
+   #### `src/projects/ProjectForm.jsx`
 
    ```diff
    import React, { SyntheticEvent, useState } from 'react';
@@ -320,12 +327,12 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
    ...
 
    function ProjectForm({ project: initialProject,
-                         onCancel }: ProjectFormProps) {
+                         onCancel }) {
 
    ...
 
    +  const { mutate: saveProject, isLoading } = useSaveProject();
-     const handleSubmit = (event: SyntheticEvent) => {
+     const handleSubmit = (event) => {
        event.preventDefault();
        if (!isValid()) return;
    +   saveProject(project);

@@ -1,5 +1,5 @@
 ---
-title: 'Lab 24: Redux | Actions and Reducer'
+title: 'Redux Lab 2: Actions and Reducer'
 ---
 
 ## Objectives
