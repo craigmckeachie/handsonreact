@@ -88,7 +88,7 @@ title: 'Lab 26: Custom Hooks'
 
 > Be sure to open the `ProjectsPage.jsx` and not the singular `ProjectPage.jsx`
 
-#### `src\projects\ProjectsPage.js`
+#### `src\projects\ProjectsPage.jsx`
 
 ```diff
 -import React, { useState, useEffect } from 'react';

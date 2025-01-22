@@ -34,11 +34,11 @@ title: 'Lab 20: Router Basics'
 1. **Run** _one_ of the following commands to install `React Router`:
    #### npm
    ```shell
-   npm install react-router-dom@6.3
+   npm install react-router-dom@7
    ```
    #### Yarn
    ```shell
-   yarn add react-router-dom@6.3
+   yarn add react-router-dom@7
    ```
 1. **Configure** the **routes**.
 

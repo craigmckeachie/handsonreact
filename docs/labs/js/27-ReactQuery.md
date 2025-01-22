@@ -38,7 +38,7 @@ title: 'Lab 27: React Query Refactor'
 
 1.  Wrap the `App` component in a `QueryClientProvider` and add the `ReactQueryDevtools` inside of the provider. Also, create a `QueryClient` and pass it to the `QueryClientProvider`.
 
-    #### `src/index.js`
+    #### `src/main.jsx`
 
     ```diff
     import ReactDOM from 'react-dom';
@@ -65,7 +65,7 @@ title: 'Lab 27: React Query Refactor'
 
 1. Remove all the code highlighted from the following files
 
-   #### `src/projects/ProjectsPage.js`
+   #### `src/projects/ProjectsPage.jsx`
 
    ```diff
      ...
@@ -77,7 +77,7 @@ title: 'Lab 27: React Query Refactor'
      ...
    ```
 
-   #### `src/projects/ProjectList.js`
+   #### `src/projects/ProjectList.jsx`
 
    ```diff
    ...
@@ -108,7 +108,7 @@ title: 'Lab 27: React Query Refactor'
    />
    ```
 
-   #### `src/projects/ProjectForm.js`
+   #### `src/projects/ProjectForm.jsx`
 
    ```diff
     ...
@@ -173,10 +173,10 @@ title: 'Lab 27: React Query Refactor'
    }
    ```
 
-1. **DELETE ALL** the **code** in `src/projects/ProjectsPage.js`
-1. Update the `ProjectsPage.js` to use the React Query based custom hook.
+1. **DELETE ALL** the **code** in `src/projects/ProjectsPage.jsx`
+1. Update the `ProjectsPage.jsx` to use the React Query based custom hook.
 
-   #### `src/projects/ProjectsPage.js`
+   #### `src/projects/ProjectsPage.jsx`
 
    ```jsx
    import React, { useEffect, useState } from 'react';
@@ -317,7 +317,7 @@ title: 'Lab 27: React Query Refactor'
 
 1. Update the `ProjectForm` to use the `useSaveProject` hook.
 
-   #### `src/projects/ProjectForm.js`
+   #### `src/projects/ProjectForm.jsx`
 
    ```diff
    import React, { SyntheticEvent, useState } from 'react';
