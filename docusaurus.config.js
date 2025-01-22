@@ -51,7 +51,9 @@ const config = {
         title: 'Hands on React',
         logo: {
           alt: 'React Logo',
-          src: 'https://user-images.githubusercontent.com/1474579/98455653-856c7300-2141-11eb-9bf2-090d7d7e4d00.png',
+          // src: 'https://user-images.githubusercontent.com/1474579/98455653-856c7300-2141-11eb-9bf2-090d7d7e4d00.png',
+          src: 'img/logo_light.svg',
+          srcDark: 'img/logo_dark.svg',
         },
         items: [
           {
