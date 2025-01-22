@@ -55,7 +55,7 @@ title: 'Lab 3: Styles Using CSS'
 
 ### Apply CSS
 
-1. **Open** and **delete** the contents of `src\app.css`
+1. **Open** and **delete** the contents of `src\App.css`
 2. Open the file `src\App.jsx`.
 3. Delete all the code in `src\App.jsx`.
 4. You can also delete these two files as they will no longer by used in the project.
@@ -75,7 +75,7 @@ title: 'Lab 3: Styles Using CSS'
    -   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    -   <title>Vite + React</title>
-   +   <title>projectpilot</title>
+   +   <title>Project Pilot</title>
      </head>
      <body>
        <div id="root"></div>
