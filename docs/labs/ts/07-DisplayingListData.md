@@ -126,6 +126,9 @@ export default ProjectList;
    :::
 
 1. **Verify** the **project** **data** **displays** correctly in the browser.
+   :::tip
+   If the images aren't loading refresh your browser. Vite's reloading is fast but not perfect.
+   ::: 
 
    ![image](https://user-images.githubusercontent.com/1474579/64892497-89d2f400-d642-11e9-84b2-ee9463c6192f.png)
 
