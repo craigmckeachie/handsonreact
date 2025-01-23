@@ -135,7 +135,7 @@ title: 'Lab 18: HTTP GET'
    #### `src\projects\ProjectsPage.tsx`
 
 ```diff
-import React, { Fragment, useState,
+import React, { useState,
 + useEffect } from 'react';
 + import { projectAPI } from './projectAPI';
 
@@ -209,7 +209,7 @@ function ProjectsPage() {
      ...
 
      return (
-       <Fragment>
+       <>
          <h1>Projects</h1>
 
          <ProjectList onSave={saveProject} projects={projects} />
@@ -220,7 +220,7 @@ function ProjectsPage() {
    +          <p>Loading...</p>
    +        </div>
    +      )}
-       </Fragment>
+       </>
      );
    }
 
@@ -442,7 +442,7 @@ function ProjectsPage() {
    ...
 
      return (
-       <Fragment>
+       <>
          <h1>Projects</h1>
          {error && (
            <div className="row">
@@ -476,7 +476,7 @@ function ProjectsPage() {
              <p>Loading...</p>
            </div>
          )}
-       </Fragment>
+       </>
      );
    }
 

@@ -116,7 +116,6 @@ title: "Lab 18: HTTP GET"
    #### `src\projects\ProjectsPage.jsx`
 
    ```diff
-   - import { Project } from './Project';
    - import { MOCK_PROJECTS } from './MockProjects';
    ...
     function ProjectsPage() {
@@ -139,7 +138,7 @@ title: "Lab 18: HTTP GET"
    #### `src\projects\ProjectsPage.jsx`
 
 ```diff
-import React, { Fragment, useState,
+import { useState,
 + useEffect } from 'react';
 + import { projectAPI } from './projectAPI';
 
@@ -208,7 +207,7 @@ function ProjectsPage() {
      ...
 
      return (
-       <Fragment>
+       <>
          <h1>Projects</h1>
 
          <ProjectList onSave={saveProject} projects={projects} />
@@ -219,7 +218,7 @@ function ProjectsPage() {
    +          <p>Loading...</p>
    +        </div>
    +      )}
-       </Fragment>
+       </>
      );
    }
 
@@ -439,7 +438,7 @@ function ProjectsPage() {
    ...
 
      return (
-       <Fragment>
+       <>
          <h1>Projects</h1>
          {error && (
            <div className="row">
@@ -473,7 +472,7 @@ function ProjectsPage() {
              <p>Loading...</p>
            </div>
          )}
-       </Fragment>
+       </>
      );
    }
 
