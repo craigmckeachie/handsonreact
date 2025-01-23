@@ -1,5 +1,5 @@
 ---
-title: "Lab 10: Creating a Form to Edit Your Data"
+title: 'Lab 10: Creating a Form to Edit Your Data'
 ---
 
 ## Objectives
@@ -56,8 +56,6 @@ title: "Lab 10: Creating a Form to Edit Your Data"
      #### src\projects\ProjectForm.tsx
 
      ```tsx
-     import React from "react";
-
      function ProjectForm() {
        return (
          <form className="input-group vertical">
@@ -109,6 +107,7 @@ title: "Lab 10: Creating a Form to Edit Your Data"
 3. **Verify** a **form** **renders** under each card in the application. Note, you may need to reload the application a few times to see the changes on this step.
 
    ![image](https://user-images.githubusercontent.com/1474579/64896991-c8bb7680-d64f-11e9-913c-b3e8521a74e3.png)
+
 
 ---
 

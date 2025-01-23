@@ -56,8 +56,6 @@ title: 'Lab 10: Creating a Form to Edit Your Data'
      #### src\projects\ProjectForm.jsx
 
      ```jsx
-     import React from 'react';
-
      function ProjectForm() {
        return (
          <form className="input-group vertical">
