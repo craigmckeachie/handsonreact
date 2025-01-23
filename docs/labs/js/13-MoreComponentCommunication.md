@@ -70,7 +70,7 @@ function ProjectList({ projects }) {
   };
 
 +  const cancelEditing = () => {
-+    setProjectBeingEdited({});
++    setProjectBeingEdited(null);
 +  };
 
   return (
