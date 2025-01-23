@@ -21,7 +21,8 @@ title: 'Lab 21: Route Parameters'
    +  find(id) {
    +    return fetch(`${url}/${id}`)
    +      .then(checkStatus)
-   +      .then(parseJSON);
+   +      .then(parseJSON)
+   +      .then(p=> new Project(p));
    +  },
    +
    ...
