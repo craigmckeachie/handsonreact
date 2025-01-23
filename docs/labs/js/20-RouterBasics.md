@@ -34,11 +34,11 @@ title: 'Lab 20: Router Basics'
 1. **Run** _one_ of the following commands to install `React Router`:
    #### npm
    ```shell
-   npm install react-router-dom@7
+   npm install react-router@7
    ```
    #### Yarn
    ```shell
-   yarn add react-router-dom@7
+   yarn add react-router@7
    ```
 1. **Configure** the **routes**.
 
@@ -49,7 +49,7 @@ title: 'Lab 20: Router Basics'
    import './App.css';
    import ProjectsPage from './projects/ProjectsPage';
 
-   + import { BrowserRouter as Router, Routes, Route, NavLink} from 'react-router-dom';
+   + import { BrowserRouter, Routes, Route, NavLink} from 'react-router';
    + import HomePage from './home/HomePage';
 
      function App() {
@@ -60,14 +60,14 @@ title: 'Lab 20: Router Basics'
    - );
 
    +  return (
-   +    <Router>
+   +    <BrowserRouter>
    +      <div className="container">
    +        <Routes>
    +          <Route path="/" element={<HomePage />} />
    +          <Route path="/projects" element={<ProjectsPage />} />
    +        </Routes>
    +      </div>
-   +    </Router>
+   +    </BrowserRouter>
    +  );
    };
 
@@ -78,7 +78,7 @@ title: 'Lab 20: Router Basics'
 
 1. **Modify** your **CSS** styles to include some customizations for the navigation menu.
 
-   #### `src/App.css`
+   #### `src/index.css`
 
    ```css
    header {
@@ -97,9 +97,10 @@ title: 'Lab 20: Router Basics'
    #### `src/App.jsx`
 
    ```diff
+   ...
    function App() {
      return (
-       <Router>
+       <BrowserRouter>
    +      <header className="sticky">
    +        <span className="logo">
    +          <img src="/assets/logo-3.svg" alt="logo" width="49" height="99" />
@@ -115,7 +116,7 @@ title: 'Lab 20: Router Basics'
           <div className="container">
             ...
           </div>
-       </Router>
+       </BrowserRouter>
      );
    };
    ...

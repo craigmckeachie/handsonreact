@@ -74,7 +74,7 @@ title: 'Lab 21: Route Parameters'
    import { projectAPI } from './projectAPI';
    import ProjectDetail from './ProjectDetail';
    import { Project } from './Project';
-   import { useParams } from 'react-router-dom';
+   import { useParams } from 'react-router';
 
    function ProjectPage(props) {
      const [loading, setLoading] = useState(false);
@@ -140,7 +140,7 @@ title: 'Lab 21: Route Parameters'
 
    function App() {
      return (
-       <Router>
+       <BrowserRouter>
          <header className="sticky">
            <span className="logo">
              <img src="/assets/logo-3.svg" alt="logo" width="49" height="99" />
@@ -160,7 +160,7 @@ title: 'Lab 21: Route Parameters'
    +           <Route path="/projects/:id" element={<ProjectPage />} />
            </Routes>
          </div>
-       </Router>
+       </BrowserRouter>
      );
    }
    ```
@@ -170,7 +170,7 @@ title: 'Lab 21: Route Parameters'
    #### `src\projects\ProjectCard.jsx`
 
    ```diff
-   + import { Link } from 'react-router-dom';
+   + import { Link } from 'react-router';
    ...
      <section className="section dark">
    +  <Link to={'/projects/' + project.id}>
