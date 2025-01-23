@@ -42,7 +42,7 @@ title: 'Lab 16: Form Validation'
    1. Name is required.
    2. Name needs to be at least 3 characters long.
    3. Description is required.
-   4. Budget must be greater than \$0.
+   4. Budget must be greater than $0.
 
    Also, **implement** an `isValid` function in the `ProjectForm` component that checks whether there are any validation errors.
 
