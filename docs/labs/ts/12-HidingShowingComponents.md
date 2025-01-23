@@ -11,13 +11,12 @@ title: 'Lab 12: Hiding and Showing Components'
 
 ### Add state to a component
 
-1. Add a state variable `projectBeingEdited` to hold which project is currently being edited. And update `handleEdit` to set the `projectBeingEdited` variable.
+1. Add a state variable `projectBeingEdited` to hold which project is currently being edited and update `handleEdit` to set the `projectBeingEdited` variable.
 
    #### `src\projects\ProjectList.tsx`
 
    ```diff
-   - import React from 'react';
-   + import React, { useState } from 'react';
+   + import { useState } from 'react';
    import { Project } from './Project';
    import ProjectCard from './ProjectCard';
    import ProjectForm from './ProjectForm';
