@@ -11,7 +11,7 @@ title: 'Lab 11: Communicating from Child to Parent Component'
 
 ### In a child component, accept a function as a prop and invoke it
 
-1. In the `Prop Types` definition, **add** an `onEdit` **function** that requires a `project` as a parameter and returns `void`.
+1. In the `Prop Types` definition at the bottom of the component file, **add** an `onEdit` **function** that requires a `project` as a parameter.
 
    #### `src\projects\ProjectCard.jsx`
 
