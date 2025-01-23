@@ -32,8 +32,7 @@ title: 'Lab 15: Form Values to State'
    #### `src\projects\ProjectForm.jsx`
 
    ```diff
-   - import React from 'react';
-   + import React, { useState } from 'react';
+   + import { useState } from 'react';
 
    function ProjectForm({
    + project: initialProject,
@@ -221,8 +220,7 @@ export default ProjectForm;
    #### `src\projects\ProjectsPage.jsx`
 
    ```diff
-   import React, { Fragment,
-   + useState } from 'react';
+   + import { useState } from 'react';
    import { MOCK_PROJECTS } from './MockProjects';
    import ProjectList from './ProjectList';
 
@@ -238,11 +236,11 @@ export default ProjectForm;
    };
 
    return (
-      <Fragment>
+      <>
          <h1>Projects</h1>
    -      <ProjectList onSave={saveProject} projects={MOCK_PROJECTS} />
    +      <ProjectList onSave={saveProject} projects={projects} />
-      </Fragment>
+      </>
    );
    }
 
