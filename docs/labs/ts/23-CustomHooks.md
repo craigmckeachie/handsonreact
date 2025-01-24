@@ -10,14 +10,7 @@ title: 'Lab 23: Custom Hooks'
 
 ## Steps
 
-1. This lab is a refactor of the code from the solution of `lab22` so begin by checking out the `lab22` solution code and creating a working branch for this lab.
-
-   ```
-   git checkout lab22
-   git checkout -b lab26working
-   ```
-
-2. Create a `projectHooks.ts` file and add the following code.
+1. Create a `projectHooks.ts` file and add the following code.
 
    #### `src\projects\projectHooks.ts`
 
@@ -88,16 +81,15 @@ title: 'Lab 23: Custom Hooks'
 
    > Notice how this logic was directly lifted out of the `ProjectsPage` component.
 
-3. Refactor the `ProjectsPage` component to remove the logic which is now in the hook and call the hook instead.
+2. Refactor the `ProjectsPage` component to remove the logic which is now in the hook and call the hook instead.
 
 > Be sure to open the `ProjectsPage.tsx` and not the singular `ProjectPage.tsx`
 
 #### `src\projects\ProjectsPage.ts`
 
 ```diff
--import React, { useState, useEffect } from 'react';
-+import React from 'react';
- import ProjectList from './ProjectList';
+-import { useState, useEffect } from 'react';
+import ProjectList from './ProjectList';
 -import { projectAPI } from './projectAPI';
 -import { Project } from './Project';
 +import { useProjects } from './projectHooks';
@@ -144,9 +136,9 @@ function ProjectsPage() {
 +    savingError,
 +  } = useProjects();
 
-   const handleMoreClick = () => {
-     setCurrentPage((currentPage) => currentPage + 1);
-   };
+  const handleMoreClick = () => {
+    setCurrentPage((currentPage) => currentPage + 1);
+  };
 
 -  const saveProject = (project: Project) => {
 -    projectAPI
@@ -164,24 +156,31 @@ function ProjectsPage() {
 -      });
 -  };
 
-   return (
-     <>
-       <h1>Projects</h1>
+  return (
+    <>
+      <h1>Projects</h1>
 +      {saving && <span className="toast">Saving...</span>}
 
--      {error && (
-+      {(error || savingError) && (
-         <div className="row">
-           <div className="card large error">
-             <section>
-               <p>
-                 <span className="icon-alert inverse "></span>
--                {error}
-+                {error} {savingError}
-               </p>
-             </section>
-           </div>
-         </div>
+        {error && (
+          <div className="card large error">
+            <section>
+              <p>
+                <span className="icon-alert inverse "></span>
+                {error}
+              </p>
+            </section>
+          </div>
+        )}
++        {savingError && (
++          <div className="card large error">
++            <section>
++              <p>
++                <span className="icon-alert inverse "></span>
++                {savingError}
++              </p>
++            </section>
++          </div>
++        )}
     </>
   );
 }
@@ -190,27 +189,52 @@ export default ProjectsPage;
 
 ```
 
-4. Test the application to verify the loading, saving and error messages are displaying.
+3.  Test the application to verify the loading spinner and saving toast message are displaying.
 
-   - Add this line to test the loading spinner
+    :::tip
+    Add these lines to test the loading spinner and saving message
+    :::
 
-     #### `src\projects\projectAPI.ts`
+    #### `src\projects\projectAPI.ts`
 
-     ```diff
-       get(page = 1, limit = 20) {
-         return fetch(`${url}?_page=${page}&_limit=${limit}&_sort=name`)
-     +     .then(delay(2000))
-           .then(checkStatus)
-           .then(parseJSON)
-           .catch((error: TypeError) => {
-             console.log('log client error ' + error);
-             throw new Error(
-               'There was an error retrieving the projects. Please try again.'
-             );
-           });
-       },
-     ```
+    ```diff
+    ...
 
-     - Shut down your backend API to test the display of an error message
+      get(page = 1, limit = 20) {
+        return fetch(`${url}?_page=${page}&_limit=${limit}&_sort=name`)
+    +     .then(delay(2000))
+          .then(checkStatus)
+          .then(parseJSON)
+          .catch((error: TypeError) => {
+            console.log('log client error ' + error);
+            throw new Error(
+              'There was an error retrieving the projects. Please try again.'
+            );
+          });
+      },
 
-### &#10004; You have completed Lab 26
+      put(project: Project) {
+        return fetch(`${url}/${project.id}`, {
+          method: 'PUT',
+          body: JSON.stringify(project),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+    +     .then(delay(2000))
+          .then(checkStatus)
+          .then(parseJSON)
+          .catch((error: TypeError) => {
+            console.log('log client error ' + error);
+            throw new Error(
+              'There was an error updating the project. Please try again.'
+            );
+          });
+      },
+
+    ...
+    ```
+
+4.  Shut down your backend API to test the display of an error message
+
+### &#10004; You have completed Lab 23

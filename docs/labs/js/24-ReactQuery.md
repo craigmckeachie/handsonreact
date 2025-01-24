@@ -354,4 +354,4 @@ title: 'Lab 24: React Query Refactor'
 
 1. Test the projects page. Edit a project and save it and verify the change works and you see the saving toast indicator near the bottom of the page.
 
-### &#10004; You have completed Lab 27
+### &#10004; You have completed Lab 24

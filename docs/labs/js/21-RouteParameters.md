@@ -110,8 +110,8 @@ title: 'Lab 21: Route Parameters'
              </div>
            )}
 
-           {error && (
-             <div className="row">
+           <div className="row">
+             {error && (
                <div className="card large error">
                  <section>
                    <p>
@@ -119,8 +119,8 @@ title: 'Lab 21: Route Parameters'
                    </p>
                  </section>
                </div>
-             </div>
-           )}
+             )}
+           </div>
 
            {project && <ProjectDetail project={project} />}
          </>
