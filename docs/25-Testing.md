@@ -132,46 +132,66 @@ Tools with similar scope include:
 
 ## JavaScript Tests
 
-1. Open the `my-app` project from the ProjectSetup demo.
+:::info
+In this section, you will use [Create React App](https://facebook.github.io/create-react-app/) to create a React application. Create React App is no longer actively maintained but it is an easy way to create a React application that is already setup to do testing with Jest and React Testing Library. The rest of this course has been updated to use the maintained and modern Vite project to create your react application but I continue to include this section because their are millions of applications that are still being maintained that were created using Create React App and use Jest as the JavaScript testing library.
+:::
+
+1. Open a command prompt or terminal and run the commands:
+
+### npm
+
+```sh
+npx create-react-app my-app --use-npm
+cd my-app
+npm start
+```
+
+### Yarn
+
+```sh
+yarn create react-app my-app
+```
+
+1. Open the `my-app` project in your editor of choice
 2. Create the file `src\math.js`.
 3. Add the following code
 
-#### `src\math.js`
+   #### `src\math.js`
 
-```js
-export function add(a, b) {
-  return a + b;
-}
-```
+   ```js
+   export function add(a, b) {
+     return a + b;
+   }
+   ```
 
 4. Create the file `math.test.js`
 
 5. Add the following code
 
-#### `src\math.test.js`
+   #### `src\math.test.js`
 
-```js
-import { add } from './math';
+   ```js
+   import { add } from './math';
 
-test('add numbers', () => {
-  expect(add(1, 1)).toEqual(2);
-  expect(add(2, 2)).toEqual(4);
-});
-```
+   test('add numbers', () => {
+     expect(add(1, 1)).toEqual(2);
+     expect(add(2, 2)).toEqual(4);
+   });
+   ```
 
-> Be sure to include the `import` statement.
+   > Be sure to include the `import` statement.
 
-1. Open a command prompt or terminal in the `my-app` directory and run the tests
+6. Open a command prompt or terminal in the `my-app` directory and run the tests
 
-```js
-npm test
-```
+   ```js
+   npm test
+   ```
 
-1. The test should pass.
+7. The test should pass.
 
-```
- PASS  src/math.test.js
-```
+   ```
+   PASS  src/math.test.js
+   ```
 
 8. Type `w` to show more commands.
 
