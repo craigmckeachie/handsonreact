@@ -13,11 +13,13 @@ slug: /routing
   - the browser's history is not updated with a new url when page/container components change
   - React Router programmatically adds entries to the browser's history
   - enables the back button to work in React applications
+- Named BrowserRouter because it is used in the browser for web applications
 
-There are two versions:
+  :::tip
 
-1. BrowserRouter (react-router-dom) for web applications.
-2. NativeRouter (react-router-native) for use with React Native.
+  Stay in the [section of the documentation titled `Library`](https://reactrouter.com/start/library/installation). You **DO NOT** want to be in the `Framework` section unless you have a requirement for React Server Components which is out of scope for this course.
+
+  :::
 
 ## Installation
 
@@ -46,7 +48,7 @@ There are two versions:
 
    > ! Be sure that the `main.js` script tag's src attribute starts with a `/` or the router will not work properly when you refresh the page.
 
-3. Log the `RouterRouterDOM` to verify it is installed properly
+2. Log the `RouterRouterDOM` to verify it is installed properly
 
    #### `main.js`
 
@@ -54,7 +56,7 @@ There are two versions:
    console.log(window.ReactRouterDOM);
    ```
 
-4. In the console you should see:
+3. In the console you should see:
    ```
    {BrowserRouter: ƒ, HashRouter: ƒ, Link: ƒ,  …}
    ```
@@ -93,7 +95,7 @@ There are two versions:
 
    ```js
    const {
-     BrowserRouter: Router,
+     BrowserRouter,
      Route,
      Routes,
      Link,
@@ -118,7 +120,7 @@ There are two versions:
 
    function App() {
      return (
-       <Router>
+       <BrowserRouter>
          <div>
            <nav>
              <ul>
@@ -142,7 +144,7 @@ There are two versions:
              </Routes>
            </div>
          </div>
-       </Router>
+       </BrowserRouter>
      );
    }
 
@@ -524,12 +526,8 @@ https://medium.com/@khwsc1/step-by-step-guide-of-simple-routing-transition-effec
 ## Code Splitting
 -->
 
-- [List of all React Routers](https://reactjs.org/community/routing.html)
-- [React Router](https://github.com/ReactTraining/react-router)
-- [Upgrading from v5](https://reactrouter.com/docs/en/v6/upgrading/v5)
-- [React Router 4 changes](https://css-tricks.com/react-router-4/)
+- [React Router](https://reactrouter.com/start/library/installation)
 - [Next.js](https://nextjs.org/)
-- [Change in React Router 4 and 5 from Earlier Versions](https://www.reddit.com/r/reactjs/comments/8lgmmo/router5_or_reactrouter_4/)
 - [Reach Router (now merged back into React Router)](https://reach.tech/router/)
 
 <!--
