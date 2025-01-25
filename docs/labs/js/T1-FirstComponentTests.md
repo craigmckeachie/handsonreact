@@ -13,6 +13,11 @@ title: 'Testing Lab 1: Your First Component Test'
 >
 > **Lab 25: Redux with React**
 
+
+:::info
+In these testing labs, [Create React App](https://facebook.github.io/create-react-app/) was used to create the React application. Create React App is no longer actively maintained but it is an easy way to create a React application that is already setup to do testing with Jest and React Testing Library. The rest of this course has been updated to use the maintained and modern Vite project to create your react application but I continue to include this section because their are millions of applications that are still being maintained that were created using Create React App and use Jest as the JavaScript testing library.
+:::
+
 ### Install React Testing Library
 
 1. Make a new directory in your code directory `testing`.
@@ -31,7 +36,7 @@ title: 'Testing Lab 1: Your First Component Test'
 1. **Open** a `command prompt` (Windows) or `terminal` (Mac).
 1. Change the **current directory** to `code\testing\keeptrack`.
 
-1. **Run** _one_ of the following commands to install the project dependenciess:
+1. **Run** _one_ of the following commands to install the project dependencies:
 
    #### npm
 
