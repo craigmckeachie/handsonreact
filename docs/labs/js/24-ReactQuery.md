@@ -15,14 +15,13 @@ title: 'Lab 24: React Query Refactor'
 
 ### Install React Query and React Query Devtools.
 
-1. **Start** with the **Lab 26** solution code.
-2. Run the follow commands at a command-prompt or terminal (be sure you are in the projectpilot directory).
+1. Run the follow commands at a command-prompt or terminal (be sure you are in the projectpilot directory).
 
    #### npm
 
    ```sh
-   npm install @tanstack/react-query@4
-   npm install @tanstack/react-query-devtools@4
+   npm install @tanstack/react-query@5
+   npm install @tanstack/react-query-devtools@5
    ```
 
    OR
@@ -30,36 +29,13 @@ title: 'Lab 24: React Query Refactor'
    #### yarn
 
    ```
-   yard add @tanstack/react-query
-   yard add @tanstack/react-query-devtools
+   yard add @tanstack/react-query@5
+   yard add @tanstack/react-query-devtools@5
    ```
 
 ### Configure **React Query Client** provider and **React Query Devtools**.
 
 1.  Wrap the `App` component in a `QueryClientProvider` and add the `ReactQueryDevtools` inside of the provider. Also, create a `QueryClient` and pass it to the `QueryClientProvider`.
-
-    #### `src/main.jsx`
-
-    ```diff
-    import ReactDOM from 'react-dom';
-    import './index.css';
-    import App from './App';
-    import * as serviceWorker from './serviceWorker';
-    +import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-    +import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-
-    + const queryClient = new QueryClient();
-
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(
-      <React.StrictMode>
-    +   <QueryClientProvider client={queryClient}>
-          <App />
-    +      <ReactQueryDevtools initialIsOpen={false} />
-    +    </QueryClientProvider>
-      </React.StrictMode>
-    );
-    ```
 
 ### Remove the `saveProject` function and `onSave` props
 
@@ -186,7 +162,7 @@ title: 'Lab 24: React Query Refactor'
    function ProjectsPage() {
      const {
        data,
-       isLoading,
+       isPending,
        error,
        isError,
        isFetching,
@@ -201,7 +177,7 @@ title: 'Lab 24: React Query Refactor'
 
          {data ? (
            <>
-             {isFetching && !isLoading && (
+             {isFetching && !isPending && (
                <span className="toast">Refreshing...</span>
              )}
              <ProjectList projects={data} />
@@ -231,7 +207,7 @@ title: 'Lab 24: React Query Refactor'
                </div>
              </div>
            </>
-         ) : isLoading ? (
+         ) : isPending ? (
            <div className="center-page">
              <span className="spinner primary"></span>
              <p>Loading...</p>
@@ -331,7 +307,7 @@ title: 'Lab 24: React Query Refactor'
 
    ...
 
-   +  const { mutate: saveProject, isLoading } = useSaveProject();
+   +  const { mutate: saveProject, isPending } = useSaveProject();
      const handleSubmit = (event) => {
        event.preventDefault();
        if (!isValid()) return;
@@ -342,7 +318,7 @@ title: 'Lab 24: React Query Refactor'
 
    return (
        <form className="input-group vertical" onSubmit={handleSubmit}>
-   +      {isLoading && <span className="toast">Saving...</span>}
+   +      {isPending && <span className="toast">Saving...</span>}
          <label htmlFor="name">Project Name</label>
 
    ...
