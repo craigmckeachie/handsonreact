@@ -19,17 +19,17 @@ title: 'Testing Lab 1: Your First Component Test'
 1. In that directory, download or clone the following branch to start testing.
 
    ```
-   git clone https://github.com/craigmckeachie/projectpilot-ts.git projectpilot
-   cd projectpilot
+   git clone https://github.com/craigmckeachie/keeptrack-ts.git keeptrack
+   cd keeptrack
    git checkout lab25
    ```
 
    OR
 
-   Visit [this link](https://github.com/craigmckeachie/projectpilot-ts/tree/testing-start) and click `Code > Download`
+   Visit [this link](https://github.com/craigmckeachie/keeptrack-ts/tree/testing-start) and click `Code > Download`
 
 1. **Open** a `command prompt` (Windows) or `terminal` (Mac).
-1. Change the **current directory** to `code\testing\projectpilot`.
+1. Change the **current directory** to `code\testing\keeptrack`.
 <!-- 1.  You probably **DON'T need to DO the steps below** but they are listed for completeness.
 
     > If you recently created your React project using **Create React App** then the following steps to install **React Testing Library** will have been done for you when the project was created.
@@ -95,7 +95,7 @@ title: 'Testing Lab 1: Your First Component Test'
    Unable to find an element with the text: /learn react/i.
    ```
 
-1. Open the `projectpilot` directory in the editor of your choice and then open the file `src/App.test.tsx`
+1. Open the `keeptrack` directory in the editor of your choice and then open the file `src/App.test.tsx`
 1. Update the test code.
 
    ```diff
