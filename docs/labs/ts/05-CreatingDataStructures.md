@@ -141,7 +141,7 @@ title: 'Lab 5: Data'
    :::tip
    The solution to step 3 is shown below but try to get it on your own first.
 
-   #### `src\projects\ProjectsPage.jsx`
+   #### `src\projects\ProjectsPage.tsx`
 
    ```diff
    + import { MOCK_PROJECTS } from './MockProjects';
