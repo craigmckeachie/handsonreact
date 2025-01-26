@@ -37,7 +37,7 @@ title: 'Lab 14: Component Communication through Multiple Levels'
    #### `src\projects\ProjectForm.tsx`
 
    ```diff
-   + import React, { SyntheticEvent } from 'react';
+   + import { SyntheticEvent } from 'react';
    ...
 
    - function ProjectForm({ onCancel }: ProjectFormProps) {
@@ -138,7 +138,6 @@ title: 'Lab 14: Component Communication through Multiple Levels'
    #### `src\projects\ProjectsPage.tsx`
 
    ```diff
-   import React, { Fragment } from 'react';
    import { MOCK_PROJECTS } from './MockProjects';
    import ProjectList from './ProjectList';
    + import { Project } from './Project';
@@ -149,12 +148,12 @@ title: 'Lab 14: Component Communication through Multiple Levels'
    +  };
 
      return (
-        <Fragment>
+        <>
            <h1>Projects</h1>
            <ProjectList
    +         onSave={saveProject}
              projects={MOCK_PROJECTS} />
-        </Fragment>
+        </>
      );
    }
 

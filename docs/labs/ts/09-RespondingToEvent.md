@@ -26,13 +26,13 @@ title: 'Lab 9: Responding to an Event'
 
    #### `src\projects\ProjectCard.tsx`
 
-   ```html
+   ```diff
    ...
-   <p>Budget...</p>
-   <button className=" bordered">
-     <span className="icon-edit "></span>
-     Edit
-   </button>
+   <p>Budget :...</p>
+   + <button className=" bordered">
+   +  <span className="icon-edit "></span>
+   +  Edit
+   + </button>
    ```
 
 3. **Verify** the **button** **displays** in your browser.

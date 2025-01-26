@@ -1,5 +1,5 @@
 ---
-title: "Lab 18: HTTP GET"
+title: 'Lab 18: HTTP GET'
 ---
 
 ## Objectives
@@ -26,19 +26,19 @@ title: "Lab 18: HTTP GET"
     #### `src\projects\projectAPI.js`
 
     ```js
-    import { Project } from "./Project";
+    import { Project } from './Project';
 
-    const baseUrl = "http://localhost:4000";
+    const baseUrl = 'http://localhost:4000';
     const url = `${baseUrl}/projects`;
 
     function translateStatusToErrorMessage(status) {
       switch (status) {
         case 401:
-          return "Please login again.";
+          return 'Please login again.';
         case 403:
-          return "You do not have permission to view the project(s).";
+          return 'You do not have permission to view the project(s).';
         default:
-          return "There was an error retrieving the project(s). Please try again.";
+          return 'There was an error retrieving the project(s). Please try again.';
       }
     }
 
@@ -81,9 +81,9 @@ title: "Lab 18: HTTP GET"
             });
           })
           .catch((error) => {
-            console.log("log client error " + error);
+            console.log('log client error ' + error);
             throw new Error(
-              "There was an error retrieving the projects. Please try again."
+              'There was an error retrieving the projects. Please try again.'
             );
           });
       },
@@ -488,7 +488,6 @@ function ProjectsPage() {
    5. **Click** on the `More...` **button** again.
    6. **Verify** that another 20 projects are appended to the end of the list.
 
-   ![image](https://user-images.githubusercontent.com/1474579/65072105-391f0c00-d95e-11e9-9e22-922fd0154b2a.png)
    ![image](https://user-images.githubusercontent.com/1474579/65072105-391f0c00-d95e-11e9-9e22-922fd0154b2a.png)
 
 ---

@@ -84,7 +84,7 @@ export default ProjectList;
 
       > The `<ProjectForm/>` will be empty at this point. We will fill in the data in a future lab.
 
-      > You can do click another edit button on another `ProjectCard` and that card will change to a form. At this point, you may notice that the cancel button doesn't work. We will get that working in the next lab.
+      > You can do click another edit button on another `ProjectCard` and that card will change to a form. At this point, you may notice that the **save** and **cancel** buttons don't work. We will get these working in the upcoming labs.
 
    ![image](https://user-images.githubusercontent.com/1474579/64925618-6b473700-d7c1-11e9-9cbc-f2899bc1968a.png)
 

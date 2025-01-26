@@ -136,7 +136,6 @@ title: 'Lab 14: Component Communication through Multiple Levels'
    #### `src\projects\ProjectsPage.jsx`
 
    ```diff
-   import React, { Fragment } from 'react';
    import { MOCK_PROJECTS } from './MockProjects';
    import ProjectList from './ProjectList';
 
@@ -146,12 +145,12 @@ title: 'Lab 14: Component Communication through Multiple Levels'
    +  };
 
      return (
-        <Fragment>
+        <>
            <h1>Projects</h1>
            <ProjectList
    +         onSave={saveProject}
              projects={MOCK_PROJECTS} />
-        </Fragment>
+        </>
      );
    }
 

@@ -16,6 +16,8 @@ title: 'Lab 10: Creating a Form to Edit Your Data'
    #### `src\index.css`
 
    ```css
+   /* import of mini.css here */
+   
    form {
      min-width: 300px;
    }

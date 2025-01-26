@@ -493,7 +493,6 @@ function ProjectsPage() {
    6. **Verify** that another 20 projects are appended to the end of the list.
 
    ![image](https://user-images.githubusercontent.com/1474579/65072105-391f0c00-d95e-11e9-9e22-922fd0154b2a.png)
-   ![image](https://user-images.githubusercontent.com/1474579/65072105-391f0c00-d95e-11e9-9e22-922fd0154b2a.png)
 
 ---
 

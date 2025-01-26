@@ -78,7 +78,7 @@ title: 'Lab 8: More Reusable Components'
    -        <p>Budget : {project.budget.toLocaleString()}</p>
    -       </section>
    -     </div>
-   +      <ProjectCard project={project}></ProjectCard>
+   +      <ProjectCard project={project} />
          </div>
        ));
        return <div className="row">{items}</div>;
