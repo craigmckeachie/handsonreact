@@ -71,13 +71,13 @@ title: 'Lab 21: Route Parameters'
    #### `src\projects\ProjectPage.jsx`
 
    ```jsx
-   import React, { useEffect, useState } from 'react';
+   import { useEffect, useState } from 'react';
    import { projectAPI } from './projectAPI';
    import ProjectDetail from './ProjectDetail';
    import { Project } from './Project';
    import { useParams } from 'react-router';
 
-   function ProjectPage(props) {
+   function ProjectPage() {
      const [loading, setLoading] = useState(false);
      const [project, setProject] = useState(null);
      const [error, setError] = useState(null);

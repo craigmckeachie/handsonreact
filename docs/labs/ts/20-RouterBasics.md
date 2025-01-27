@@ -88,8 +88,6 @@ title: 'Lab 20: Router Basics'
    a.button.active {
      border: 1px solid var(--fore-color);
    }
-
-   ...
    ```
 
 2. **Add** two `<NavLink>` **components** (which are provided by the React Router) and set them to visit the configured routes.

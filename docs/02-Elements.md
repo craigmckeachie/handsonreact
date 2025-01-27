@@ -137,7 +137,7 @@ In this part of the course we will create a `Hello World` application in vanilla
 
 12. Run the web server
     ```sh
-    npm run dev
+    npm start
     ```
 13. Open `http://localhost:5000/` in your Chrome browser
 
@@ -154,7 +154,7 @@ Hello World in JavaScript is not that different than it is in React. Let's updat
 1. Open a new cmd prompt or terminal (leave `serve` running) and install `React`
 
    ```shell
-   npm install react react-dom --save
+   npm install react@18 react-dom@18 --save
    ```
 
 2. Add the script tags to include `React` on the page. Place them just below the `root div` but before the `main.js` `script` tag

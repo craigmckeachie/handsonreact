@@ -19,7 +19,7 @@ npm install
 then
 
 ```sh
-npm run dev
+npm start
 ```
 
 5. You should get the message.
