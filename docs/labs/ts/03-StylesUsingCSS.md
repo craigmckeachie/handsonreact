@@ -79,7 +79,7 @@ title: 'Lab 3: Styles Using CSS'
      </head>
      <body>
        <div id="root"></div>
-       <script type="module" src="/src/main.jsx"></script>
+       <script type="module" src="/src/main.tsx"></script>
      </body>
    </html>
    ```
