@@ -7,7 +7,7 @@ slug: /debugging
 
 ## Setup
 
-1. Open **Lab 25** solution code.
+1. Open **Lab 22** solution code.
 2. In a command-prompt or terminal, run the commands.
    ```
    npm install
@@ -71,7 +71,7 @@ slug: /debugging
 Failed to compile.
 
 
-./src/projects/ProjectList.js
+./src/projects/ProjectList.jsx
 Line 17:3: Your render method should have return statement react/require-render-return
 Line 46:6: Expected an assignment or function call and instead saw an expression no-unused-expressions
 
@@ -96,7 +96,7 @@ Open `Chrome DevTools` by following these steps:
 
 ## Breakpoints
 
-1. Open `ProjectsPage.[js|tsx]` in the Chrome DevTools `Sources` tab.
+1. Open `ProjectsPage.[jsx|tsx]` in the Chrome DevTools `Sources` tab.
 
    > To find a file in the Chrome DevTools `Sources` tab and open the navigation to follow this or a similar path:
    > top/localhost:3000/Users/[your username]/Documents/git/r16/projectpilot-js/src/...
@@ -118,12 +118,12 @@ This section describes how you can set breakpoints and debug JavaScript or TypeS
 
 ### Steps
 
-1. In a **Create React App** project, run `npm run dev` command from the command prompt or terminal.
-2. Open `App.js` or `App.tsx` and set a breakpoint by clicking in the gutter to the left of the line number.
+1. In a **Vite** project, run `npm run dev` command from the command prompt or terminal.
+2. Open `App.jsx` or `App.tsx` and set a breakpoint by clicking in the gutter to the left of the line number.
 3. Click the `Run\Debugger` in Toolbar.
 4. Click the `Run and Debug` button.
 5. Choose environment `Chrome (preview)`
-6. **Change port** `8080` to port `3000` in the `launch.json` file.
+6. **Change port** `8080` to port `5173` in the `launch.json` file.
 7. In the top left of the window click `Launch Chrome again`
 8. You will stop on the breakpoint in **VS Code**.
 <!-- ## Network -->

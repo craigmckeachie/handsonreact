@@ -11,11 +11,11 @@ slug: /backend-api-setup
 
    ```
    cd demos //if you aren't there already
-   npm install json-server
+   npm install json-server@0.16.2
    ```
 
 2. Create an `api` directory at the top level in your project so `projectpilot\api`
-3. Click this link to open this [db.json](https://gist.github.com/craigmckeachie/196d975a63271e550d25cb57852b88cc) file on Github
+3. Click this link to open this [db.json](https://gist.github.com/craigmckeachie/bdd7b854fb11d8712f443215a332e48d) file on Github
 4. On the Github page, in the upper right hand corner of the page click the **Download ZIP** button
 5. Open your downloads folder and find `196d97...zip` and unzip it.
 6. Copy the `db.json` file inside the `196d97...` directory into the `projectpilot\api` directory
