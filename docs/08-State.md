@@ -22,6 +22,34 @@ State is local to the component (encapsulated) and should not be accessed outsid
 ##### main.js
 
 ```js
+const { useState } = React; //mimics an import b/c we don't have ES Modules without a build process
+
+function App() {
+  const [message, setMessage] = useState('');
+
+  function handleClick() {
+    // message = "Hi"; //doesn't update the DOM
+    setMessage("I'm here!"); //updates the DOM
+  }
+
+  return (
+    <div className="container">
+      <button onClick={handleClick}>Display</button>
+      <p>{message}</p>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+// App(); component first rendering
+// App(); component re-rendering in response to setting/changing state
+```
+
+:::tip
+Remember not to set `state` directly, use the setter function returned by the hook.
+:::
+
+<!-- ```js
 function addMinutes(date, minutes) {
   //we multiply minutes by 60000 is to convert minutes to milliseconds
   return new Date(date.getTime() + minutes * 60000);
@@ -43,7 +71,7 @@ function Clock() {
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<Clock />);
-```
+``` -->
 
 **What does calling useState do?**
 
@@ -60,83 +88,6 @@ It returns a pair of values: the current state and a function that updates it. T
 **What is that syntax?**
 
 The syntax for `useState` is confusing at first because it uses **Array destructuring** to return a pair. Array destructuring is used because it allows the us to decide what the variable and setter function should be named.
-
-## Setting `state`
-
-### Remember not to set `state` directly, use the setter function returned by the hook.
-
-##### main.js
-
-```js
-function addMinutes(date, minutes) {
-  //we multiply minutes by 60000 is to convert minutes to milliseconds
-  return new Date(date.getTime() + minutes * 60000);
-}
-
-function Clock() {
-  let [time, setTime] = React.useState(new Date());
-
-  const handleClick = () => {
-    //doesn't update the DOM
-    time = addMinutes(time, 10);
-    //updates the DOM
-    // setTime(addMinutes(time, 10));
-  };
-
-  return (
-    <div>
-      <p>{time.toLocaleTimeString()}</p>
-      <button onClick={handleClick}>+ 10 Minutes</button>
-    </div>
-  );
-}
-
-ReactDOM.createRoot(document.getElementById('root')).render(<Clock />);
-```
-
-### Setting `state` based on prior state
-
-Setting `state` based on prior state requires passing a function to the updater function that returns the new value instead of just passing the new value.
-
-> So if the new state is computed using the previous state...pass a function to your updater function (setX function). The function will receive the previous value, and return an updated value.
-
-##### main.js
-
-```js
-function addMinutes(date, minutes) {
-  return new Date(date.getTime() + minutes * 60000);
-}
-
-function Clock() {
-  const [time, setTime] = React.useState(new Date());
-
-  const handleClick1 = () => {
-    setTime(addMinutes(time, 10));
-    setTime(addMinutes(time, 10));
-  };
-
-  const handleClick2 = () => {
-    setTime((previousTime) => addMinutes(previousTime, 10));
-    setTime((previousTime) => addMinutes(previousTime, 10));
-  };
-
-  return (
-    <div>
-      <p>{time.toLocaleTimeString()}</p>
-      <button onClick={handleClick1}>+ 10 Minutes</button>
-      <button onClick={handleClick2}>+ 10 Minutes</button>
-    </div>
-  );
-}
-
-ReactDOM.createRoot(document.getElementById('root')).render(<Clock />);
-```
-
-This is not an issue until you attempt to read state soon after you have set it (setting state repeatedly is an easy way to the issue). The issue arises because React does state updates asyncronously and can batch them to improve rendering performance.
-
-### How to be sure a setState call has completed?
-
-Use a `useEffect` hook with a dependency on the the state variable that is changing. We will learn about `useEffect` in the next chapter.
 
 ## FAQs
 
@@ -318,6 +269,95 @@ function FormattedDate(props) {
 This is commonly called a "top-down" or "unidirectional" data flow. Any state is always owned by some specific component, and any data or UI derived from that state can only affect components "below" them in the tree.
 
 If you imagine a component tree as a waterfall of props, each component's state is like an additional water source that joins it at an arbitrary point but also flows down.
+
+## Setting `state`
+
+### Remember not to set `state` directly, use the setter function returned by the hook.
+
+<!-- ##### main.js
+
+```js
+function addMinutes(date, minutes) {
+  //we multiply minutes by 60000 is to convert minutes to milliseconds
+  return new Date(date.getTime() + minutes * 60000);
+}
+
+function Clock() {
+  let [time, setTime] = React.useState(new Date());
+
+  const handleClick = () => {
+    //doesn't update the DOM
+    time = addMinutes(time, 10);
+    //updates the DOM
+    // setTime(addMinutes(time, 10));
+  };
+
+  return (
+    <div>
+      <p>{time.toLocaleTimeString()}</p>
+      <button onClick={handleClick}>+ 10 Minutes</button>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Clock />);
+``` -->
+
+### Setting `state` based on prior state
+
+Setting `state` based on prior state requires passing a function to the updater function that returns the new value instead of just passing the new value.
+
+> So if the new state is computed using the previous state...pass a function to your updater function (setX function). The function will receive the previous value, and return an updated value.
+
+#### Use a Functional update
+
+Here’s an example of a counter component that uses both forms of setState:
+
+```js
+function Counter({ initialCount }) {
+  const [count, setCount] = React.useState(initialCount);
+
+  return (
+    <>
+      Count: {count}
+      <button onClick={() => setCount(initialCount)}>Reset</button>
+      <button onClick={() => setCount((prevCount) => prevCount - 1)}>
+        Decrement
+      </button>
+      <button
+        onClick={() => {
+          setCount(count + 1);
+          // setCount(count + 1);
+        }}
+      >
+        Increment
+      </button>
+      <button
+        onClick={() => {
+          setCount((prevCount) => prevCount + 1);
+          // setCount(prevCount => prevCount + 1);
+        }}
+      >
+        Increment (Functional Updater)
+      </button>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <Counter initialCount={0} />
+);
+```
+
+The ”Increment” and ”Increment Function Update” buttons in this example use the two different forms of updating state.
+
+
+
+This is not an issue until you attempt to read state soon after you have set it (setting state repeatedly is an easy way to the issue). The issue arises because React does state updates asynchronously and can batch them to improve rendering performance.
+
+### How to be sure a setState call has completed?
+
+Use a `useEffect` hook with a dependency on the the state variable that is changing. We will learn about `useEffect` in the next chapter.
 
 ## Reference
 
