@@ -49,7 +49,7 @@ title: 'Lab 20: Router Basics'
    import './App.css';
    import ProjectsPage from './projects/ProjectsPage';
 
-   + import { BrowserBrowserRouter, Routes, Route, NavLink} from 'react-router';
+   + import { BrowserRouter, Routes, Route, NavLink} from 'react-router';
    + import HomePage from './home/HomePage';
 
      function App() {

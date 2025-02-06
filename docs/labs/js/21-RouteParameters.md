@@ -197,7 +197,7 @@ title: 'Lab 21: Route Parameters'
 
 5. **Verify** the new **route** works by the **following these steps**:
 
-   1. **Visit** the root of the site: `http://localhost:3000/` and refresh the page in your browser.
+   1. **Visit** the root of the site: `http://localhost:5173/` and refresh the page in your browser.
    2. **Click** on `Projects` in the **navigation**.
    3. **Verify** you are taken to the `/projects` route and the `ProjectsPage` **displays**.
    4. **Click** on the name or description in any of the project cards .
