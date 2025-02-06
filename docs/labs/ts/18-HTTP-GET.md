@@ -310,18 +310,18 @@ function ProjectsPage() {
 
 1. **Verify** the application is working by **following these steps** in your `Chrome` **browser**.
 
-   1. **Open** the application on `http://localhost:3000`.
-   1. **Open** `Chrome DevTools`.
-   1. **Refresh** the page.
-   1. For a brief second, a **loading indicator** should **appear**.
+   1. **Open** the application on `http://localhost:5173/`.
+   2. **Open** `Chrome DevTools`.
+   3. **Refresh** the page.
+   4. For a brief second, a **loading indicator** should **appear**.
       ![image](https://user-images.githubusercontent.com/1474579/65072299-9a46df80-d95e-11e9-9c74-8fd89814bbe2.png)
 
-   1. Then, a list of **projects** should **appear**.
-   1. **Click** on the `Chrome DevTools` `Network` tab.
-   1. **Verify** the **request** to `/projects?_page=1&_limit=20&_sort=name` is happening.
+   5. Then, a list of **projects** should **appear**.
+   6. **Click** on the `Chrome DevTools` `Network` tab.
+   7. **Verify** the **request** to `/projects?_page=1&_limit=20&_sort=name` is happening.
       ![image](https://user-images.githubusercontent.com/1474579/65073227-6ff62180-d960-11e9-8073-51597f20cda2.png)
 
-   1. We are using a `delay` function in `projectAPI.get()` to delay the returning of data so it is easier to see the loading indicator. You can remove the `delay` at this point.
+   8. We are using a `delay` function in `projectAPI.get()` to delay the returning of data so it is easier to see the loading indicator. You can remove the `delay` at this point.
 
       #### `src\projects\projectAPI.ts`
 
@@ -332,7 +332,7 @@ function ProjectsPage() {
         .then(parseJSON);
       ```
 
-   1. **Change** the **URL** so the API endpoint cannot be reached.
+   9. **Change** the **URL** so the API endpoint cannot be reached.
 
       #### `src\projects\projectAPI.ts`
 
@@ -343,10 +343,10 @@ function ProjectsPage() {
       ...
       ```
 
-   1. In your browser, you should see the following **error message** **displayed**.
+   10. In your browser, you should see the following **error message** **displayed**.
       ![image](https://user-images.githubusercontent.com/1474579/65073355-b51a5380-d960-11e9-9d62-d26616574d83.png)
 
-   1. **Fix** the **URL** to the backend API before continuing to the next lab.
+   11. **Fix** the **URL** to the backend API before continuing to the next lab.
 
       #### `src\projects\projectAPI.tsx`
 
