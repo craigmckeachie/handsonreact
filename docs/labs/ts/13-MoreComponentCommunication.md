@@ -52,7 +52,7 @@ title: 'Lab 13: More Component Communication'
 
 ### In a parent component, implement a function and pass it as a prop to a child component
 
-1. In `src\projects\ProjectList.tsx` **add** a `cancelEditing` **event handler** to `ProjectList` that sets the state of the component so that `editingProject` is an empty object `{}`. See the details in the next step.
+1. In `src\projects\ProjectList.tsx` **add** a `cancelEditing` **event handler** to `ProjectList` that sets the state of the component so that `projectBeingEdited` is an empty object `{}`. See the details in the next step.
 2. **Wire** up the **onCancel** **event** of the `<ProjectForm />` component rendered in the `ProjectList` to the `cancelEditing` event handler.
 
    #### `src\projects\ProjectList.tsx`
