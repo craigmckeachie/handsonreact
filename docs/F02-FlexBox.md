@@ -1,5 +1,5 @@
 ---
-title: "Flexbox"
+title: 'Flexbox'
 ---
 
 ## Cheat Sheet
@@ -37,11 +37,16 @@ Reference: [New CSS flexbox debugging tools](https://developer.chrome.com/blog/n
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flexbox</title>
     <style>
+      body {
+        min-height: 100%;
+      }
       header {
         display: flex;
-        justify-content: right;
-        align-items: center;
-        height: 200px;
+        height: 300px;
+        width: 800px; /* remove this when showing wrap */
+        /* flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2rem; */
       }
       div {
         height: 100px;
