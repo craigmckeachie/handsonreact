@@ -141,7 +141,7 @@ title: 'Lab 24: React Query Refactor'
      let queryInfo = useQuery({
        queryKey: ['projects', page],
        queryFn: () => projectAPI.get(page + 1),
-       keepPreviousData: true,
+       placeholderData: (previousData) => previousData,
        // staleTime: 5000,
      });
      console.log(queryInfo);
@@ -286,7 +286,7 @@ title: 'Lab 24: React Query Refactor'
      const queryClient = useQueryClient();
      return useMutation({
       mutationFn: (project) => projectAPI.put(project),
-      onSuccess: () => queryClient.invalidateQueries(['projects']),
+      onSuccess: () => queryClient.invalidateQueries({ queryKey: ["projects"] }),
      });
    }
    ```

@@ -158,7 +158,7 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
      let queryInfo = useQuery({
        queryKey: ['projects', page],
        queryFn: () => projectAPI.get(page + 1),
-       keepPreviousData: true,
+       placeholderData: (previousData) => previousData,
      });
      console.log(queryInfo);
      return { ...queryInfo, page, setPage };
@@ -302,7 +302,7 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
      const queryClient = useQueryClient();
      return useMutation({
        mutationFn: (project: Project) => projectAPI.put(project),
-       onSuccess: () => queryClient.invalidateQueries(['projects']),
+       onSuccess: () => queryClient.invalidateQueries({ queryKey: ["projects"] }),
      });
    }
    ```
