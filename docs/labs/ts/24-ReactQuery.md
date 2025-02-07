@@ -48,7 +48,7 @@ git diff 9e548ac0ac4dd05c8e9778475a47351f6246f058..react-query-working -->
     import './index.css';
     import App from './App.jsx';
     + import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-    import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+    + import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
     + const queryClient = new QueryClient();
 

@@ -37,6 +37,28 @@ title: 'Lab 24: React Query Refactor'
 
 1.  Wrap the `App` component in a `QueryClientProvider` and add the `ReactQueryDevtools` inside of the provider. Also, create a `QueryClient` and pass it to the `QueryClientProvider`.
 
+    #### `src/main.jsx`
+
+    ```diff
+    import { StrictMode } from 'react';
+    import { createRoot } from 'react-dom/client';
+    import './index.css';
+    import App from './App.jsx';
+    + import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+    + import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
+    + const queryClient = new QueryClient();
+
+    createRoot(document.getElementById('root')).render(
+      <StrictMode>
+    +    <QueryClientProvider client={queryClient}>
+          <App />
+    +      <ReactQueryDevtools initialIsOpen={false} />
+    +    </QueryClientProvider>
+      </StrictMode>
+    );
+    ```
+
 ### Remove the `saveProject` function and `onSave` props
 
 1. Remove all the code highlighted from the following files

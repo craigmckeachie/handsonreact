@@ -96,12 +96,8 @@ const photoAPI = {
 };
 
 function usePhotos() {
-  const queryInfo = useQuery({
-    queryKey: ['photos'],
-    queryFn: photoAPI.getAll,
-  });
-  console.log(queryInfo);
-  return queryInfo;
+  return useQuery({ queryKey: ['photos'], queryFn: photoAPI.getAll });
+
   // const [loading, setLoading] = React.useState(false);
   // const [photos, setPhotos] = React.useState([]);
   // const [error, setError] = React.useState(null);
@@ -112,15 +108,17 @@ function usePhotos() {
 
   //   photoAPI
   //     .getAll(1)
-  //     .then(data => {
+  //     .then((data) => {
   //       setPhotos(data);
   //       setLoading(false);
   //     })
-  //     .catch(error => {
+  //     .catch((error) => {
   //       setError(error.message);
   //       setLoading(false);
   //     });
   // }, []);
+
+  // return { loading, photos, error };
 }
 
 function PhotoList() {
@@ -136,7 +134,7 @@ function PhotoList() {
         {data?.map((photo) => {
           return (
             <li key={photo.id}>
-              <img loading="lazy" src={photo.thumbnailUrl} alt={photo.title} />
+              <img src={photo.thumbnailUrl} alt={photo.title} />
               <h3>{photo.title}</h3>
             </li>
           );
@@ -147,6 +145,7 @@ function PhotoList() {
 }
 
 const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <QueryClientProvider client={queryClient}>
     <PhotoList />
