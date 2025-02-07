@@ -127,7 +127,7 @@ function PhotoList() {
   const { isLoading, data, error } = usePhotos();
 
   if (error) {
-    return <div>{error}</div>;
+    return <div>{error.message}</div>;
   } else if (isLoading) {
     return <div>Loading...</div>;
   } else {
