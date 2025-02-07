@@ -12,6 +12,7 @@ slug: /react-query
 
 ```
 npm install @tanstack/react-query@4
+npm install @tanstack/react-query-devtools@4
 ```
 
 #### `index.html`
@@ -20,6 +21,7 @@ npm install @tanstack/react-query@4
 ...
 
 <script src="./node_modules/@tanstack/react-query/build/umd/index.development.js"></script>
+<script src="./node_modules/@tanstack/react-query-devtools/build/umd/index.development.js"></script>
 
 ...
 ```
@@ -37,6 +39,7 @@ const {
   QueryClient,
   QueryClientProvider,
 } = ReactQuery;
+const { ReactQueryDevtools } = ReactQueryDevtools;
 
 function translateStatusToErrorMessage(status) {
   switch (status) {
@@ -147,6 +150,7 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById('root')).render(
   <QueryClientProvider client={queryClient}>
     <PhotoList />
+    <ReactQueryDevtools initialIsOpen={false} />
   </QueryClientProvider>
 );
 ```
