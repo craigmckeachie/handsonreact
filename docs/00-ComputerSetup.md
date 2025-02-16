@@ -9,9 +9,9 @@ slug: /computer-setup
 1. A **recent** version of **Windows** (10 or later), **macOS**, or **Linux**, with:
    - _current system updates_
    - at least `4 GB` of `RAM`
-2. **Node.js** installed, a recent **16.x, 18.x, 20.x, or 22.x LTS** version.
+2. **Node.js** installed, a recent **20.x or 22.x LTS** version.
 
-   - Why? Create React App requires Node >= 14 on your local development machine (not on the server)
+   - Why? The latest version of the React Router requires Node >= 20 on your local development machine (not on the server)
    - **Visit** [http://nodejs.org/](http://nodejs.org/).
    - **Click** the `Download Node.js (LTS)` (or similar) ** button ** to **download** the **installer** file.
    - **Run** the **installer**, accepting all _default_ _settings_.
@@ -26,12 +26,10 @@ slug: /computer-setup
      - **Verify** the **version** of each program is **returned**.
    - Please **DO use** a recent Node.js (Long Term Support (LTS)) versions for this class.
 
-     - [x] `16.x`
-     - [x] `18.x`
      - [x] `20.x`
      - [x] `22.x`
 
-   - Please **DO NOT use** these Node.js versions for this class.
+   - Please **DO NOT use** Node.js versions that are not long-term support (LTS)for this class.
 
      - [ ] ~~`8.x`~~
      - [ ] ~~`11.x`~~
