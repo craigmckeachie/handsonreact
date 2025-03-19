@@ -394,13 +394,38 @@ const handleLike = () => {
 
 👉 If you click 3 times quickly, **each update still uses the old `likes` value from the first render**, and only one extra like gets counted.
 
+#### Like Button Example
+
+```tsx
+function LikeButton() {
+  const [likes, setLikes] = React.useState(0);
+
+  // const handleLike = () => {
+  //   // Simulating a delay as if sending data to a server
+  //   setTimeout(() => {
+  //     setLikes((prevLikes) => prevLikes + 1); // ✅ Ensures correct state update
+  //   }, 500);
+  // };
+
+  const handleLike = () => {
+    setTimeout(() => {
+      setLikes(likes + 1); // ❌ Uses stale state (the value captured when the click happened)
+    }, 500);
+  };
+
+  return <button onClick={handleLike}>Likes: {likes}</button>;
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<LikeButton />);
+```
+
 ---
 
 ### **Another Real-World Example: WebSocket Live Updates**
 
 Consider a **live sports app** that updates the score in real-time. If the WebSocket receives multiple updates quickly, relying on the latest state ensures correct scores.
 
-#### **Correct WebSocket Score Update**
+#### Correct WebSocket Score Update
 
 ```tsx
 function Scoreboard() {
