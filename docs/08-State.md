@@ -359,7 +359,7 @@ Let’s refine the **Like Button example** to make it more realistic by introduc
 
 ---
 
-### **When You Might See Stale State in a Real App**
+### When You Might See Stale State in a Real App
 
 In most cases, state updates happen synchronously, and React **batches** them. However, if the update happens asynchronously (e.g., after a network request), using the previous state is critical.
 
@@ -382,7 +382,7 @@ function LikeButton() {
 
 👉 Now, if you **click multiple times quickly**, each update correctly increments the previous value rather than being based on the initial state.
 
-#### **What Happens If You Don't Use a Functional Updater?**
+#### What Happens If You Don't Use a Functional Updater?
 
 ```tsx
 const handleLike = () => {
@@ -425,7 +425,7 @@ function Scoreboard() {
 
 ---
 
-### **Key Takeaways**
+### Key Takeaways
 
 - **State updates within a render cycle are batched**, so a simple button click might not cause stale state.
 - **Stale state occurs when updates are asynchronous** (inside `setTimeout`, `fetch`, WebSocket, event listeners outside React).
