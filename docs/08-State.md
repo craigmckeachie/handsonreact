@@ -75,7 +75,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Clock />);
 
 **What does calling useState do?**
 
-It declares a “state variable”. Our variable is called `time` but we could call it anything else, like `basketball`. This is a way to “preserve” some values between the function calls — `useState` is a new way to use the exact same capabilities that this.state provides in a class. Normally, variables “disappear” when the function exits but state variables are preserved by React.
+It declares a “state variable”. Our variable is called `message` but we could call it anything else, like `basketball`. This is a way to “preserve” some values between the function calls — `useState` is a new way to use the exact same capabilities that this.state provides in a class. Normally, variables “disappear” when the function exits but state variables are preserved by React.
 
 **What do we pass to useState as an argument?**
 
@@ -351,9 +351,85 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 The ”Increment” and ”Increment Function Update” buttons in this example use the two different forms of updating state.
 
-
-
 This is not an issue until you attempt to read state soon after you have set it (setting state repeatedly is an easy way to the issue). The issue arises because React does state updates asynchronously and can batch them to improve rendering performance.
+
+Good catch! Since React batches state updates **within the same render cycle**, you typically won't see stale state in a simple button click example unless React processes updates asynchronously (like inside `setTimeout`, a promise, or an event listener outside React). However, if you **simulate a heavy re-render or network delay**, you can observe stale state issues.
+
+Let’s refine the **Like Button example** to make it more realistic by introducing a simulated delay that could occur in a real-world app (e.g., syncing likes to a server).
+
+---
+
+### **When You Might See Stale State in a Real App**
+
+In most cases, state updates happen synchronously, and React **batches** them. However, if the update happens asynchronously (e.g., after a network request), using the previous state is critical.
+
+#### **Example: Like Button with Simulated API Call**
+
+```tsx
+function LikeButton() {
+  const [likes, setLikes] = React.useState(0);
+
+  const handleLike = () => {
+    // Simulating a delay as if sending data to a server
+    setTimeout(() => {
+      setLikes((prevLikes) => prevLikes + 1); // ✅ Ensures correct state update
+    }, 500);
+  };
+
+  return <button onClick={handleLike}>Likes: {likes}</button>;
+}
+```
+
+👉 Now, if you **click multiple times quickly**, each update correctly increments the previous value rather than being based on the initial state.
+
+#### **What Happens If You Don't Use a Functional Updater?**
+
+```tsx
+const handleLike = () => {
+  setTimeout(() => {
+    setLikes(likes + 1); // ❌ Uses stale state (the value captured when the click happened)
+  }, 500);
+};
+```
+
+👉 If you click 3 times quickly, **each update still uses the old `likes` value from the first render**, and only one extra like gets counted.
+
+---
+
+### **Another Real-World Example: WebSocket Live Updates**
+
+Consider a **live sports app** that updates the score in real-time. If the WebSocket receives multiple updates quickly, relying on the latest state ensures correct scores.
+
+#### **Correct WebSocket Score Update**
+
+```tsx
+function Scoreboard() {
+  const [score, setScore] = React.useState(0);
+
+  React.useEffect(() => {
+    const socket = new WebSocket('wss://example.com');
+
+    socket.onmessage = (event) => {
+      const points = JSON.parse(event.data).points;
+      setScore((prevScore) => prevScore + points); // ✅ Always updates correctly
+    };
+
+    return () => socket.close();
+  }, []);
+
+  return <div>Score: {score}</div>;
+}
+```
+
+👉 If multiple updates arrive quickly, **each update correctly adds to the latest state**.
+
+---
+
+### **Key Takeaways**
+
+- **State updates within a render cycle are batched**, so a simple button click might not cause stale state.
+- **Stale state occurs when updates are asynchronous** (inside `setTimeout`, `fetch`, WebSocket, event listeners outside React).
+- **Use a functional updater in delayed updates to ensure state is always based on the latest value**.
 
 ### How to be sure a setState call has completed?
 
@@ -364,45 +440,3 @@ Use a `useEffect` hook with a dependency on the the state variable that is chang
 - [State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
 - [Glossary Definition: State](https://reactjs.org/docs/glossary.html#state)
 - [Using the State Hook](https://reactjs.org/docs/hooks-state.html)
-
-<!-- #### Use a Functional update
-
- Here’s an example of a counter component that uses both forms of setState:
-
-```js
-function Counter({ initialCount }) {
-  const [count, setCount] = React.useState(initialCount);
-
-  return (
-    <>
-      Count: {count}
-      <button onClick={() => setCount(initialCount)}>Reset</button>
-      <button onClick={() => setCount((prevCount) => prevCount - 1)}>
-        Decrement
-      </button>
-      <button
-        onClick={() => {
-          setCount(count + 1);
-          // setCount(count + 1);
-        }}
-      >
-        Increment
-      </button>
-      <button
-        onClick={() => {
-          setCount((prevCount) => prevCount + 1);
-          // setCount(prevCount => prevCount + 1);
-        }}
-      >
-        Increment (Functional Updater)
-      </button>
-    </>
-  );
-}
-
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <Counter initialCount={0} />
-);
-```
-
-The ”Increment” and ”Increment Function Update” buttons use the two different forms of updating state.  -->
