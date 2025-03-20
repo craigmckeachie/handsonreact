@@ -70,4 +70,4 @@ If you are interested in trying a new font designed for programming.
 
 - [React & JS Snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets) OR [Simple React Snippets](https://marketplace.visualstudio.com/items?itemName=burkeholland.simple-react-snippets)
 - [React Documentation Extension](https://marketplace.visualstudio.com/items?itemName=avraammavridis.vsc-react-documentation)
-- [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer)
+

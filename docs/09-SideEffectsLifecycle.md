@@ -1,6 +1,6 @@
 ---
 id: SideEffectsLifecyle
-title: Side Effects & Lifecyle
+title: Side Effects & Lifecycle
 sidebar_label: Side Effects & Lifecyle
 slug: /side-effects-lifecyle
 ---
