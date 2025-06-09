@@ -103,9 +103,9 @@ title: 'Lab 3: Styles Using CSS'
 
    ```
 
-7. Open the file `src\index.css`
+7. Open the file `src\index.css`.
 8. Delete the current contents of the file.
-9. Import the `mini.css` stylesheet you you installed earlier in this lab.
+9. Import the `mini.css` stylesheet you installed earlier in this lab.
 
 #### `src\index.css`
 
@@ -113,7 +113,7 @@ title: 'Lab 3: Styles Using CSS'
 @import '../node_modules/mini.css/dist/mini-default.min.css';
 ```
 
-> Alternatively, you could choose a dark theme: `mini-dark.min.css` or a nordic theme: `mini-nord.min.css` 7. Verify you see the following output in the browser
+> Alternatively, you could choose a dark theme: `mini-dark.min.css` or a nordic theme: `mini-nord.min.css`.
 
 10. Verify the page displays the following quote with the styles shown.
     ![image](https://user-images.githubusercontent.com/1474579/64926635-c2eb9f80-d7cd-11e9-8ff7-84660d706ff9.png)
